@@ -1,14 +1,13 @@
 name: Check Sig and Schema
 on:
+  schedule:
+    - cron: '17 * * * *'
   workflow_dispatch:
     inputs:
-      game_dir:
-        description: CS2 installation root on the Windows runner
-        required: true
-        type: string
-      refs:
-        description: Product refs, comma-separated; empty means latest release and main
-        type: string
+      force:
+        description: Recheck even if the game and product build are unchanged
+        type: boolean
+        default: true
 permissions:
   contents: write
 concurrency:
@@ -16,11 +15,13 @@ concurrency:
   cancel-in-progress: false
 jobs:
   check:
-    runs-on: [self-hosted, Windows, X64]
-    timeout-minutes: 15
+    runs-on: windows-2022
+    timeout-minutes: 90
     defaults:
       run:
         shell: pwsh
+    env:
+      GH_TOKEN: ${{ github.token }}
     steps:
       - uses: actions/checkout@v7
       - name: Checkout validated checker
@@ -28,19 +29,76 @@ jobs:
         with:
           ref: 728309f1059dc636dd4c03c2e94c31118be00d7e
           path: .checker
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+      - name: Read current Steam and product builds
+        id: version
+        env:
+          FORCE: ${{ inputs.force || false }}
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $steam = Join-Path $env:RUNNER_TEMP 'steamcmd'
+          New-Item -ItemType Directory -Force $steam | Out-Null
+          Invoke-WebRequest 'https://steamcdn-a.akamaihd.net/client/installer/steamcmd.zip' -OutFile "$steam.zip"
+          Expand-Archive "$steam.zip" $steam
+          & "$steam/steamcmd.exe" +login anonymous +app_info_update 1 +app_info_print 730 +quit *> "$steam/appinfo.txt"
+          if ($LASTEXITCODE -ne 0) { throw 'Steam app info query failed' }
+          "STEAMCMD=$steam" >> $env:GITHUB_ENV
+          $env:APPINFO = "$steam/appinfo.txt"
+          @'
+          import {readFileSync,appendFileSync} from 'node:fs';
+          import {parseVdf} from './.checker/src/report.mjs';
+          const text=readFileSync(process.env.APPINFO,'utf8');
+          const start=text.search(/"730"\s*\{/);
+          if(start<0) throw new Error('Steam did not return app 730');
+          const tokens=[...text.slice(start).matchAll(/"(?:\\.|[^"\\])*"|[{}]/g)];
+          let depth=0,end=-1;
+          for(let i=1;i<tokens.length;i++) {
+            if(tokens[i][0]==='{') depth++;
+            if(tokens[i][0]==='}' && --depth===0){end=i;break;}
+          }
+          if(end<0) throw new Error('Incomplete Steam app info');
+          const app=parseVdf(tokens.slice(0,end+1).map(t=>t[0]).join('\n'))['730'];
+          const build=app.depots?.branches?.public?.buildid;
+          if(!/^\d+$/.test(build??'')) throw new Error('Missing public Steam build');
+          async function api(path){
+            const response=await fetch('https://api.github.com/repos/'+path,{headers:{Authorization:'Bearer '+process.env.GH_TOKEN},signal:AbortSignal.timeout(30000)});
+            if(!response.ok) throw new Error('GitHub metadata HTTP '+response.status);
+            return response.json();
+          }
+          const release=await api('unicbm/demotracer/releases/latest');
+          if(!/^v\d+\.\d+\.\d+$/.test(release.tag_name)) throw new Error('Invalid release version');
+          const commit=(await api('unicbm/demotracer/commits/'+release.tag_name)).sha;
+          const css=await api('roflmuffin/CounterStrikeSharp/releases/latest');
+          const asset=css.assets.filter(a=>/^counterstrikesharp-with-runtime-windows-[\d.]+\.zip$/.test(a.name));
+          if(asset.length!==1) throw new Error('CSS Windows runtime package missing');
+          const mmResponse=await fetch('https://mms.alliedmods.net/mmsdrop/2.0/mmsource-latest-windows',{signal:AbortSignal.timeout(30000)});
+          if(!mmResponse.ok) throw new Error('Metamod metadata unavailable');
+          const mm=(await mmResponse.text()).trim();
+          if(!/^mmsource-[\d.]+-git\d+-windows\.zip$/.test(mm)) throw new Error('Invalid Metamod package name');
+          const manifests=['2347770','2347771'].map(id=>app.depots[id]?.manifests?.public?.gid);
+          if(manifests.some(id=>!/^\d+$/.test(id??''))) throw new Error('Windows depot manifests missing');
+          const key=[build,...manifests,commit,css.tag_name,mm].join(':');
+          const changed=process.env.FORCE==='true'||!readFileSync('README.md','utf8').includes('<!-- checked:'+key+' -->');
+          const values={changed:String(changed),build,ref:release.tag_name,css:asset[0].browser_download_url,mm,key};
+          appendFileSync(process.env.GITHUB_OUTPUT,Object.entries(values).map(([k,v])=>k+'='+v+'\n').join(''));
+          console.log('Steam build '+build+', DemoTracer '+release.tag_name+', recheck='+changed);
+          '@ | node --input-type=module
+          if ($LASTEXITCODE -ne 0) { throw 'Version detection failed' }
       - name: Checkout Schema SDK
+        if: steps.version.outputs.changed == 'true'
         uses: actions/checkout@v7
         with:
           repository: alliedmodders/hl2sdk
           ref: 5f891c9026230cce0fc0a3fc4b5fef1c467a1385
           path: .sdk
-      - uses: actions/setup-node@v7
-        with:
-          node-version: 22
       - uses: actions/setup-dotnet@v6
+        if: steps.version.outputs.changed == 'true'
         with:
           dotnet-version: 10.0.x
       - name: Build and test checker
+        if: steps.version.outputs.changed == 'true'
         working-directory: .checker
         run: |
           node --test
@@ -51,30 +109,56 @@ jobs:
           if ($LASTEXITCODE -ne 0) { throw 'Probe configuration failed' }
           cmake --build probe/native/build --config Release
           if ($LASTEXITCODE -ne 0) { throw 'Native probe build failed' }
-      - name: Check game signatures and live Schema
+      - name: Install current CS2 and Schema runtime
+        if: steps.version.outputs.changed == 'true'
+        env:
+          CSS_URL: ${{ steps.version.outputs.css }}
+          MM_PACKAGE: ${{ steps.version.outputs.mm }}
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $drive = Get-PSDrive -PSProvider FileSystem | Where-Object { $_.Root -match '^[A-Z]:\\$' } | Sort-Object Free -Descending | Select-Object -First 1
+          if ($drive.Free -lt 90GB) { throw 'Hosted runner needs 90 GB free for the full CS2 server installation' }
+          $game = Join-Path $drive.Root "cs2-sig-$env:GITHUB_RUN_ID"
+          New-Item -ItemType Directory $game | Out-Null
+          & "$env:STEAMCMD/steamcmd.exe" +force_install_dir $game +login anonymous +app_update 730 validate +quit *> "$env:RUNNER_TEMP/cs2-install.log"
+          if ($LASTEXITCODE -ne 0) { throw 'Steam CS2 installation failed' }
+          if (-not (Test-Path "$game/game/csgo/bin/win64/server.dll")) { throw 'Game server DLL missing' }
+          $manifests = @("$game/steamapps/appmanifest_730.acf", "$env:STEAMCMD/steamapps/appmanifest_730.acf") | Where-Object { Test-Path $_ }
+          if ($manifests.Count -ne 1) { throw 'Cannot identify installed Steam app manifest' }
+          Invoke-WebRequest $env:CSS_URL -OutFile "$env:RUNNER_TEMP/css.zip"
+          Invoke-WebRequest "https://mms.alliedmods.net/mmsdrop/2.0/$env:MM_PACKAGE" -OutFile "$env:RUNNER_TEMP/mm.zip"
+          Expand-Archive "$env:RUNNER_TEMP/css.zip" "$game/game/csgo" -Force
+          Expand-Archive "$env:RUNNER_TEMP/mm.zip" "$game/game/csgo" -Force
+          "GAME_DIR=$game" >> $env:GITHUB_ENV
+          "APP_MANIFEST=$($manifests[0])" >> $env:GITHUB_ENV
+      - name: Check signatures and live Schema
+        if: steps.version.outputs.changed == 'true'
         working-directory: .checker
         env:
-          GAME_DIR: ${{ inputs.game_dir }}
-          SOURCE_REFS: ${{ inputs.refs }}
-          GH_TOKEN: ${{ github.token }}
+          SOURCE_REF: ${{ steps.version.outputs.ref }}
+          EXPECTED_BUILD: ${{ steps.version.outputs.build }}
         run: |
-          $checkArgs = @('src/check.mjs', '--game-dir', $env:GAME_DIR)
-          if ($env:SOURCE_REFS) { $checkArgs += @('--refs', $env:SOURCE_REFS) }
+          $checkArgs = @('src/check.mjs', '--game-dir', $env:GAME_DIR, '--app-manifest', $env:APP_MANIFEST, '--refs', $env:SOURCE_REF)
           node @checkArgs --prepare-schema
           if ($LASTEXITCODE -ne 0) { throw 'Schema inventory failed' }
           ./src/collect-schema.ps1 -GameDir $env:GAME_DIR
           node @checkArgs
           if ($LASTEXITCODE -notin @(0, 1)) { throw 'Check did not complete' }
+          $report = Get-Content reports/latest.json -Raw | ConvertFrom-Json
+          if ($report.game.buildId -ne $env:EXPECTED_BUILD) { throw 'Steam build changed during installation; next run must recheck' }
           exit 0
       - name: Render README
+        if: steps.version.outputs.changed == 'true'
         shell: bash
         env:
           RESULT: .checker/reports/latest.json
           README: README.md
+          CHECK_KEY: ${{ steps.version.outputs.key }}
         run: |
           node --input-type=module <<'JS'
           import {readFileSync,writeFileSync} from 'node:fs';
           const report=JSON.parse(readFileSync(process.env.RESULT,'utf8'));
+          if(report.sources.length!==1) throw new Error('Expected latest release only');
           const sources=report.sources;
           const escape=s=>String(s).replaceAll('|','\\|');
           const state=c=>!c?'—':({pass:'✅',fail:'❌',not_checked:'—'})[c.status];
@@ -85,7 +169,7 @@ jobs:
           '| 源码 | Sig 正常 | Sig 失配 | Schema 正常 | Schema 失配 |','| --- | ---: | ---: | ---: | ---: |'];
           for(const s of sources) lines.push(`| [${escape(s.ref)}](https://github.com/unicbm/demotracer/tree/${s.commit}) | ${counts(s,signature,'pass')} | ${counts(s,signature,'fail')} | ${counts(s,schema,'pass')} | ${counts(s,schema,'fail')} |`);
           function table(title,predicate,isSchema=false){
-            lines.push('',`### ${title}`,'',`| ${isSchema?'类 | 字段':'检查项'} | ${sources.map(s=>escape(s.ref)).join(' | ')} |`, `| --- ${isSchema?'| --- ':''}| ${sources.map(()=>'---').join(' | ')} |`);
+            lines.push('',`### ${title}`,'',`| ${isSchema?'类 | 字段':'检查项'} | 结果 |`, `| --- ${isSchema?'| --- ':''}| --- |`);
             const keys=[...new Set(sources.flatMap(s=>s.checks.filter(predicate).map(c=>c.name)))].sort();
             for(const key of keys){
               const selected=sources.map(s=>s.checks.find(c=>c.name===key&&predicate(c)));
@@ -100,16 +184,18 @@ jobs:
             table(title,c=>signature(c)&&c.source.includes(path));
           lines.push('','## Schema');
           table('字段',schema,true);
+          if(process.env.CHECK_KEY) lines.push('',`<!-- checked:${process.env.CHECK_KEY} -->`);
           writeFileSync(process.env.README,lines.join('\n')+'\n');
           JS
       - name: Update results
+        if: steps.version.outputs.changed == 'true'
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add README.md
           git diff --cached --quiet
           if ($LASTEXITCODE -eq 0) { exit 0 }
-          git commit -m 'Update Sig and Schema results'
+          git commit -m 'Update latest Sig and Schema results'
           if ($LASTEXITCODE -ne 0) { throw 'Result commit failed' }
           git push
           if ($LASTEXITCODE -ne 0) { throw 'Result push failed' }
