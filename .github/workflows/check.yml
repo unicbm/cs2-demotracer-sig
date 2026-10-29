@@ -16,7 +16,7 @@ concurrency:
 jobs:
   check:
     runs-on: windows-2022
-    timeout-minutes: 90
+    timeout-minutes: 20
     defaults:
       run:
         shell: pwsh
@@ -72,82 +72,90 @@ jobs:
           const release=await api('unicbm/demotracer/releases/latest');
           if(!/^v\d+\.\d+\.\d+$/.test(release.tag_name)) throw new Error('Invalid release version');
           const commit=(await api('unicbm/demotracer/commits/'+release.tag_name)).sha;
-          const css=await api('roflmuffin/CounterStrikeSharp/releases/latest');
-          const asset=css.assets.filter(a=>/^counterstrikesharp-with-runtime-windows-[\d.]+\.zip$/.test(a.name));
-          if(asset.length!==1) throw new Error('CSS Windows runtime package missing');
-          const mmResponse=await fetch('https://mms.alliedmods.net/mmsdrop/2.0/mmsource-latest-windows',{signal:AbortSignal.timeout(30000)});
-          if(!mmResponse.ok) throw new Error('Metamod metadata unavailable');
-          const mm=(await mmResponse.text()).trim();
-          if(!/^mmsource-[\d.]+-git\d+-windows\.zip$/.test(mm)) throw new Error('Invalid Metamod package name');
+          const schemaCommit=(await api('CS2OpenDev/CS2OpenDev-SchemaTracker/commits/latest')).sha;
           const manifests=['2347770','2347771'].map(id=>app.depots[id]?.manifests?.public?.gid);
           if(manifests.some(id=>!/^\d+$/.test(id??''))) throw new Error('Windows depot manifests missing');
-          const key=[build,...manifests,commit,css.tag_name,mm].join(':');
+          const key=[build,...manifests,commit,schemaCommit,'light-v1'].join(':');
           const changed=process.env.FORCE==='true'||!readFileSync('README.md','utf8').includes('<!-- checked:'+key+' -->');
-          const values={changed:String(changed),build,ref:release.tag_name,css:asset[0].browser_download_url,mm,key};
+          const values={changed:String(changed),build,ref:release.tag_name,schemaCommit,content:manifests[0],binary:manifests[1],key};
           appendFileSync(process.env.GITHUB_OUTPUT,Object.entries(values).map(([k,v])=>k+'='+v+'\n').join(''));
           console.log('Steam build '+build+', DemoTracer '+release.tag_name+', recheck='+changed);
           '@ | node --input-type=module
           if ($LASTEXITCODE -ne 0) { throw 'Version detection failed' }
-      - name: Checkout Schema SDK
-        if: steps.version.outputs.changed == 'true'
-        uses: actions/checkout@v7
-        with:
-          repository: alliedmodders/hl2sdk
-          ref: 5f891c9026230cce0fc0a3fc4b5fef1c467a1385
-          path: .sdk
-      - uses: actions/setup-dotnet@v6
-        if: steps.version.outputs.changed == 'true'
-        with:
-          dotnet-version: 10.0.x
-      - name: Build and test checker
-        if: steps.version.outputs.changed == 'true'
-        working-directory: .checker
-        run: |
-          node --test
-          if ($LASTEXITCODE -ne 0) { throw 'Checker tests failed' }
-          dotnet build probe/SchemaProbe.csproj -c Release
-          if ($LASTEXITCODE -ne 0) { throw 'Probe build failed' }
-          cmake -S probe/native -B probe/native/build -A x64 "-DHL2SDK=$env:GITHUB_WORKSPACE/.sdk"
-          if ($LASTEXITCODE -ne 0) { throw 'Probe configuration failed' }
-          cmake --build probe/native/build --config Release
-          if ($LASTEXITCODE -ne 0) { throw 'Native probe build failed' }
-      - name: Install current CS2 and Schema runtime
+      - name: Download matching Schema and selected Steam files
         if: steps.version.outputs.changed == 'true'
         env:
-          CSS_URL: ${{ steps.version.outputs.css }}
-          MM_PACKAGE: ${{ steps.version.outputs.mm }}
+          BUILD: ${{ steps.version.outputs.build }}
+          SCHEMA_COMMIT: ${{ steps.version.outputs.schemaCommit }}
+          CONTENT_MANIFEST: ${{ steps.version.outputs.content }}
+          BINARY_MANIFEST: ${{ steps.version.outputs.binary }}
         run: |
           $ErrorActionPreference = 'Stop'
-          $drive = Get-PSDrive -PSProvider FileSystem | Where-Object { $_.Root -match '^[A-Z]:\\$' } | Sort-Object Free -Descending | Select-Object -First 1
-          if ($drive.Free -lt 90GB) { throw 'Hosted runner needs 90 GB free for the full CS2 server installation' }
-          $game = Join-Path $drive.Root "cs2-sig-$env:GITHUB_RUN_ID"
-          New-Item -ItemType Directory $game | Out-Null
-          & "$env:STEAMCMD/steamcmd.exe" +force_install_dir $game +login anonymous +app_update 730 validate +quit *> "$env:RUNNER_TEMP/cs2-install.log"
-          if ($LASTEXITCODE -ne 0) { $code = $LASTEXITCODE; Get-Content "$env:RUNNER_TEMP/cs2-install.log" -Tail 60; throw "Steam CS2 installation failed: $code" }
-          if (-not (Test-Path "$game/game/csgo/bin/win64/server.dll")) { throw 'Game server DLL missing' }
-          $manifests = @(@("$game/steamapps/appmanifest_730.acf", "$env:STEAMCMD/steamapps/appmanifest_730.acf") | Where-Object { Test-Path $_ })
-          if ($manifests.Count -ne 1) { throw 'Cannot identify installed Steam app manifest' }
-          Invoke-WebRequest $env:CSS_URL -OutFile "$env:RUNNER_TEMP/css.zip"
-          Invoke-WebRequest "https://mms.alliedmods.net/mmsdrop/2.0/$env:MM_PACKAGE" -OutFile "$env:RUNNER_TEMP/mm.zip"
-          Expand-Archive "$env:RUNNER_TEMP/css.zip" "$game/game/csgo" -Force
-          Expand-Archive "$env:RUNNER_TEMP/mm.zip" "$game/game/csgo" -Force
+          $data = Join-Path $env:RUNNER_TEMP 'schema'
+          New-Item -ItemType Directory $data | Out-Null
+          $base = "https://raw.githubusercontent.com/CS2OpenDev/CS2OpenDev-SchemaTracker/$env:SCHEMA_COMMIT/artifacts/$env:BUILD/windows-x86_64"
+          foreach ($name in @('provenance.json', 'entity_schema.json')) {
+            Invoke-WebRequest "$base/$name" -OutFile "$data/$name"
+          }
+          $provenance = Get-Content "$data/provenance.json" -Raw | ConvertFrom-Json
+          if ($provenance.buildId -ne $env:BUILD -or $provenance.platform -ne 'windows-x86_64') { throw 'Schema build/platform mismatch' }
+          foreach ($pair in @(@(2347770, $env:CONTENT_MANIFEST), @(2347771, $env:BINARY_MANIFEST))) {
+            $entry = @($provenance.steam.depots | Where-Object depotId -eq $pair[0])
+            if ($entry.Count -ne 1 -or $entry[0].manifestId -ne $pair[1]) { throw "Schema depot manifest mismatch: $($pair[0])" }
+          }
+          $downloader = Join-Path $env:RUNNER_TEMP 'depotdownloader'
+          Invoke-WebRequest 'https://github.com/SteamRE/DepotDownloader/releases/download/DepotDownloader_3.4.0/DepotDownloader-windows-x64.zip' -OutFile "$env:RUNNER_TEMP/downloader.zip"
+          Expand-Archive "$env:RUNNER_TEMP/downloader.zip" $downloader
+          $game = Join-Path $env:RUNNER_TEMP 'cs2-files'
+          @('game/csgo/bin/win64/server.dll', 'game/bin/win64/engine2.dll', 'game/bin/win64/schemasystem.dll') | Set-Content "$data/binaries.txt"
+          'game/csgo/steam.inf' | Set-Content "$data/content.txt"
+          & "$downloader/DepotDownloader.exe" -app 730 -depot 2347771 -manifest $env:BINARY_MANIFEST -filelist "$data/binaries.txt" -dir $game
+          if ($LASTEXITCODE -ne 0) { throw 'DLL download failed' }
+          & "$downloader/DepotDownloader.exe" -app 730 -depot 2347770 -manifest $env:CONTENT_MANIFEST -filelist "$data/content.txt" -dir $game
+          if ($LASTEXITCODE -ne 0) { throw 'Version file download failed' }
+          '"AppState" { "appid" "730" "buildid" "' + $env:BUILD + '" }' | Set-Content "$data/appmanifest.acf"
           "GAME_DIR=$game" >> $env:GITHUB_ENV
-          "APP_MANIFEST=$($manifests[0])" >> $env:GITHUB_ENV
-      - name: Check signatures and live Schema
+          "SCHEMA_DATA=$data" >> $env:GITHUB_ENV
+      - name: Check signatures and matching Schema
         if: steps.version.outputs.changed == 'true'
         working-directory: .checker
         env:
           SOURCE_REF: ${{ steps.version.outputs.ref }}
           EXPECTED_BUILD: ${{ steps.version.outputs.build }}
+          SCHEMA_COMMIT: ${{ steps.version.outputs.schemaCommit }}
         run: |
-          $checkArgs = @('src/check.mjs', '--game-dir', $env:GAME_DIR, '--app-manifest', $env:APP_MANIFEST, '--refs', $env:SOURCE_REF)
+          node --test
+          if ($LASTEXITCODE -ne 0) { throw 'Checker tests failed' }
+          $checkArgs = @('src/check.mjs', '--game-dir', $env:GAME_DIR, '--app-manifest', "$env:SCHEMA_DATA/appmanifest.acf", '--refs', $env:SOURCE_REF)
           node @checkArgs --prepare-schema
           if ($LASTEXITCODE -ne 0) { throw 'Schema inventory failed' }
-          ./src/collect-schema.ps1 -GameDir $env:GAME_DIR
+          @'
+          import {readFileSync,writeFileSync} from 'node:fs';
+          import {createHash} from 'node:crypto';
+          const read=p=>JSON.parse(readFileSync(p,'utf8').replace(/^\uFEFF/,''));
+          const data=process.env.SCHEMA_DATA, root=process.env.GAME_DIR;
+          const provenance=read(data+'/provenance.json'), schema=read(data+'/entity_schema.json');
+          if(schema.buildId!==process.env.EXPECTED_BUILD || schema.platform!=='windows-x86_64') throw new Error('Schema identity mismatch');
+          const modules={};
+          for(const [name,path] of Object.entries({server:'game/csgo/bin/win64/server.dll',engine2:'game/bin/win64/engine2.dll',schemasystem:'game/bin/win64/schemasystem.dll'})) {
+            const hash=createHash('sha256').update(readFileSync(root+'/'+path)).digest('hex');
+            const inputs=provenance.inputs.filter(f=>f.path===path);
+            if(inputs.length!==1 || inputs[0].sha256!==hash) throw new Error('Schema DLL hash mismatch: '+name);
+            modules[name]=hash;
+          }
+          const fields=read('.cache/schema-requests.json').map(([className,fieldName])=>{
+            const matches=['server.dll','entity2.dll','!GlobalTypes'].map(module=>schema.classes.filter(c=>c.name===className && c.module===module)).find(list=>list.length)??[];
+            if(matches.length>1) throw new Error('Ambiguous server class: '+className);
+            const c=matches[0], f=c?.fields.find(f=>f.name===fieldName);
+            const offset=f?Number(f.offset):null, classSize=c?Number(c.size):0;
+            const status=!c?-1:!f?-3:Number.isInteger(offset)&&offset>=0&&offset<classSize?1:-4;
+            return {className,fieldName,offset,classSize,status};
+          });
+          writeFileSync('.cache/schema.json',JSON.stringify({schemaVersion:1,capturedAt:provenance.steam.manifestCreatedUtc,provider:'CS2OpenDev/CS2OpenDev-SchemaTracker@'+process.env.SCHEMA_COMMIT,modules,fields}));
+          '@ | node --input-type=module
+          if ($LASTEXITCODE -ne 0) { throw 'Schema evidence validation failed' }
           node @checkArgs
           if ($LASTEXITCODE -notin @(0, 1)) { throw 'Check did not complete' }
-          $report = Get-Content reports/latest.json -Raw | ConvertFrom-Json
-          if ($report.game.buildId -ne $env:EXPECTED_BUILD) { throw 'Steam build changed during installation; next run must recheck' }
           exit 0
       - name: Render README
         if: steps.version.outputs.changed == 'true'
@@ -184,7 +192,7 @@ jobs:
           lines.push('','## Sig');
           for(const [title,path] of [['dtr-controller','/dtr-controller/'],['dtr-hider','/dtr-hider/'],['投掷物','demotracer-native.json'],['BotRandomizer','/BotRandomizer/']])
             table(title,c=>signature(c)&&c.source.includes(path));
-          lines.push('','## Schema');
+          lines.push('','## Schema', '', `数据源：[CS2OpenDev SchemaTracker](https://github.com/${report.schema.provider.replace('@','/tree/')}) · 已核对 Build、manifest 和 DLL SHA-256。`);
           table('字段',schema,true);
           if(process.env.CHECK_KEY) lines.push('',`<!-- checked:${process.env.CHECK_KEY} -->`);
           writeFileSync(process.env.README,lines.join('\n')+'\n');
