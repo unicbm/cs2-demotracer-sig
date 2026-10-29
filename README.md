@@ -1,6 +1,6 @@
 # CS2 DemoTracer · Sig & Schema
 
-CS2 **1.41.9.3** · Windows x64 · Build **26281801** · 2026-10-29T10:54:35.338Z
+CS2 **1.41.9.3** · Windows x64 · Build **26281801** · 2026-10-29T13:02:54.825Z
 
 | 源码 | Sig 正常 | Sig 失配 | Schema 正常 | Schema 失配 |
 | --- | ---: | ---: | ---: | ---: |
@@ -61,6 +61,8 @@ CS2 **1.41.9.3** · Windows x64 · Build **26281801** · 2026-10-29T10:54:35.338
 
 ## Schema
 
+数据源：[CS2OpenDev SchemaTracker](https://github.com/CS2OpenDev/CS2OpenDev-SchemaTracker/tree/bba23d7d69a29a12511aa4ad9a9dd515a5fdc196) · 已核对 Build、manifest 和 DLL SHA-256。
+
 ### 字段
 
 | 类 | 字段 | 结果 |
@@ -118,3 +120,5 @@ CS2 **1.41.9.3** · Windows x64 · Build **26281801** · 2026-10-29T10:54:35.338
 | CPlayer_MovementServices | m_nButtons | ✅ |
 | CPlayer_MovementServices | m_vecOldViewAngles | ✅ |
 | CPlayer_WeaponServices | m_hActiveWeapon | ✅ |
+
+<!-- checked:26281801:8833146750479675564:5218696177408015009:be9c22e0554e347eabe3e5eae2ffad82e1b28e77:bba23d7d69a29a12511aa4ad9a9dd515a5fdc196:light-v1 -->
