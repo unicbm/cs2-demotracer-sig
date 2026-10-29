@@ -1,257 +1,219 @@
-# Windows x64 适配快照
+# 签名与 Schema 核查
 
-检测时间：2026-10-29T10:38:13.604Z
+CS2 1.41.9.3 · Windows x64 · Build 26281801 · 2026-10-29T10:38:13.604Z
 
-CS2 **1.41.9.3** · server 2000938 · Steam build **26281801**
-
-**这是指定本地游戏版本的静态检查，不代表当前 Steam 最新版本，也不代表游戏内回放已通过。**
-
-| 产品源码 | 静态匹配 | 失败 | 待验证项 | 组件加载 | 实际回放 |
-| --- | ---: | ---: | ---: | --- | --- |
-| [v1.6.4](https://github.com/unicbm/demotracer/tree/e048c080bcb7b49a6c42138d7ce070abf52bd095) | 27 | 4 | 34 | 待验证 | 待验证 |
-| [v1.6.5](https://github.com/unicbm/demotracer/tree/be9c22e0554e347eabe3e5eae2ffad82e1b28e77) | 31 | 0 | 34 | 待验证 | 待验证 |
-| [main](https://github.com/unicbm/demotracer/tree/be9c22e0554e347eabe3e5eae2ffad82e1b28e77) | 31 | 0 | 34 | 待验证 | 待验证 |
-
-偏移、虚表语义、调用约定和动态 Schema 不会因字节匹配而自动通过。
-
-## 游戏模块
-
-| 模块 | 文件 SHA-256 | pe-image-v1 |
-| --- | --- | --- |
-| server | `3788afaa2dbce98a7b2fa1e15b6b1a304759dd5b0f05802268952341b40777c4` | `c2f82aec2841ec75402ae182baf166870de5f1b0c619fada26e682cbe336cc88` |
-| engine2 | `42e0549c7314321e1b69c8d60046efe94e0356f54d7a2fb79dd6b993e6e3658b` | `0113887bb3c16d1c3ac0806c489429ef4f9d9631b1d229f5b772fe8d98ec8ec6` |
-
-## Steam manifests
-
-- 731: 6136897076417766099
-- 732: 7263089472237994766
-- 735: 4345444102999343217
-- 736: 3004005725336207478
-- 737: 1710676828350962471
-- 738: 4811758700152138192
-- 2347770: 8833146750479675564
-- 2347771: 5218696177408015009
-- 2347774: 6845003340509320862
-- 2347779: 2888303856247423407
+| 源码版本 | 匹配 | 失配 | 未核查 |
+| --- | ---: | ---: | ---: |
+| [v1.6.4](https://github.com/unicbm/demotracer/tree/e048c080bcb7b49a6c42138d7ce070abf52bd095) | 27 | 4 | 34 |
+| [v1.6.5](https://github.com/unicbm/demotracer/tree/be9c22e0554e347eabe3e5eae2ffad82e1b28e77) | 31 | 0 | 34 |
+| [main](https://github.com/unicbm/demotracer/tree/be9c22e0554e347eabe3e5eae2ffad82e1b28e77) | 31 | 0 | 34 |
 
 ## v1.6.4
 
-源码：`e048c080bcb7b49a6c42138d7ce070abf52bd095`；声明的 Playback 版本：1.6.4
-
-依赖要求：CSS ≥ 1.0.378；Metamod build ≥ 1483。这是产品要求，不是已安装版本的检测结果。
-
-| 检查项 | 结果 | 说明 |
-| --- | --- | --- |
-| [CCSBot::EquipBestWeapon](https://github.com/unicbm/demotracer/blob/e048c080bcb7b49a6c42138d7ce070abf52bd095/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ 匹配 | One executable-section match; semantics not verified |
-| [CCSBot::EquipPistol](https://github.com/unicbm/demotracer/blob/e048c080bcb7b49a6c42138d7ce070abf52bd095/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ 匹配 | One executable-section match; semantics not verified |
-| [CCSPlayer_WeaponServices::SelectItem](https://github.com/unicbm/demotracer/blob/e048c080bcb7b49a6c42138d7ce070abf52bd095/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ 匹配 | One executable-section match; semantics not verified |
-| [CCSPlayer_WeaponServices::GetSlot](https://github.com/unicbm/demotracer/blob/e048c080bcb7b49a6c42138d7ce070abf52bd095/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ 匹配 | One executable-section match; semantics not verified |
-| [CCSBot::Update](https://github.com/unicbm/demotracer/blob/e048c080bcb7b49a6c42138d7ce070abf52bd095/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ 匹配 | One executable-section match; semantics not verified |
-| [CCSBot::Upkeep](https://github.com/unicbm/demotracer/blob/e048c080bcb7b49a6c42138d7ce070abf52bd095/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ 匹配 | One executable-section match; semantics not verified |
-| [CCSBot::IsVisiblePos](https://github.com/unicbm/demotracer/blob/e048c080bcb7b49a6c42138d7ce070abf52bd095/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ 匹配 | One executable-section match; semantics not verified |
-| [CCSBot::IsVisiblePlayer](https://github.com/unicbm/demotracer/blob/e048c080bcb7b49a6c42138d7ce070abf52bd095/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ 匹配 | One executable-section match; semantics not verified |
-| [BuyState::OnUpdate](https://github.com/unicbm/demotracer/blob/e048c080bcb7b49a6c42138d7ce070abf52bd095/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ 匹配 | One executable-section match; semantics not verified |
-| [BuyState::InitialDelay (layout)](https://github.com/unicbm/demotracer/blob/e048c080bcb7b49a6c42138d7ce070abf52bd095/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ⚪ 待验证 | Field offset or virtual slot requires runtime / semantic validation |
-| [BuyState::DoneBuying (layout)](https://github.com/unicbm/demotracer/blob/e048c080bcb7b49a6c42138d7ce070abf52bd095/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ⚪ 待验证 | Field offset or virtual slot requires runtime / semantic validation |
-| [CCSBot::UpdateLookAngles](https://github.com/unicbm/demotracer/blob/e048c080bcb7b49a6c42138d7ce070abf52bd095/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ 匹配 | One executable-section match; semantics not verified |
-| [CCSPlayerPawn::SetEyeAngles](https://github.com/unicbm/demotracer/blob/e048c080bcb7b49a6c42138d7ce070abf52bd095/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ 匹配 | One executable-section match; semantics not verified |
-| [CBasePlayerPawn::GetEyeAngles](https://github.com/unicbm/demotracer/blob/e048c080bcb7b49a6c42138d7ce070abf52bd095/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ 匹配 | One executable-section match; semantics not verified |
-| [CCSBot::LadderStateUpdate](https://github.com/unicbm/demotracer/blob/e048c080bcb7b49a6c42138d7ce070abf52bd095/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ 匹配 | One executable-section match; semantics not verified |
-| [CCSBot::InvalidatePath](https://github.com/unicbm/demotracer/blob/e048c080bcb7b49a6c42138d7ce070abf52bd095/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ 匹配 | One executable-section match; semantics not verified |
-| [CBaseEntity::SetMoveType](https://github.com/unicbm/demotracer/blob/e048c080bcb7b49a6c42138d7ce070abf52bd095/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ 匹配 | One executable-section match; semantics not verified |
-| [CBaseEntity::SetAbsOrigin](https://github.com/unicbm/demotracer/blob/e048c080bcb7b49a6c42138d7ce070abf52bd095/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ 匹配 | One executable-section match; semantics not verified |
-| [CBaseEntity::SetAbsVelocity](https://github.com/unicbm/demotracer/blob/e048c080bcb7b49a6c42138d7ce070abf52bd095/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ 匹配 | One executable-section match; semantics not verified |
-| [CCSPlayer_MovementServices::ProcessMovement](https://github.com/unicbm/demotracer/blob/e048c080bcb7b49a6c42138d7ce070abf52bd095/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ 匹配 | One executable-section match; semantics not verified |
-| [CCSPlayer_MovementServices::PhysicsSimulate](https://github.com/unicbm/demotracer/blob/e048c080bcb7b49a6c42138d7ce070abf52bd095/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ 匹配 | One executable-section match; semantics not verified |
-| [CEntityIdentity::EHandle (layout)](https://github.com/unicbm/demotracer/blob/e048c080bcb7b49a6c42138d7ce070abf52bd095/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ⚪ 待验证 | Field offset or virtual slot requires runtime / semantic validation |
-| [CCSPlayer_MovementServices::Pawn (layout)](https://github.com/unicbm/demotracer/blob/e048c080bcb7b49a6c42138d7ce070abf52bd095/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ⚪ 待验证 | Field offset or virtual slot requires runtime / semantic validation |
-| [CMoveData::ForwardMove (layout)](https://github.com/unicbm/demotracer/blob/e048c080bcb7b49a6c42138d7ce070abf52bd095/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ⚪ 待验证 | Field offset or virtual slot requires runtime / semantic validation |
-| [CMoveData::SideMove (layout)](https://github.com/unicbm/demotracer/blob/e048c080bcb7b49a6c42138d7ce070abf52bd095/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ⚪ 待验证 | Field offset or virtual slot requires runtime / semantic validation |
-| [CMoveData::UpMove (layout)](https://github.com/unicbm/demotracer/blob/e048c080bcb7b49a6c42138d7ce070abf52bd095/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ⚪ 待验证 | Field offset or virtual slot requires runtime / semantic validation |
-| [CMoveData::Velocity (layout)](https://github.com/unicbm/demotracer/blob/e048c080bcb7b49a6c42138d7ce070abf52bd095/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ⚪ 待验证 | Field offset or virtual slot requires runtime / semantic validation |
-| [CMoveData::AbsOrigin (layout)](https://github.com/unicbm/demotracer/blob/e048c080bcb7b49a6c42138d7ce070abf52bd095/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ⚪ 待验证 | Field offset or virtual slot requires runtime / semantic validation |
-| [vtidx::PlayerRunCommand (layout)](https://github.com/unicbm/demotracer/blob/e048c080bcb7b49a6c42138d7ce070abf52bd095/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ⚪ 待验证 | Field offset or virtual slot requires runtime / semantic validation |
-| [vtidx::SetupMove (layout)](https://github.com/unicbm/demotracer/blob/e048c080bcb7b49a6c42138d7ce070abf52bd095/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ⚪ 待验证 | Field offset or virtual slot requires runtime / semantic validation |
-| [vtidx::FinishMove (layout)](https://github.com/unicbm/demotracer/blob/e048c080bcb7b49a6c42138d7ce070abf52bd095/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ⚪ 待验证 | Field offset or virtual slot requires runtime / semantic validation |
-| [GameResourceServiceServer::EntitySystem (layout)](https://github.com/unicbm/demotracer/blob/e048c080bcb7b49a6c42138d7ce070abf52bd095/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ⚪ 待验证 | Field offset or virtual slot requires runtime / semantic validation |
-| [CEntitySystem::IdentityChunks (layout)](https://github.com/unicbm/demotracer/blob/e048c080bcb7b49a6c42138d7ce070abf52bd095/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ⚪ 待验证 | Field offset or virtual slot requires runtime / semantic validation |
-| [CEntityIdentity::Size (layout)](https://github.com/unicbm/demotracer/blob/e048c080bcb7b49a6c42138d7ce070abf52bd095/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ⚪ 待验证 | Field offset or virtual slot requires runtime / semantic validation |
-| [UTIL_Remove](https://github.com/unicbm/demotracer/blob/e048c080bcb7b49a6c42138d7ce070abf52bd095/server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json) | ✅ 匹配 | One executable-section match; semantics not verified |
-| [CCSBotManager::MaintainBotQuota](https://github.com/unicbm/demotracer/blob/e048c080bcb7b49a6c42138d7ce070abf52bd095/server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json) | ✅ 匹配 | One executable-section match; semantics not verified |
-| [CCSPlayerController::HandleCommand_JoinTeam](https://github.com/unicbm/demotracer/blob/e048c080bcb7b49a6c42138d7ce070abf52bd095/server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json) | ✅ 匹配 | One executable-section match; semantics not verified |
-| [CNetworkGameServer::PackEntities](https://github.com/unicbm/demotracer/blob/e048c080bcb7b49a6c42138d7ce070abf52bd095/server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json) | ✅ 匹配 | One executable-section match; semantics not verified |
-| [CServerSideClient::SetName (layout)](https://github.com/unicbm/demotracer/blob/e048c080bcb7b49a6c42138d7ce070abf52bd095/server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json) | ⚪ 待验证 | Field offset or virtual slot requires runtime / semantic validation |
-| [CNetworkGameServerBase::UserInfoChanged (layout)](https://github.com/unicbm/demotracer/blob/e048c080bcb7b49a6c42138d7ce070abf52bd095/server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json) | ⚪ 待验证 | Field offset or virtual slot requires runtime / semantic validation |
-| [GameResourceServiceServer::m_pEntitySystem (layout)](https://github.com/unicbm/demotracer/blob/e048c080bcb7b49a6c42138d7ce070abf52bd095/server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json) | ⚪ 待验证 | Field offset or virtual slot requires runtime / semantic validation |
-| [CEntitySystem::m_EntityList (layout)](https://github.com/unicbm/demotracer/blob/e048c080bcb7b49a6c42138d7ce070abf52bd095/server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json) | ⚪ 待验证 | Field offset or virtual slot requires runtime / semantic validation |
-| [CEntityIdentity::Size (layout)](https://github.com/unicbm/demotracer/blob/e048c080bcb7b49a6c42138d7ce070abf52bd095/server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json) | ⚪ 待验证 | Field offset or virtual slot requires runtime / semantic validation |
-| [CEntityIdentity::m_pInstance (layout)](https://github.com/unicbm/demotracer/blob/e048c080bcb7b49a6c42138d7ce070abf52bd095/server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json) | ⚪ 待验证 | Field offset or virtual slot requires runtime / semantic validation |
-| [CEntityIdentity::m_designerName (layout)](https://github.com/unicbm/demotracer/blob/e048c080bcb7b49a6c42138d7ce070abf52bd095/server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json) | ⚪ 待验证 | Field offset or virtual slot requires runtime / semantic validation |
-| [CNetworkGameServerBase::m_Clients (layout)](https://github.com/unicbm/demotracer/blob/e048c080bcb7b49a6c42138d7ce070abf52bd095/server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json) | ⚪ 待验证 | Field offset or virtual slot requires runtime / semantic validation |
-| [CBasePlayerController::FakeClientFlags (layout)](https://github.com/unicbm/demotracer/blob/e048c080bcb7b49a6c42138d7ce070abf52bd095/server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json) | ⚪ 待验证 | Field offset or virtual slot requires runtime / semantic validation |
-| [CServerSideClient::m_Name (layout)](https://github.com/unicbm/demotracer/blob/e048c080bcb7b49a6c42138d7ce070abf52bd095/server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json) | ⚪ 待验证 | Field offset or virtual slot requires runtime / semantic validation |
-| [CServerSideClient::m_nEntityIndex (layout)](https://github.com/unicbm/demotracer/blob/e048c080bcb7b49a6c42138d7ce070abf52bd095/server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json) | ⚪ 待验证 | Field offset or virtual slot requires runtime / semantic validation |
-| [CServerSideClient::m_NetChannel (layout)](https://github.com/unicbm/demotracer/blob/e048c080bcb7b49a6c42138d7ce070abf52bd095/server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json) | ⚪ 待验证 | Field offset or virtual slot requires runtime / semantic validation |
-| [CServerSideClient::m_nConnectionTypeFlags (layout)](https://github.com/unicbm/demotracer/blob/e048c080bcb7b49a6c42138d7ce070abf52bd095/server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json) | ⚪ 待验证 | Field offset or virtual slot requires runtime / semantic validation |
-| [CServerSideClient::m_bFakePlayer (layout)](https://github.com/unicbm/demotracer/blob/e048c080bcb7b49a6c42138d7ce070abf52bd095/server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json) | ⚪ 待验证 | Field offset or virtual slot requires runtime / semantic validation |
-| [CServerSideClient::m_UserID (layout)](https://github.com/unicbm/demotracer/blob/e048c080bcb7b49a6c42138d7ce070abf52bd095/server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json) | ⚪ 待验证 | Field offset or virtual slot requires runtime / semantic validation |
-| [CServerSideClient::m_SteamID (layout)](https://github.com/unicbm/demotracer/blob/e048c080bcb7b49a6c42138d7ce070abf52bd095/server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json) | ⚪ 待验证 | Field offset or virtual slot requires runtime / semantic validation |
-| [CServerSideClient::m_SteamIDMirror (layout)](https://github.com/unicbm/demotracer/blob/e048c080bcb7b49a6c42138d7ce070abf52bd095/server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json) | ⚪ 待验证 | Field offset or virtual slot requires runtime / semantic validation |
-| [CServerSideClient::m_bIsHLTV (layout)](https://github.com/unicbm/demotracer/blob/e048c080bcb7b49a6c42138d7ce070abf52bd095/server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json) | ⚪ 待验证 | Field offset or virtual slot requires runtime / semantic validation |
-| [Projectile physics signature](https://github.com/unicbm/demotracer/blob/e048c080bcb7b49a6c42138d7ce070abf52bd095/server/plugins/DemoTracer/config/demotracer-native.json) | ✅ 匹配 | One executable-section match; semantics not verified |
-| [Server image fingerprint](https://github.com/unicbm/demotracer/blob/e048c080bcb7b49a6c42138d7ce070abf52bd095/server/plugins/DemoTracer/config/demotracer-native.json) | ❌ 失败 | pe-image-v1 comparison with the pinned product profile |
-| [Projectile entry](https://github.com/unicbm/demotracer/blob/e048c080bcb7b49a6c42138d7ce070abf52bd095/server/plugins/DemoTracer/config/demotracer-native.json) | ❌ 失败 | Signature must resolve to the configured entry |
-| [Projectile function body](https://github.com/unicbm/demotracer/blob/e048c080bcb7b49a6c42138d7ce070abf52bd095/server/plugins/DemoTracer/config/demotracer-native.json) | ❌ 失败 | On-disk function body hash; loaded memory not inspected |
-| [Projectile virtual references](https://github.com/unicbm/demotracer/blob/e048c080bcb7b49a6c42138d7ce070abf52bd095/server/plugins/DemoTracer/config/demotracer-native.json) | ❌ 失败 | All six on-disk references must point to the configured entry |
-| [BotRandomizer: writer](https://github.com/unicbm/demotracer/blob/e048c080bcb7b49a6c42138d7ce070abf52bd095/server/runtime/BotRandomizer/BotRandomizerItems.cs) | ✅ 匹配 | One executable-section match; semantics not verified |
-| [BotRandomizer: itemViewDestructor](https://github.com/unicbm/demotracer/blob/e048c080bcb7b49a6c42138d7ce070abf52bd095/server/runtime/BotRandomizer/BotRandomizerItems.cs) | ✅ 匹配 | One executable-section match; semantics not verified |
-| [BotRandomizer: itemViewConstructor](https://github.com/unicbm/demotracer/blob/e048c080bcb7b49a6c42138d7ce070abf52bd095/server/runtime/BotRandomizer/BotRandomizerItems.cs) | ✅ 匹配 | One executable-section match; semantics not verified |
-| [Dynamic Schema](https://github.com/unicbm/demotracer/blob/e048c080bcb7b49a6c42138d7ce070abf52bd095/server/runtime/dtr-controller/src/common/version_targets.cpp) | ⚪ 待验证 | 39 required fields; live SchemaSystem resolution not checked |
+| 检查项 | 结果 |
+| --- | --- |
+| [CCSBot::EquipBestWeapon](https://github.com/unicbm/demotracer/blob/e048c080bcb7b49a6c42138d7ce070abf52bd095/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ 匹配 |
+| [CCSBot::EquipPistol](https://github.com/unicbm/demotracer/blob/e048c080bcb7b49a6c42138d7ce070abf52bd095/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ 匹配 |
+| [CCSPlayer_WeaponServices::SelectItem](https://github.com/unicbm/demotracer/blob/e048c080bcb7b49a6c42138d7ce070abf52bd095/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ 匹配 |
+| [CCSPlayer_WeaponServices::GetSlot](https://github.com/unicbm/demotracer/blob/e048c080bcb7b49a6c42138d7ce070abf52bd095/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ 匹配 |
+| [CCSBot::Update](https://github.com/unicbm/demotracer/blob/e048c080bcb7b49a6c42138d7ce070abf52bd095/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ 匹配 |
+| [CCSBot::Upkeep](https://github.com/unicbm/demotracer/blob/e048c080bcb7b49a6c42138d7ce070abf52bd095/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ 匹配 |
+| [CCSBot::IsVisiblePos](https://github.com/unicbm/demotracer/blob/e048c080bcb7b49a6c42138d7ce070abf52bd095/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ 匹配 |
+| [CCSBot::IsVisiblePlayer](https://github.com/unicbm/demotracer/blob/e048c080bcb7b49a6c42138d7ce070abf52bd095/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ 匹配 |
+| [BuyState::OnUpdate](https://github.com/unicbm/demotracer/blob/e048c080bcb7b49a6c42138d7ce070abf52bd095/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ 匹配 |
+| [BuyState::InitialDelay (layout)](https://github.com/unicbm/demotracer/blob/e048c080bcb7b49a6c42138d7ce070abf52bd095/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ⚪ 未核查 |
+| [BuyState::DoneBuying (layout)](https://github.com/unicbm/demotracer/blob/e048c080bcb7b49a6c42138d7ce070abf52bd095/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ⚪ 未核查 |
+| [CCSBot::UpdateLookAngles](https://github.com/unicbm/demotracer/blob/e048c080bcb7b49a6c42138d7ce070abf52bd095/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ 匹配 |
+| [CCSPlayerPawn::SetEyeAngles](https://github.com/unicbm/demotracer/blob/e048c080bcb7b49a6c42138d7ce070abf52bd095/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ 匹配 |
+| [CBasePlayerPawn::GetEyeAngles](https://github.com/unicbm/demotracer/blob/e048c080bcb7b49a6c42138d7ce070abf52bd095/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ 匹配 |
+| [CCSBot::LadderStateUpdate](https://github.com/unicbm/demotracer/blob/e048c080bcb7b49a6c42138d7ce070abf52bd095/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ 匹配 |
+| [CCSBot::InvalidatePath](https://github.com/unicbm/demotracer/blob/e048c080bcb7b49a6c42138d7ce070abf52bd095/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ 匹配 |
+| [CBaseEntity::SetMoveType](https://github.com/unicbm/demotracer/blob/e048c080bcb7b49a6c42138d7ce070abf52bd095/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ 匹配 |
+| [CBaseEntity::SetAbsOrigin](https://github.com/unicbm/demotracer/blob/e048c080bcb7b49a6c42138d7ce070abf52bd095/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ 匹配 |
+| [CBaseEntity::SetAbsVelocity](https://github.com/unicbm/demotracer/blob/e048c080bcb7b49a6c42138d7ce070abf52bd095/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ 匹配 |
+| [CCSPlayer_MovementServices::ProcessMovement](https://github.com/unicbm/demotracer/blob/e048c080bcb7b49a6c42138d7ce070abf52bd095/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ 匹配 |
+| [CCSPlayer_MovementServices::PhysicsSimulate](https://github.com/unicbm/demotracer/blob/e048c080bcb7b49a6c42138d7ce070abf52bd095/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ 匹配 |
+| [CEntityIdentity::EHandle (layout)](https://github.com/unicbm/demotracer/blob/e048c080bcb7b49a6c42138d7ce070abf52bd095/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ⚪ 未核查 |
+| [CCSPlayer_MovementServices::Pawn (layout)](https://github.com/unicbm/demotracer/blob/e048c080bcb7b49a6c42138d7ce070abf52bd095/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ⚪ 未核查 |
+| [CMoveData::ForwardMove (layout)](https://github.com/unicbm/demotracer/blob/e048c080bcb7b49a6c42138d7ce070abf52bd095/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ⚪ 未核查 |
+| [CMoveData::SideMove (layout)](https://github.com/unicbm/demotracer/blob/e048c080bcb7b49a6c42138d7ce070abf52bd095/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ⚪ 未核查 |
+| [CMoveData::UpMove (layout)](https://github.com/unicbm/demotracer/blob/e048c080bcb7b49a6c42138d7ce070abf52bd095/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ⚪ 未核查 |
+| [CMoveData::Velocity (layout)](https://github.com/unicbm/demotracer/blob/e048c080bcb7b49a6c42138d7ce070abf52bd095/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ⚪ 未核查 |
+| [CMoveData::AbsOrigin (layout)](https://github.com/unicbm/demotracer/blob/e048c080bcb7b49a6c42138d7ce070abf52bd095/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ⚪ 未核查 |
+| [vtidx::PlayerRunCommand (layout)](https://github.com/unicbm/demotracer/blob/e048c080bcb7b49a6c42138d7ce070abf52bd095/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ⚪ 未核查 |
+| [vtidx::SetupMove (layout)](https://github.com/unicbm/demotracer/blob/e048c080bcb7b49a6c42138d7ce070abf52bd095/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ⚪ 未核查 |
+| [vtidx::FinishMove (layout)](https://github.com/unicbm/demotracer/blob/e048c080bcb7b49a6c42138d7ce070abf52bd095/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ⚪ 未核查 |
+| [GameResourceServiceServer::EntitySystem (layout)](https://github.com/unicbm/demotracer/blob/e048c080bcb7b49a6c42138d7ce070abf52bd095/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ⚪ 未核查 |
+| [CEntitySystem::IdentityChunks (layout)](https://github.com/unicbm/demotracer/blob/e048c080bcb7b49a6c42138d7ce070abf52bd095/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ⚪ 未核查 |
+| [CEntityIdentity::Size (layout)](https://github.com/unicbm/demotracer/blob/e048c080bcb7b49a6c42138d7ce070abf52bd095/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ⚪ 未核查 |
+| [UTIL_Remove](https://github.com/unicbm/demotracer/blob/e048c080bcb7b49a6c42138d7ce070abf52bd095/server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json) | ✅ 匹配 |
+| [CCSBotManager::MaintainBotQuota](https://github.com/unicbm/demotracer/blob/e048c080bcb7b49a6c42138d7ce070abf52bd095/server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json) | ✅ 匹配 |
+| [CCSPlayerController::HandleCommand_JoinTeam](https://github.com/unicbm/demotracer/blob/e048c080bcb7b49a6c42138d7ce070abf52bd095/server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json) | ✅ 匹配 |
+| [CNetworkGameServer::PackEntities](https://github.com/unicbm/demotracer/blob/e048c080bcb7b49a6c42138d7ce070abf52bd095/server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json) | ✅ 匹配 |
+| [CServerSideClient::SetName (layout)](https://github.com/unicbm/demotracer/blob/e048c080bcb7b49a6c42138d7ce070abf52bd095/server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json) | ⚪ 未核查 |
+| [CNetworkGameServerBase::UserInfoChanged (layout)](https://github.com/unicbm/demotracer/blob/e048c080bcb7b49a6c42138d7ce070abf52bd095/server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json) | ⚪ 未核查 |
+| [GameResourceServiceServer::m_pEntitySystem (layout)](https://github.com/unicbm/demotracer/blob/e048c080bcb7b49a6c42138d7ce070abf52bd095/server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json) | ⚪ 未核查 |
+| [CEntitySystem::m_EntityList (layout)](https://github.com/unicbm/demotracer/blob/e048c080bcb7b49a6c42138d7ce070abf52bd095/server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json) | ⚪ 未核查 |
+| [CEntityIdentity::Size (layout)](https://github.com/unicbm/demotracer/blob/e048c080bcb7b49a6c42138d7ce070abf52bd095/server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json) | ⚪ 未核查 |
+| [CEntityIdentity::m_pInstance (layout)](https://github.com/unicbm/demotracer/blob/e048c080bcb7b49a6c42138d7ce070abf52bd095/server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json) | ⚪ 未核查 |
+| [CEntityIdentity::m_designerName (layout)](https://github.com/unicbm/demotracer/blob/e048c080bcb7b49a6c42138d7ce070abf52bd095/server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json) | ⚪ 未核查 |
+| [CNetworkGameServerBase::m_Clients (layout)](https://github.com/unicbm/demotracer/blob/e048c080bcb7b49a6c42138d7ce070abf52bd095/server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json) | ⚪ 未核查 |
+| [CBasePlayerController::FakeClientFlags (layout)](https://github.com/unicbm/demotracer/blob/e048c080bcb7b49a6c42138d7ce070abf52bd095/server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json) | ⚪ 未核查 |
+| [CServerSideClient::m_Name (layout)](https://github.com/unicbm/demotracer/blob/e048c080bcb7b49a6c42138d7ce070abf52bd095/server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json) | ⚪ 未核查 |
+| [CServerSideClient::m_nEntityIndex (layout)](https://github.com/unicbm/demotracer/blob/e048c080bcb7b49a6c42138d7ce070abf52bd095/server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json) | ⚪ 未核查 |
+| [CServerSideClient::m_NetChannel (layout)](https://github.com/unicbm/demotracer/blob/e048c080bcb7b49a6c42138d7ce070abf52bd095/server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json) | ⚪ 未核查 |
+| [CServerSideClient::m_nConnectionTypeFlags (layout)](https://github.com/unicbm/demotracer/blob/e048c080bcb7b49a6c42138d7ce070abf52bd095/server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json) | ⚪ 未核查 |
+| [CServerSideClient::m_bFakePlayer (layout)](https://github.com/unicbm/demotracer/blob/e048c080bcb7b49a6c42138d7ce070abf52bd095/server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json) | ⚪ 未核查 |
+| [CServerSideClient::m_UserID (layout)](https://github.com/unicbm/demotracer/blob/e048c080bcb7b49a6c42138d7ce070abf52bd095/server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json) | ⚪ 未核查 |
+| [CServerSideClient::m_SteamID (layout)](https://github.com/unicbm/demotracer/blob/e048c080bcb7b49a6c42138d7ce070abf52bd095/server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json) | ⚪ 未核查 |
+| [CServerSideClient::m_SteamIDMirror (layout)](https://github.com/unicbm/demotracer/blob/e048c080bcb7b49a6c42138d7ce070abf52bd095/server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json) | ⚪ 未核查 |
+| [CServerSideClient::m_bIsHLTV (layout)](https://github.com/unicbm/demotracer/blob/e048c080bcb7b49a6c42138d7ce070abf52bd095/server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json) | ⚪ 未核查 |
+| [Projectile physics signature](https://github.com/unicbm/demotracer/blob/e048c080bcb7b49a6c42138d7ce070abf52bd095/server/plugins/DemoTracer/config/demotracer-native.json) | ✅ 匹配 |
+| [Server image fingerprint](https://github.com/unicbm/demotracer/blob/e048c080bcb7b49a6c42138d7ce070abf52bd095/server/plugins/DemoTracer/config/demotracer-native.json) | ❌ 失配 |
+| [Projectile entry](https://github.com/unicbm/demotracer/blob/e048c080bcb7b49a6c42138d7ce070abf52bd095/server/plugins/DemoTracer/config/demotracer-native.json) | ❌ 失配 |
+| [Projectile function body](https://github.com/unicbm/demotracer/blob/e048c080bcb7b49a6c42138d7ce070abf52bd095/server/plugins/DemoTracer/config/demotracer-native.json) | ❌ 失配 |
+| [Projectile virtual references](https://github.com/unicbm/demotracer/blob/e048c080bcb7b49a6c42138d7ce070abf52bd095/server/plugins/DemoTracer/config/demotracer-native.json) | ❌ 失配 |
+| [BotRandomizer: writer](https://github.com/unicbm/demotracer/blob/e048c080bcb7b49a6c42138d7ce070abf52bd095/server/runtime/BotRandomizer/BotRandomizerItems.cs) | ✅ 匹配 |
+| [BotRandomizer: itemViewDestructor](https://github.com/unicbm/demotracer/blob/e048c080bcb7b49a6c42138d7ce070abf52bd095/server/runtime/BotRandomizer/BotRandomizerItems.cs) | ✅ 匹配 |
+| [BotRandomizer: itemViewConstructor](https://github.com/unicbm/demotracer/blob/e048c080bcb7b49a6c42138d7ce070abf52bd095/server/runtime/BotRandomizer/BotRandomizerItems.cs) | ✅ 匹配 |
+| [Dynamic Schema](https://github.com/unicbm/demotracer/blob/e048c080bcb7b49a6c42138d7ce070abf52bd095/server/runtime/dtr-controller/src/common/version_targets.cpp) | ⚪ 未核查 |
 
 ## v1.6.5
 
-源码：`be9c22e0554e347eabe3e5eae2ffad82e1b28e77`；声明的 Playback 版本：1.6.5
-
-依赖要求：CSS ≥ 1.0.378；Metamod build ≥ 1483。这是产品要求，不是已安装版本的检测结果。
-
-| 检查项 | 结果 | 说明 |
-| --- | --- | --- |
-| [CCSBot::EquipBestWeapon](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ 匹配 | One executable-section match; semantics not verified |
-| [CCSBot::EquipPistol](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ 匹配 | One executable-section match; semantics not verified |
-| [CCSPlayer_WeaponServices::SelectItem](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ 匹配 | One executable-section match; semantics not verified |
-| [CCSPlayer_WeaponServices::GetSlot](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ 匹配 | One executable-section match; semantics not verified |
-| [CCSBot::Update](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ 匹配 | One executable-section match; semantics not verified |
-| [CCSBot::Upkeep](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ 匹配 | One executable-section match; semantics not verified |
-| [CCSBot::IsVisiblePos](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ 匹配 | One executable-section match; semantics not verified |
-| [CCSBot::IsVisiblePlayer](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ 匹配 | One executable-section match; semantics not verified |
-| [BuyState::OnUpdate](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ 匹配 | One executable-section match; semantics not verified |
-| [BuyState::InitialDelay (layout)](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ⚪ 待验证 | Field offset or virtual slot requires runtime / semantic validation |
-| [BuyState::DoneBuying (layout)](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ⚪ 待验证 | Field offset or virtual slot requires runtime / semantic validation |
-| [CCSBot::UpdateLookAngles](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ 匹配 | One executable-section match; semantics not verified |
-| [CCSPlayerPawn::SetEyeAngles](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ 匹配 | One executable-section match; semantics not verified |
-| [CBasePlayerPawn::GetEyeAngles](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ 匹配 | One executable-section match; semantics not verified |
-| [CCSBot::LadderStateUpdate](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ 匹配 | One executable-section match; semantics not verified |
-| [CCSBot::InvalidatePath](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ 匹配 | One executable-section match; semantics not verified |
-| [CBaseEntity::SetMoveType](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ 匹配 | One executable-section match; semantics not verified |
-| [CBaseEntity::SetAbsOrigin](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ 匹配 | One executable-section match; semantics not verified |
-| [CBaseEntity::SetAbsVelocity](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ 匹配 | One executable-section match; semantics not verified |
-| [CCSPlayer_MovementServices::ProcessMovement](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ 匹配 | One executable-section match; semantics not verified |
-| [CCSPlayer_MovementServices::PhysicsSimulate](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ 匹配 | One executable-section match; semantics not verified |
-| [CEntityIdentity::EHandle (layout)](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ⚪ 待验证 | Field offset or virtual slot requires runtime / semantic validation |
-| [CCSPlayer_MovementServices::Pawn (layout)](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ⚪ 待验证 | Field offset or virtual slot requires runtime / semantic validation |
-| [CMoveData::ForwardMove (layout)](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ⚪ 待验证 | Field offset or virtual slot requires runtime / semantic validation |
-| [CMoveData::SideMove (layout)](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ⚪ 待验证 | Field offset or virtual slot requires runtime / semantic validation |
-| [CMoveData::UpMove (layout)](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ⚪ 待验证 | Field offset or virtual slot requires runtime / semantic validation |
-| [CMoveData::Velocity (layout)](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ⚪ 待验证 | Field offset or virtual slot requires runtime / semantic validation |
-| [CMoveData::AbsOrigin (layout)](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ⚪ 待验证 | Field offset or virtual slot requires runtime / semantic validation |
-| [vtidx::PlayerRunCommand (layout)](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ⚪ 待验证 | Field offset or virtual slot requires runtime / semantic validation |
-| [vtidx::SetupMove (layout)](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ⚪ 待验证 | Field offset or virtual slot requires runtime / semantic validation |
-| [vtidx::FinishMove (layout)](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ⚪ 待验证 | Field offset or virtual slot requires runtime / semantic validation |
-| [GameResourceServiceServer::EntitySystem (layout)](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ⚪ 待验证 | Field offset or virtual slot requires runtime / semantic validation |
-| [CEntitySystem::IdentityChunks (layout)](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ⚪ 待验证 | Field offset or virtual slot requires runtime / semantic validation |
-| [CEntityIdentity::Size (layout)](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ⚪ 待验证 | Field offset or virtual slot requires runtime / semantic validation |
-| [UTIL_Remove](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json) | ✅ 匹配 | One executable-section match; semantics not verified |
-| [CCSBotManager::MaintainBotQuota](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json) | ✅ 匹配 | One executable-section match; semantics not verified |
-| [CCSPlayerController::HandleCommand_JoinTeam](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json) | ✅ 匹配 | One executable-section match; semantics not verified |
-| [CNetworkGameServer::PackEntities](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json) | ✅ 匹配 | One executable-section match; semantics not verified |
-| [CServerSideClient::SetName (layout)](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json) | ⚪ 待验证 | Field offset or virtual slot requires runtime / semantic validation |
-| [CNetworkGameServerBase::UserInfoChanged (layout)](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json) | ⚪ 待验证 | Field offset or virtual slot requires runtime / semantic validation |
-| [GameResourceServiceServer::m_pEntitySystem (layout)](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json) | ⚪ 待验证 | Field offset or virtual slot requires runtime / semantic validation |
-| [CEntitySystem::m_EntityList (layout)](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json) | ⚪ 待验证 | Field offset or virtual slot requires runtime / semantic validation |
-| [CEntityIdentity::Size (layout)](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json) | ⚪ 待验证 | Field offset or virtual slot requires runtime / semantic validation |
-| [CEntityIdentity::m_pInstance (layout)](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json) | ⚪ 待验证 | Field offset or virtual slot requires runtime / semantic validation |
-| [CEntityIdentity::m_designerName (layout)](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json) | ⚪ 待验证 | Field offset or virtual slot requires runtime / semantic validation |
-| [CNetworkGameServerBase::m_Clients (layout)](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json) | ⚪ 待验证 | Field offset or virtual slot requires runtime / semantic validation |
-| [CBasePlayerController::FakeClientFlags (layout)](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json) | ⚪ 待验证 | Field offset or virtual slot requires runtime / semantic validation |
-| [CServerSideClient::m_Name (layout)](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json) | ⚪ 待验证 | Field offset or virtual slot requires runtime / semantic validation |
-| [CServerSideClient::m_nEntityIndex (layout)](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json) | ⚪ 待验证 | Field offset or virtual slot requires runtime / semantic validation |
-| [CServerSideClient::m_NetChannel (layout)](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json) | ⚪ 待验证 | Field offset or virtual slot requires runtime / semantic validation |
-| [CServerSideClient::m_nConnectionTypeFlags (layout)](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json) | ⚪ 待验证 | Field offset or virtual slot requires runtime / semantic validation |
-| [CServerSideClient::m_bFakePlayer (layout)](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json) | ⚪ 待验证 | Field offset or virtual slot requires runtime / semantic validation |
-| [CServerSideClient::m_UserID (layout)](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json) | ⚪ 待验证 | Field offset or virtual slot requires runtime / semantic validation |
-| [CServerSideClient::m_SteamID (layout)](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json) | ⚪ 待验证 | Field offset or virtual slot requires runtime / semantic validation |
-| [CServerSideClient::m_SteamIDMirror (layout)](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json) | ⚪ 待验证 | Field offset or virtual slot requires runtime / semantic validation |
-| [CServerSideClient::m_bIsHLTV (layout)](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json) | ⚪ 待验证 | Field offset or virtual slot requires runtime / semantic validation |
-| [Projectile physics signature](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/plugins/DemoTracer/config/demotracer-native.json) | ✅ 匹配 | One executable-section match; semantics not verified |
-| [Server image fingerprint](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/plugins/DemoTracer/config/demotracer-native.json) | ✅ 匹配 | pe-image-v1 comparison with the pinned product profile |
-| [Projectile entry](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/plugins/DemoTracer/config/demotracer-native.json) | ✅ 匹配 | Signature must resolve to the configured entry |
-| [Projectile function body](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/plugins/DemoTracer/config/demotracer-native.json) | ✅ 匹配 | On-disk function body hash; loaded memory not inspected |
-| [Projectile virtual references](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/plugins/DemoTracer/config/demotracer-native.json) | ✅ 匹配 | All six on-disk references must point to the configured entry |
-| [BotRandomizer: writer](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/BotRandomizer/BotRandomizerItems.cs) | ✅ 匹配 | One executable-section match; semantics not verified |
-| [BotRandomizer: itemViewDestructor](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/BotRandomizer/BotRandomizerItems.cs) | ✅ 匹配 | One executable-section match; semantics not verified |
-| [BotRandomizer: itemViewConstructor](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/BotRandomizer/BotRandomizerItems.cs) | ✅ 匹配 | One executable-section match; semantics not verified |
-| [Dynamic Schema](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/src/common/version_targets.cpp) | ⚪ 待验证 | 39 required fields; live SchemaSystem resolution not checked |
+| 检查项 | 结果 |
+| --- | --- |
+| [CCSBot::EquipBestWeapon](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ 匹配 |
+| [CCSBot::EquipPistol](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ 匹配 |
+| [CCSPlayer_WeaponServices::SelectItem](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ 匹配 |
+| [CCSPlayer_WeaponServices::GetSlot](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ 匹配 |
+| [CCSBot::Update](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ 匹配 |
+| [CCSBot::Upkeep](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ 匹配 |
+| [CCSBot::IsVisiblePos](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ 匹配 |
+| [CCSBot::IsVisiblePlayer](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ 匹配 |
+| [BuyState::OnUpdate](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ 匹配 |
+| [BuyState::InitialDelay (layout)](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ⚪ 未核查 |
+| [BuyState::DoneBuying (layout)](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ⚪ 未核查 |
+| [CCSBot::UpdateLookAngles](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ 匹配 |
+| [CCSPlayerPawn::SetEyeAngles](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ 匹配 |
+| [CBasePlayerPawn::GetEyeAngles](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ 匹配 |
+| [CCSBot::LadderStateUpdate](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ 匹配 |
+| [CCSBot::InvalidatePath](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ 匹配 |
+| [CBaseEntity::SetMoveType](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ 匹配 |
+| [CBaseEntity::SetAbsOrigin](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ 匹配 |
+| [CBaseEntity::SetAbsVelocity](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ 匹配 |
+| [CCSPlayer_MovementServices::ProcessMovement](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ 匹配 |
+| [CCSPlayer_MovementServices::PhysicsSimulate](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ 匹配 |
+| [CEntityIdentity::EHandle (layout)](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ⚪ 未核查 |
+| [CCSPlayer_MovementServices::Pawn (layout)](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ⚪ 未核查 |
+| [CMoveData::ForwardMove (layout)](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ⚪ 未核查 |
+| [CMoveData::SideMove (layout)](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ⚪ 未核查 |
+| [CMoveData::UpMove (layout)](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ⚪ 未核查 |
+| [CMoveData::Velocity (layout)](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ⚪ 未核查 |
+| [CMoveData::AbsOrigin (layout)](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ⚪ 未核查 |
+| [vtidx::PlayerRunCommand (layout)](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ⚪ 未核查 |
+| [vtidx::SetupMove (layout)](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ⚪ 未核查 |
+| [vtidx::FinishMove (layout)](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ⚪ 未核查 |
+| [GameResourceServiceServer::EntitySystem (layout)](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ⚪ 未核查 |
+| [CEntitySystem::IdentityChunks (layout)](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ⚪ 未核查 |
+| [CEntityIdentity::Size (layout)](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ⚪ 未核查 |
+| [UTIL_Remove](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json) | ✅ 匹配 |
+| [CCSBotManager::MaintainBotQuota](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json) | ✅ 匹配 |
+| [CCSPlayerController::HandleCommand_JoinTeam](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json) | ✅ 匹配 |
+| [CNetworkGameServer::PackEntities](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json) | ✅ 匹配 |
+| [CServerSideClient::SetName (layout)](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json) | ⚪ 未核查 |
+| [CNetworkGameServerBase::UserInfoChanged (layout)](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json) | ⚪ 未核查 |
+| [GameResourceServiceServer::m_pEntitySystem (layout)](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json) | ⚪ 未核查 |
+| [CEntitySystem::m_EntityList (layout)](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json) | ⚪ 未核查 |
+| [CEntityIdentity::Size (layout)](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json) | ⚪ 未核查 |
+| [CEntityIdentity::m_pInstance (layout)](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json) | ⚪ 未核查 |
+| [CEntityIdentity::m_designerName (layout)](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json) | ⚪ 未核查 |
+| [CNetworkGameServerBase::m_Clients (layout)](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json) | ⚪ 未核查 |
+| [CBasePlayerController::FakeClientFlags (layout)](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json) | ⚪ 未核查 |
+| [CServerSideClient::m_Name (layout)](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json) | ⚪ 未核查 |
+| [CServerSideClient::m_nEntityIndex (layout)](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json) | ⚪ 未核查 |
+| [CServerSideClient::m_NetChannel (layout)](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json) | ⚪ 未核查 |
+| [CServerSideClient::m_nConnectionTypeFlags (layout)](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json) | ⚪ 未核查 |
+| [CServerSideClient::m_bFakePlayer (layout)](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json) | ⚪ 未核查 |
+| [CServerSideClient::m_UserID (layout)](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json) | ⚪ 未核查 |
+| [CServerSideClient::m_SteamID (layout)](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json) | ⚪ 未核查 |
+| [CServerSideClient::m_SteamIDMirror (layout)](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json) | ⚪ 未核查 |
+| [CServerSideClient::m_bIsHLTV (layout)](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json) | ⚪ 未核查 |
+| [Projectile physics signature](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/plugins/DemoTracer/config/demotracer-native.json) | ✅ 匹配 |
+| [Server image fingerprint](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/plugins/DemoTracer/config/demotracer-native.json) | ✅ 匹配 |
+| [Projectile entry](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/plugins/DemoTracer/config/demotracer-native.json) | ✅ 匹配 |
+| [Projectile function body](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/plugins/DemoTracer/config/demotracer-native.json) | ✅ 匹配 |
+| [Projectile virtual references](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/plugins/DemoTracer/config/demotracer-native.json) | ✅ 匹配 |
+| [BotRandomizer: writer](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/BotRandomizer/BotRandomizerItems.cs) | ✅ 匹配 |
+| [BotRandomizer: itemViewDestructor](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/BotRandomizer/BotRandomizerItems.cs) | ✅ 匹配 |
+| [BotRandomizer: itemViewConstructor](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/BotRandomizer/BotRandomizerItems.cs) | ✅ 匹配 |
+| [Dynamic Schema](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/src/common/version_targets.cpp) | ⚪ 未核查 |
 
 ## main
 
-源码：`be9c22e0554e347eabe3e5eae2ffad82e1b28e77`；声明的 Playback 版本：1.6.5
-
-依赖要求：CSS ≥ 1.0.378；Metamod build ≥ 1483。这是产品要求，不是已安装版本的检测结果。
-
-| 检查项 | 结果 | 说明 |
-| --- | --- | --- |
-| [CCSBot::EquipBestWeapon](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ 匹配 | One executable-section match; semantics not verified |
-| [CCSBot::EquipPistol](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ 匹配 | One executable-section match; semantics not verified |
-| [CCSPlayer_WeaponServices::SelectItem](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ 匹配 | One executable-section match; semantics not verified |
-| [CCSPlayer_WeaponServices::GetSlot](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ 匹配 | One executable-section match; semantics not verified |
-| [CCSBot::Update](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ 匹配 | One executable-section match; semantics not verified |
-| [CCSBot::Upkeep](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ 匹配 | One executable-section match; semantics not verified |
-| [CCSBot::IsVisiblePos](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ 匹配 | One executable-section match; semantics not verified |
-| [CCSBot::IsVisiblePlayer](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ 匹配 | One executable-section match; semantics not verified |
-| [BuyState::OnUpdate](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ 匹配 | One executable-section match; semantics not verified |
-| [BuyState::InitialDelay (layout)](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ⚪ 待验证 | Field offset or virtual slot requires runtime / semantic validation |
-| [BuyState::DoneBuying (layout)](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ⚪ 待验证 | Field offset or virtual slot requires runtime / semantic validation |
-| [CCSBot::UpdateLookAngles](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ 匹配 | One executable-section match; semantics not verified |
-| [CCSPlayerPawn::SetEyeAngles](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ 匹配 | One executable-section match; semantics not verified |
-| [CBasePlayerPawn::GetEyeAngles](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ 匹配 | One executable-section match; semantics not verified |
-| [CCSBot::LadderStateUpdate](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ 匹配 | One executable-section match; semantics not verified |
-| [CCSBot::InvalidatePath](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ 匹配 | One executable-section match; semantics not verified |
-| [CBaseEntity::SetMoveType](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ 匹配 | One executable-section match; semantics not verified |
-| [CBaseEntity::SetAbsOrigin](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ 匹配 | One executable-section match; semantics not verified |
-| [CBaseEntity::SetAbsVelocity](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ 匹配 | One executable-section match; semantics not verified |
-| [CCSPlayer_MovementServices::ProcessMovement](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ 匹配 | One executable-section match; semantics not verified |
-| [CCSPlayer_MovementServices::PhysicsSimulate](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ 匹配 | One executable-section match; semantics not verified |
-| [CEntityIdentity::EHandle (layout)](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ⚪ 待验证 | Field offset or virtual slot requires runtime / semantic validation |
-| [CCSPlayer_MovementServices::Pawn (layout)](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ⚪ 待验证 | Field offset or virtual slot requires runtime / semantic validation |
-| [CMoveData::ForwardMove (layout)](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ⚪ 待验证 | Field offset or virtual slot requires runtime / semantic validation |
-| [CMoveData::SideMove (layout)](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ⚪ 待验证 | Field offset or virtual slot requires runtime / semantic validation |
-| [CMoveData::UpMove (layout)](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ⚪ 待验证 | Field offset or virtual slot requires runtime / semantic validation |
-| [CMoveData::Velocity (layout)](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ⚪ 待验证 | Field offset or virtual slot requires runtime / semantic validation |
-| [CMoveData::AbsOrigin (layout)](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ⚪ 待验证 | Field offset or virtual slot requires runtime / semantic validation |
-| [vtidx::PlayerRunCommand (layout)](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ⚪ 待验证 | Field offset or virtual slot requires runtime / semantic validation |
-| [vtidx::SetupMove (layout)](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ⚪ 待验证 | Field offset or virtual slot requires runtime / semantic validation |
-| [vtidx::FinishMove (layout)](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ⚪ 待验证 | Field offset or virtual slot requires runtime / semantic validation |
-| [GameResourceServiceServer::EntitySystem (layout)](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ⚪ 待验证 | Field offset or virtual slot requires runtime / semantic validation |
-| [CEntitySystem::IdentityChunks (layout)](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ⚪ 待验证 | Field offset or virtual slot requires runtime / semantic validation |
-| [CEntityIdentity::Size (layout)](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ⚪ 待验证 | Field offset or virtual slot requires runtime / semantic validation |
-| [UTIL_Remove](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json) | ✅ 匹配 | One executable-section match; semantics not verified |
-| [CCSBotManager::MaintainBotQuota](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json) | ✅ 匹配 | One executable-section match; semantics not verified |
-| [CCSPlayerController::HandleCommand_JoinTeam](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json) | ✅ 匹配 | One executable-section match; semantics not verified |
-| [CNetworkGameServer::PackEntities](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json) | ✅ 匹配 | One executable-section match; semantics not verified |
-| [CServerSideClient::SetName (layout)](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json) | ⚪ 待验证 | Field offset or virtual slot requires runtime / semantic validation |
-| [CNetworkGameServerBase::UserInfoChanged (layout)](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json) | ⚪ 待验证 | Field offset or virtual slot requires runtime / semantic validation |
-| [GameResourceServiceServer::m_pEntitySystem (layout)](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json) | ⚪ 待验证 | Field offset or virtual slot requires runtime / semantic validation |
-| [CEntitySystem::m_EntityList (layout)](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json) | ⚪ 待验证 | Field offset or virtual slot requires runtime / semantic validation |
-| [CEntityIdentity::Size (layout)](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json) | ⚪ 待验证 | Field offset or virtual slot requires runtime / semantic validation |
-| [CEntityIdentity::m_pInstance (layout)](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json) | ⚪ 待验证 | Field offset or virtual slot requires runtime / semantic validation |
-| [CEntityIdentity::m_designerName (layout)](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json) | ⚪ 待验证 | Field offset or virtual slot requires runtime / semantic validation |
-| [CNetworkGameServerBase::m_Clients (layout)](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json) | ⚪ 待验证 | Field offset or virtual slot requires runtime / semantic validation |
-| [CBasePlayerController::FakeClientFlags (layout)](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json) | ⚪ 待验证 | Field offset or virtual slot requires runtime / semantic validation |
-| [CServerSideClient::m_Name (layout)](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json) | ⚪ 待验证 | Field offset or virtual slot requires runtime / semantic validation |
-| [CServerSideClient::m_nEntityIndex (layout)](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json) | ⚪ 待验证 | Field offset or virtual slot requires runtime / semantic validation |
-| [CServerSideClient::m_NetChannel (layout)](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json) | ⚪ 待验证 | Field offset or virtual slot requires runtime / semantic validation |
-| [CServerSideClient::m_nConnectionTypeFlags (layout)](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json) | ⚪ 待验证 | Field offset or virtual slot requires runtime / semantic validation |
-| [CServerSideClient::m_bFakePlayer (layout)](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json) | ⚪ 待验证 | Field offset or virtual slot requires runtime / semantic validation |
-| [CServerSideClient::m_UserID (layout)](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json) | ⚪ 待验证 | Field offset or virtual slot requires runtime / semantic validation |
-| [CServerSideClient::m_SteamID (layout)](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json) | ⚪ 待验证 | Field offset or virtual slot requires runtime / semantic validation |
-| [CServerSideClient::m_SteamIDMirror (layout)](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json) | ⚪ 待验证 | Field offset or virtual slot requires runtime / semantic validation |
-| [CServerSideClient::m_bIsHLTV (layout)](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json) | ⚪ 待验证 | Field offset or virtual slot requires runtime / semantic validation |
-| [Projectile physics signature](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/plugins/DemoTracer/config/demotracer-native.json) | ✅ 匹配 | One executable-section match; semantics not verified |
-| [Server image fingerprint](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/plugins/DemoTracer/config/demotracer-native.json) | ✅ 匹配 | pe-image-v1 comparison with the pinned product profile |
-| [Projectile entry](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/plugins/DemoTracer/config/demotracer-native.json) | ✅ 匹配 | Signature must resolve to the configured entry |
-| [Projectile function body](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/plugins/DemoTracer/config/demotracer-native.json) | ✅ 匹配 | On-disk function body hash; loaded memory not inspected |
-| [Projectile virtual references](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/plugins/DemoTracer/config/demotracer-native.json) | ✅ 匹配 | All six on-disk references must point to the configured entry |
-| [BotRandomizer: writer](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/BotRandomizer/BotRandomizerItems.cs) | ✅ 匹配 | One executable-section match; semantics not verified |
-| [BotRandomizer: itemViewDestructor](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/BotRandomizer/BotRandomizerItems.cs) | ✅ 匹配 | One executable-section match; semantics not verified |
-| [BotRandomizer: itemViewConstructor](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/BotRandomizer/BotRandomizerItems.cs) | ✅ 匹配 | One executable-section match; semantics not verified |
-| [Dynamic Schema](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/src/common/version_targets.cpp) | ⚪ 待验证 | 39 required fields; live SchemaSystem resolution not checked |
+| 检查项 | 结果 |
+| --- | --- |
+| [CCSBot::EquipBestWeapon](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ 匹配 |
+| [CCSBot::EquipPistol](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ 匹配 |
+| [CCSPlayer_WeaponServices::SelectItem](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ 匹配 |
+| [CCSPlayer_WeaponServices::GetSlot](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ 匹配 |
+| [CCSBot::Update](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ 匹配 |
+| [CCSBot::Upkeep](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ 匹配 |
+| [CCSBot::IsVisiblePos](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ 匹配 |
+| [CCSBot::IsVisiblePlayer](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ 匹配 |
+| [BuyState::OnUpdate](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ 匹配 |
+| [BuyState::InitialDelay (layout)](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ⚪ 未核查 |
+| [BuyState::DoneBuying (layout)](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ⚪ 未核查 |
+| [CCSBot::UpdateLookAngles](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ 匹配 |
+| [CCSPlayerPawn::SetEyeAngles](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ 匹配 |
+| [CBasePlayerPawn::GetEyeAngles](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ 匹配 |
+| [CCSBot::LadderStateUpdate](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ 匹配 |
+| [CCSBot::InvalidatePath](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ 匹配 |
+| [CBaseEntity::SetMoveType](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ 匹配 |
+| [CBaseEntity::SetAbsOrigin](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ 匹配 |
+| [CBaseEntity::SetAbsVelocity](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ 匹配 |
+| [CCSPlayer_MovementServices::ProcessMovement](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ 匹配 |
+| [CCSPlayer_MovementServices::PhysicsSimulate](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ 匹配 |
+| [CEntityIdentity::EHandle (layout)](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ⚪ 未核查 |
+| [CCSPlayer_MovementServices::Pawn (layout)](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ⚪ 未核查 |
+| [CMoveData::ForwardMove (layout)](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ⚪ 未核查 |
+| [CMoveData::SideMove (layout)](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ⚪ 未核查 |
+| [CMoveData::UpMove (layout)](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ⚪ 未核查 |
+| [CMoveData::Velocity (layout)](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ⚪ 未核查 |
+| [CMoveData::AbsOrigin (layout)](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ⚪ 未核查 |
+| [vtidx::PlayerRunCommand (layout)](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ⚪ 未核查 |
+| [vtidx::SetupMove (layout)](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ⚪ 未核查 |
+| [vtidx::FinishMove (layout)](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ⚪ 未核查 |
+| [GameResourceServiceServer::EntitySystem (layout)](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ⚪ 未核查 |
+| [CEntitySystem::IdentityChunks (layout)](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ⚪ 未核查 |
+| [CEntityIdentity::Size (layout)](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ⚪ 未核查 |
+| [UTIL_Remove](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json) | ✅ 匹配 |
+| [CCSBotManager::MaintainBotQuota](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json) | ✅ 匹配 |
+| [CCSPlayerController::HandleCommand_JoinTeam](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json) | ✅ 匹配 |
+| [CNetworkGameServer::PackEntities](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json) | ✅ 匹配 |
+| [CServerSideClient::SetName (layout)](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json) | ⚪ 未核查 |
+| [CNetworkGameServerBase::UserInfoChanged (layout)](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json) | ⚪ 未核查 |
+| [GameResourceServiceServer::m_pEntitySystem (layout)](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json) | ⚪ 未核查 |
+| [CEntitySystem::m_EntityList (layout)](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json) | ⚪ 未核查 |
+| [CEntityIdentity::Size (layout)](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json) | ⚪ 未核查 |
+| [CEntityIdentity::m_pInstance (layout)](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json) | ⚪ 未核查 |
+| [CEntityIdentity::m_designerName (layout)](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json) | ⚪ 未核查 |
+| [CNetworkGameServerBase::m_Clients (layout)](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json) | ⚪ 未核查 |
+| [CBasePlayerController::FakeClientFlags (layout)](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json) | ⚪ 未核查 |
+| [CServerSideClient::m_Name (layout)](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json) | ⚪ 未核查 |
+| [CServerSideClient::m_nEntityIndex (layout)](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json) | ⚪ 未核查 |
+| [CServerSideClient::m_NetChannel (layout)](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json) | ⚪ 未核查 |
+| [CServerSideClient::m_nConnectionTypeFlags (layout)](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json) | ⚪ 未核查 |
+| [CServerSideClient::m_bFakePlayer (layout)](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json) | ⚪ 未核查 |
+| [CServerSideClient::m_UserID (layout)](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json) | ⚪ 未核查 |
+| [CServerSideClient::m_SteamID (layout)](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json) | ⚪ 未核查 |
+| [CServerSideClient::m_SteamIDMirror (layout)](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json) | ⚪ 未核查 |
+| [CServerSideClient::m_bIsHLTV (layout)](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json) | ⚪ 未核查 |
+| [Projectile physics signature](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/plugins/DemoTracer/config/demotracer-native.json) | ✅ 匹配 |
+| [Server image fingerprint](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/plugins/DemoTracer/config/demotracer-native.json) | ✅ 匹配 |
+| [Projectile entry](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/plugins/DemoTracer/config/demotracer-native.json) | ✅ 匹配 |
+| [Projectile function body](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/plugins/DemoTracer/config/demotracer-native.json) | ✅ 匹配 |
+| [Projectile virtual references](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/plugins/DemoTracer/config/demotracer-native.json) | ✅ 匹配 |
+| [BotRandomizer: writer](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/BotRandomizer/BotRandomizerItems.cs) | ✅ 匹配 |
+| [BotRandomizer: itemViewDestructor](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/BotRandomizer/BotRandomizerItems.cs) | ✅ 匹配 |
+| [BotRandomizer: itemViewConstructor](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/BotRandomizer/BotRandomizerItems.cs) | ✅ 匹配 |
+| [Dynamic Schema](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/src/common/version_targets.cpp) | ⚪ 未核查 |

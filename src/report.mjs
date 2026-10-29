@@ -93,20 +93,14 @@ export function summarize(checks) {
 }
 export function markdown(report) {
   const esc = s => String(s).replaceAll('|', '\\|').replaceAll('\n', ' ');
-  const badge = s => ({ pass: '✅ 匹配', fail: '❌ 失败', not_checked: '⚪ 待验证' })[s];
-  const lines = ['# Windows x64 适配快照', '', `检测时间：${report.checkedAt}`, '',
-    `CS2 **${report.game.patchVersion}** · server ${report.game.serverVersion} · Steam build **${report.game.buildId}**`, '',
-    '**这是指定本地游戏版本的静态检查，不代表当前 Steam 最新版本，也不代表游戏内回放已通过。**', '',
-    '| 产品源码 | 静态匹配 | 失败 | 待验证项 | 组件加载 | 实际回放 |', '| --- | ---: | ---: | ---: | --- | --- |'];
-  for (const s of report.sources) lines.push(`| [${esc(s.ref)}](https://github.com/unicbm/demotracer/tree/${s.commit}) | ${s.summary.pass} | ${s.summary.fail} | ${s.summary.not_checked} | 待验证 | 待验证 |`);
-  lines.push('', '偏移、虚表语义、调用约定和动态 Schema 不会因字节匹配而自动通过。', '', '## 游戏模块', '', '| 模块 | 文件 SHA-256 | pe-image-v1 |', '| --- | --- | --- |');
-  for (const [name, m] of Object.entries(report.modules)) lines.push(`| ${name} | \`${m.sha256}\` | \`${m.fingerprint}\` |`);
-  lines.push('', '## Steam manifests', '', ...Object.entries(report.game.depots).map(([id, hash]) => `- ${id}: ${hash}`));
+  const badge = s => ({ pass: '✅ 匹配', fail: '❌ 失配', not_checked: '⚪ 未核查' })[s];
+  const lines = ['# 签名与 Schema 核查', '',
+    `CS2 ${report.game.patchVersion} · Windows x64 · Build ${report.game.buildId} · ${report.checkedAt}`, '',
+    '| 源码版本 | 匹配 | 失配 | 未核查 |', '| --- | ---: | ---: | ---: |'];
+  for (const s of report.sources) lines.push(`| [${esc(s.ref)}](https://github.com/unicbm/demotracer/tree/${s.commit}) | ${s.summary.pass} | ${s.summary.fail} | ${s.summary.not_checked} |`);
   for (const s of report.sources) {
-    lines.push('', `## ${esc(s.ref)}`, '', `源码：\`${s.commit}\`；声明的 Playback 版本：${esc(s.version)}`, '',
-      `依赖要求：CSS ≥ ${esc(s.requirements.css)}；Metamod build ≥ ${s.requirements.metamod}。这是产品要求，不是已安装版本的检测结果。`, '',
-      '| 检查项 | 结果 | 说明 |', '| --- | --- | --- |');
-    for (const c of s.checks) lines.push(`| [${esc(c.name)}](https://github.com/unicbm/demotracer/blob/${s.commit}/${c.source}) | ${badge(c.status)} | ${esc(c.reason)} |`);
+    lines.push('', `## ${esc(s.ref)}`, '', '| 检查项 | 结果 |', '| --- | --- |');
+    for (const c of s.checks) lines.push(`| [${esc(c.name)}](https://github.com/unicbm/demotracer/blob/${s.commit}/${c.source}) | ${badge(c.status)} |`);
   }
   return lines.join('\n') + '\n';
 }

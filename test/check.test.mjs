@@ -94,8 +94,8 @@ test('game metadata allowlist excludes local paths and Steam account data', () =
   assert.deepEqual(data, { patchVersion: '1.2.3', serverVersion: '123', appId: '730', buildId: '12', depots: { 2347771: '1234' } });
   assert.throws(() => gameMetadata('PatchVersion=secret\nServerVersion=123', '"AppState" { "appid" "730" "buildid" "12" }'), /version metadata/);
 });
-test('report distinguishes static results from unavailable runtime evidence', () => {
+test('report shows check counts without runtime columns', () => {
   const md = markdown({ checkedAt: '2026-01-01', game: { patchVersion: '1', serverVersion: '2', buildId: '3', depots: {} }, modules: {}, sources: [{ ref: 'main', commit: 'a'.repeat(40), version: '1', requirements: { css: '1', metamod: 1 }, summary: { pass: 1, fail: 0, not_checked: 0 }, checks: [] }] });
-  assert.match(md, /不代表游戏内回放已通过/);
-  assert.match(md, /待验证 \| 待验证/);
+  assert.match(md, /匹配 \| 失配 \| 未核查/);
+  assert.doesNotMatch(md, /组件加载|实际回放/);
 });

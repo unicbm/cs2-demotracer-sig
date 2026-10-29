@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Copyright (c) 2026 unicbm.
-// pe-image-v1 port of DemoTracer Native/PeImageFingerprint.cs; see NOTICE.md.
+// pe-image-v1 port; GPL text: LICENSES/GPL-3.0-or-later.txt.
+// Source: https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/plugins/DemoTracer/src/DemoTracer/Native/PeImageFingerprint.cs
 import { createHash } from 'node:crypto';
 
 export const sha256 = bytes => createHash('sha256').update(bytes).digest('hex');

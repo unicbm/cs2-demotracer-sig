@@ -463,14 +463,6 @@
         "pass": 27,
         "fail": 4,
         "not_checked": 34
-      },
-      "runtime": {
-        "status": "not_checked",
-        "reason": "No server startup or loaded-module inspection performed"
-      },
-      "replay": {
-        "status": "not_checked",
-        "reason": "No replay scenario executed"
       }
     },
     {
@@ -904,14 +896,6 @@
         "pass": 31,
         "fail": 0,
         "not_checked": 34
-      },
-      "runtime": {
-        "status": "not_checked",
-        "reason": "No server startup or loaded-module inspection performed"
-      },
-      "replay": {
-        "status": "not_checked",
-        "reason": "No replay scenario executed"
       }
     },
     {
@@ -1345,14 +1329,6 @@
         "pass": 31,
         "fail": 0,
         "not_checked": 34
-      },
-      "runtime": {
-        "status": "not_checked",
-        "reason": "No server startup or loaded-module inspection performed"
-      },
-      "replay": {
-        "status": "not_checked",
-        "reason": "No replay scenario executed"
       }
     }
   ]

@@ -71,15 +71,13 @@ try {
     if (!fields.length) throw new Error('Cannot enumerate required Schema fields');
     checks.push({ name: 'Dynamic Schema', source: paths[6], status: 'not_checked', reason: `${fields.length} required fields; live SchemaSystem resolution not checked` });
     report.sources.push({ ref, commit, version, requirements: { css: contract.counterstrikesharp.minimum_version,
-      metamod: contract.hook_runtime.metamod_minimum_build }, checks, summary: summarize(checks),
-      runtime: { status: 'not_checked', reason: 'No server startup or loaded-module inspection performed' },
-      replay: { status: 'not_checked', reason: 'No replay scenario executed' } });
+      metamod: contract.hook_runtime.metamod_minimum_build }, checks, summary: summarize(checks) });
   }
   const output = resolve(values.output);
   await mkdir(dirname(output), { recursive: true });
   await writeFile(output + '.json', JSON.stringify(report, null, 2) + '\n');
   await writeFile(output + '.md', markdown(report));
-  for (const s of report.sources) console.log(`${s.ref} (${s.commit.slice(0, 12)}): ${s.summary.pass} pass, ${s.summary.fail} fail, ${s.summary.not_checked} not checked; runtime/replay not checked`);
+  for (const s of report.sources) console.log(`${s.ref} (${s.commit.slice(0, 12)}): ${s.summary.pass} pass, ${s.summary.fail} fail, ${s.summary.not_checked} not checked`);
   process.exitCode = report.sources.some(s => s.summary.fail) ? 1 : 0;
 } catch (error) {
   console.error(error.message);
