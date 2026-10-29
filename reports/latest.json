@@ -1,0 +1,1359 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-10-29T10:38:13.604Z",
+  "platform": "windows-x64",
+  "checkerVersion": "0.1.0",
+  "game": {
+    "patchVersion": "1.41.9.3",
+    "serverVersion": "2000938",
+    "appId": "730",
+    "buildId": "26281801",
+    "depots": {
+      "731": "6136897076417766099",
+      "732": "7263089472237994766",
+      "735": "4345444102999343217",
+      "736": "3004005725336207478",
+      "737": "1710676828350962471",
+      "738": "4811758700152138192",
+      "2347770": "8833146750479675564",
+      "2347771": "5218696177408015009",
+      "2347774": "6845003340509320862",
+      "2347779": "2888303856247423407"
+    }
+  },
+  "modules": {
+    "server": {
+      "sha256": "3788afaa2dbce98a7b2fa1e15b6b1a304759dd5b0f05802268952341b40777c4",
+      "fingerprint": "c2f82aec2841ec75402ae182baf166870de5f1b0c619fada26e682cbe336cc88"
+    },
+    "engine2": {
+      "sha256": "42e0549c7314321e1b69c8d60046efe94e0356f54d7a2fb79dd6b993e6e3658b",
+      "fingerprint": "0113887bb3c16d1c3ac0806c489429ef4f9d9631b1d229f5b772fe8d98ec8ec6"
+    }
+  },
+  "sources": [
+    {
+      "ref": "v1.6.4",
+      "commit": "e048c080bcb7b49a6c42138d7ce070abf52bd095",
+      "version": "1.6.4",
+      "requirements": {
+        "css": "1.0.378",
+        "metamod": 1483
+      },
+      "checks": [
+        {
+          "name": "CCSBot::EquipBestWeapon",
+          "source": "server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json",
+          "status": "pass",
+          "matches": 1,
+          "reason": "One executable-section match; semantics not verified"
+        },
+        {
+          "name": "CCSBot::EquipPistol",
+          "source": "server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json",
+          "status": "pass",
+          "matches": 1,
+          "reason": "One executable-section match; semantics not verified"
+        },
+        {
+          "name": "CCSPlayer_WeaponServices::SelectItem",
+          "source": "server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json",
+          "status": "pass",
+          "matches": 1,
+          "reason": "One executable-section match; semantics not verified"
+        },
+        {
+          "name": "CCSPlayer_WeaponServices::GetSlot",
+          "source": "server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json",
+          "status": "pass",
+          "matches": 1,
+          "reason": "One executable-section match; semantics not verified"
+        },
+        {
+          "name": "CCSBot::Update",
+          "source": "server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json",
+          "status": "pass",
+          "matches": 1,
+          "reason": "One executable-section match; semantics not verified"
+        },
+        {
+          "name": "CCSBot::Upkeep",
+          "source": "server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json",
+          "status": "pass",
+          "matches": 1,
+          "reason": "One executable-section match; semantics not verified"
+        },
+        {
+          "name": "CCSBot::IsVisiblePos",
+          "source": "server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json",
+          "status": "pass",
+          "matches": 1,
+          "reason": "One executable-section match; semantics not verified"
+        },
+        {
+          "name": "CCSBot::IsVisiblePlayer",
+          "source": "server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json",
+          "status": "pass",
+          "matches": 1,
+          "reason": "One executable-section match; semantics not verified"
+        },
+        {
+          "name": "BuyState::OnUpdate",
+          "source": "server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json",
+          "status": "pass",
+          "matches": 1,
+          "reason": "One executable-section match; semantics not verified"
+        },
+        {
+          "name": "BuyState::InitialDelay (layout)",
+          "source": "server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json",
+          "status": "not_checked",
+          "reason": "Field offset or virtual slot requires runtime / semantic validation"
+        },
+        {
+          "name": "BuyState::DoneBuying (layout)",
+          "source": "server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json",
+          "status": "not_checked",
+          "reason": "Field offset or virtual slot requires runtime / semantic validation"
+        },
+        {
+          "name": "CCSBot::UpdateLookAngles",
+          "source": "server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json",
+          "status": "pass",
+          "matches": 1,
+          "reason": "One executable-section match; semantics not verified"
+        },
+        {
+          "name": "CCSPlayerPawn::SetEyeAngles",
+          "source": "server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json",
+          "status": "pass",
+          "matches": 1,
+          "reason": "One executable-section match; semantics not verified"
+        },
+        {
+          "name": "CBasePlayerPawn::GetEyeAngles",
+          "source": "server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json",
+          "status": "pass",
+          "matches": 1,
+          "reason": "One executable-section match; semantics not verified"
+        },
+        {
+          "name": "CCSBot::LadderStateUpdate",
+          "source": "server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json",
+          "status": "pass",
+          "matches": 1,
+          "reason": "One executable-section match; semantics not verified"
+        },
+        {
+          "name": "CCSBot::InvalidatePath",
+          "source": "server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json",
+          "status": "pass",
+          "matches": 1,
+          "reason": "One executable-section match; semantics not verified"
+        },
+        {
+          "name": "CBaseEntity::SetMoveType",
+          "source": "server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json",
+          "status": "pass",
+          "matches": 1,
+          "reason": "One executable-section match; semantics not verified"
+        },
+        {
+          "name": "CBaseEntity::SetAbsOrigin",
+          "source": "server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json",
+          "status": "pass",
+          "matches": 1,
+          "reason": "One executable-section match; semantics not verified"
+        },
+        {
+          "name": "CBaseEntity::SetAbsVelocity",
+          "source": "server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json",
+          "status": "pass",
+          "matches": 1,
+          "reason": "One executable-section match; semantics not verified"
+        },
+        {
+          "name": "CCSPlayer_MovementServices::ProcessMovement",
+          "source": "server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json",
+          "status": "pass",
+          "matches": 1,
+          "reason": "One executable-section match; semantics not verified"
+        },
+        {
+          "name": "CCSPlayer_MovementServices::PhysicsSimulate",
+          "source": "server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json",
+          "status": "pass",
+          "matches": 1,
+          "reason": "One executable-section match; semantics not verified"
+        },
+        {
+          "name": "CEntityIdentity::EHandle (layout)",
+          "source": "server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json",
+          "status": "not_checked",
+          "reason": "Field offset or virtual slot requires runtime / semantic validation"
+        },
+        {
+          "name": "CCSPlayer_MovementServices::Pawn (layout)",
+          "source": "server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json",
+          "status": "not_checked",
+          "reason": "Field offset or virtual slot requires runtime / semantic validation"
+        },
+        {
+          "name": "CMoveData::ForwardMove (layout)",
+          "source": "server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json",
+          "status": "not_checked",
+          "reason": "Field offset or virtual slot requires runtime / semantic validation"
+        },
+        {
+          "name": "CMoveData::SideMove (layout)",
+          "source": "server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json",
+          "status": "not_checked",
+          "reason": "Field offset or virtual slot requires runtime / semantic validation"
+        },
+        {
+          "name": "CMoveData::UpMove (layout)",
+          "source": "server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json",
+          "status": "not_checked",
+          "reason": "Field offset or virtual slot requires runtime / semantic validation"
+        },
+        {
+          "name": "CMoveData::Velocity (layout)",
+          "source": "server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json",
+          "status": "not_checked",
+          "reason": "Field offset or virtual slot requires runtime / semantic validation"
+        },
+        {
+          "name": "CMoveData::AbsOrigin (layout)",
+          "source": "server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json",
+          "status": "not_checked",
+          "reason": "Field offset or virtual slot requires runtime / semantic validation"
+        },
+        {
+          "name": "vtidx::PlayerRunCommand (layout)",
+          "source": "server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json",
+          "status": "not_checked",
+          "reason": "Field offset or virtual slot requires runtime / semantic validation"
+        },
+        {
+          "name": "vtidx::SetupMove (layout)",
+          "source": "server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json",
+          "status": "not_checked",
+          "reason": "Field offset or virtual slot requires runtime / semantic validation"
+        },
+        {
+          "name": "vtidx::FinishMove (layout)",
+          "source": "server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json",
+          "status": "not_checked",
+          "reason": "Field offset or virtual slot requires runtime / semantic validation"
+        },
+        {
+          "name": "GameResourceServiceServer::EntitySystem (layout)",
+          "source": "server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json",
+          "status": "not_checked",
+          "reason": "Field offset or virtual slot requires runtime / semantic validation"
+        },
+        {
+          "name": "CEntitySystem::IdentityChunks (layout)",
+          "source": "server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json",
+          "status": "not_checked",
+          "reason": "Field offset or virtual slot requires runtime / semantic validation"
+        },
+        {
+          "name": "CEntityIdentity::Size (layout)",
+          "source": "server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json",
+          "status": "not_checked",
+          "reason": "Field offset or virtual slot requires runtime / semantic validation"
+        },
+        {
+          "name": "UTIL_Remove",
+          "source": "server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json",
+          "status": "pass",
+          "matches": 1,
+          "reason": "One executable-section match; semantics not verified"
+        },
+        {
+          "name": "CCSBotManager::MaintainBotQuota",
+          "source": "server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json",
+          "status": "pass",
+          "matches": 1,
+          "reason": "One executable-section match; semantics not verified"
+        },
+        {
+          "name": "CCSPlayerController::HandleCommand_JoinTeam",
+          "source": "server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json",
+          "status": "pass",
+          "matches": 1,
+          "reason": "One executable-section match; semantics not verified"
+        },
+        {
+          "name": "CNetworkGameServer::PackEntities",
+          "source": "server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json",
+          "status": "pass",
+          "matches": 1,
+          "reason": "One executable-section match; semantics not verified"
+        },
+        {
+          "name": "CServerSideClient::SetName (layout)",
+          "source": "server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json",
+          "status": "not_checked",
+          "reason": "Field offset or virtual slot requires runtime / semantic validation"
+        },
+        {
+          "name": "CNetworkGameServerBase::UserInfoChanged (layout)",
+          "source": "server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json",
+          "status": "not_checked",
+          "reason": "Field offset or virtual slot requires runtime / semantic validation"
+        },
+        {
+          "name": "GameResourceServiceServer::m_pEntitySystem (layout)",
+          "source": "server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json",
+          "status": "not_checked",
+          "reason": "Field offset or virtual slot requires runtime / semantic validation"
+        },
+        {
+          "name": "CEntitySystem::m_EntityList (layout)",
+          "source": "server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json",
+          "status": "not_checked",
+          "reason": "Field offset or virtual slot requires runtime / semantic validation"
+        },
+        {
+          "name": "CEntityIdentity::Size (layout)",
+          "source": "server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json",
+          "status": "not_checked",
+          "reason": "Field offset or virtual slot requires runtime / semantic validation"
+        },
+        {
+          "name": "CEntityIdentity::m_pInstance (layout)",
+          "source": "server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json",
+          "status": "not_checked",
+          "reason": "Field offset or virtual slot requires runtime / semantic validation"
+        },
+        {
+          "name": "CEntityIdentity::m_designerName (layout)",
+          "source": "server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json",
+          "status": "not_checked",
+          "reason": "Field offset or virtual slot requires runtime / semantic validation"
+        },
+        {
+          "name": "CNetworkGameServerBase::m_Clients (layout)",
+          "source": "server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json",
+          "status": "not_checked",
+          "reason": "Field offset or virtual slot requires runtime / semantic validation"
+        },
+        {
+          "name": "CBasePlayerController::FakeClientFlags (layout)",
+          "source": "server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json",
+          "status": "not_checked",
+          "reason": "Field offset or virtual slot requires runtime / semantic validation"
+        },
+        {
+          "name": "CServerSideClient::m_Name (layout)",
+          "source": "server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json",
+          "status": "not_checked",
+          "reason": "Field offset or virtual slot requires runtime / semantic validation"
+        },
+        {
+          "name": "CServerSideClient::m_nEntityIndex (layout)",
+          "source": "server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json",
+          "status": "not_checked",
+          "reason": "Field offset or virtual slot requires runtime / semantic validation"
+        },
+        {
+          "name": "CServerSideClient::m_NetChannel (layout)",
+          "source": "server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json",
+          "status": "not_checked",
+          "reason": "Field offset or virtual slot requires runtime / semantic validation"
+        },
+        {
+          "name": "CServerSideClient::m_nConnectionTypeFlags (layout)",
+          "source": "server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json",
+          "status": "not_checked",
+          "reason": "Field offset or virtual slot requires runtime / semantic validation"
+        },
+        {
+          "name": "CServerSideClient::m_bFakePlayer (layout)",
+          "source": "server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json",
+          "status": "not_checked",
+          "reason": "Field offset or virtual slot requires runtime / semantic validation"
+        },
+        {
+          "name": "CServerSideClient::m_UserID (layout)",
+          "source": "server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json",
+          "status": "not_checked",
+          "reason": "Field offset or virtual slot requires runtime / semantic validation"
+        },
+        {
+          "name": "CServerSideClient::m_SteamID (layout)",
+          "source": "server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json",
+          "status": "not_checked",
+          "reason": "Field offset or virtual slot requires runtime / semantic validation"
+        },
+        {
+          "name": "CServerSideClient::m_SteamIDMirror (layout)",
+          "source": "server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json",
+          "status": "not_checked",
+          "reason": "Field offset or virtual slot requires runtime / semantic validation"
+        },
+        {
+          "name": "CServerSideClient::m_bIsHLTV (layout)",
+          "source": "server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json",
+          "status": "not_checked",
+          "reason": "Field offset or virtual slot requires runtime / semantic validation"
+        },
+        {
+          "name": "Projectile physics signature",
+          "source": "server/plugins/DemoTracer/config/demotracer-native.json",
+          "status": "pass",
+          "matches": 1,
+          "reason": "One executable-section match; semantics not verified"
+        },
+        {
+          "name": "Server image fingerprint",
+          "source": "server/plugins/DemoTracer/config/demotracer-native.json",
+          "status": "fail",
+          "reason": "pe-image-v1 comparison with the pinned product profile"
+        },
+        {
+          "name": "Projectile entry",
+          "source": "server/plugins/DemoTracer/config/demotracer-native.json",
+          "status": "fail",
+          "reason": "Signature must resolve to the configured entry"
+        },
+        {
+          "name": "Projectile function body",
+          "source": "server/plugins/DemoTracer/config/demotracer-native.json",
+          "status": "fail",
+          "reason": "On-disk function body hash; loaded memory not inspected"
+        },
+        {
+          "name": "Projectile virtual references",
+          "source": "server/plugins/DemoTracer/config/demotracer-native.json",
+          "status": "fail",
+          "reason": "All six on-disk references must point to the configured entry"
+        },
+        {
+          "name": "BotRandomizer: writer",
+          "source": "server/runtime/BotRandomizer/BotRandomizerItems.cs",
+          "status": "pass",
+          "matches": 1,
+          "reason": "One executable-section match; semantics not verified"
+        },
+        {
+          "name": "BotRandomizer: itemViewDestructor",
+          "source": "server/runtime/BotRandomizer/BotRandomizerItems.cs",
+          "status": "pass",
+          "matches": 1,
+          "reason": "One executable-section match; semantics not verified"
+        },
+        {
+          "name": "BotRandomizer: itemViewConstructor",
+          "source": "server/runtime/BotRandomizer/BotRandomizerItems.cs",
+          "status": "pass",
+          "matches": 1,
+          "reason": "One executable-section match; semantics not verified"
+        },
+        {
+          "name": "Dynamic Schema",
+          "source": "server/runtime/dtr-controller/src/common/version_targets.cpp",
+          "status": "not_checked",
+          "reason": "39 required fields; live SchemaSystem resolution not checked"
+        }
+      ],
+      "summary": {
+        "pass": 27,
+        "fail": 4,
+        "not_checked": 34
+      },
+      "runtime": {
+        "status": "not_checked",
+        "reason": "No server startup or loaded-module inspection performed"
+      },
+      "replay": {
+        "status": "not_checked",
+        "reason": "No replay scenario executed"
+      }
+    },
+    {
+      "ref": "v1.6.5",
+      "commit": "be9c22e0554e347eabe3e5eae2ffad82e1b28e77",
+      "version": "1.6.5",
+      "requirements": {
+        "css": "1.0.378",
+        "metamod": 1483
+      },
+      "checks": [
+        {
+          "name": "CCSBot::EquipBestWeapon",
+          "source": "server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json",
+          "status": "pass",
+          "matches": 1,
+          "reason": "One executable-section match; semantics not verified"
+        },
+        {
+          "name": "CCSBot::EquipPistol",
+          "source": "server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json",
+          "status": "pass",
+          "matches": 1,
+          "reason": "One executable-section match; semantics not verified"
+        },
+        {
+          "name": "CCSPlayer_WeaponServices::SelectItem",
+          "source": "server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json",
+          "status": "pass",
+          "matches": 1,
+          "reason": "One executable-section match; semantics not verified"
+        },
+        {
+          "name": "CCSPlayer_WeaponServices::GetSlot",
+          "source": "server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json",
+          "status": "pass",
+          "matches": 1,
+          "reason": "One executable-section match; semantics not verified"
+        },
+        {
+          "name": "CCSBot::Update",
+          "source": "server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json",
+          "status": "pass",
+          "matches": 1,
+          "reason": "One executable-section match; semantics not verified"
+        },
+        {
+          "name": "CCSBot::Upkeep",
+          "source": "server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json",
+          "status": "pass",
+          "matches": 1,
+          "reason": "One executable-section match; semantics not verified"
+        },
+        {
+          "name": "CCSBot::IsVisiblePos",
+          "source": "server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json",
+          "status": "pass",
+          "matches": 1,
+          "reason": "One executable-section match; semantics not verified"
+        },
+        {
+          "name": "CCSBot::IsVisiblePlayer",
+          "source": "server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json",
+          "status": "pass",
+          "matches": 1,
+          "reason": "One executable-section match; semantics not verified"
+        },
+        {
+          "name": "BuyState::OnUpdate",
+          "source": "server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json",
+          "status": "pass",
+          "matches": 1,
+          "reason": "One executable-section match; semantics not verified"
+        },
+        {
+          "name": "BuyState::InitialDelay (layout)",
+          "source": "server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json",
+          "status": "not_checked",
+          "reason": "Field offset or virtual slot requires runtime / semantic validation"
+        },
+        {
+          "name": "BuyState::DoneBuying (layout)",
+          "source": "server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json",
+          "status": "not_checked",
+          "reason": "Field offset or virtual slot requires runtime / semantic validation"
+        },
+        {
+          "name": "CCSBot::UpdateLookAngles",
+          "source": "server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json",
+          "status": "pass",
+          "matches": 1,
+          "reason": "One executable-section match; semantics not verified"
+        },
+        {
+          "name": "CCSPlayerPawn::SetEyeAngles",
+          "source": "server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json",
+          "status": "pass",
+          "matches": 1,
+          "reason": "One executable-section match; semantics not verified"
+        },
+        {
+          "name": "CBasePlayerPawn::GetEyeAngles",
+          "source": "server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json",
+          "status": "pass",
+          "matches": 1,
+          "reason": "One executable-section match; semantics not verified"
+        },
+        {
+          "name": "CCSBot::LadderStateUpdate",
+          "source": "server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json",
+          "status": "pass",
+          "matches": 1,
+          "reason": "One executable-section match; semantics not verified"
+        },
+        {
+          "name": "CCSBot::InvalidatePath",
+          "source": "server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json",
+          "status": "pass",
+          "matches": 1,
+          "reason": "One executable-section match; semantics not verified"
+        },
+        {
+          "name": "CBaseEntity::SetMoveType",
+          "source": "server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json",
+          "status": "pass",
+          "matches": 1,
+          "reason": "One executable-section match; semantics not verified"
+        },
+        {
+          "name": "CBaseEntity::SetAbsOrigin",
+          "source": "server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json",
+          "status": "pass",
+          "matches": 1,
+          "reason": "One executable-section match; semantics not verified"
+        },
+        {
+          "name": "CBaseEntity::SetAbsVelocity",
+          "source": "server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json",
+          "status": "pass",
+          "matches": 1,
+          "reason": "One executable-section match; semantics not verified"
+        },
+        {
+          "name": "CCSPlayer_MovementServices::ProcessMovement",
+          "source": "server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json",
+          "status": "pass",
+          "matches": 1,
+          "reason": "One executable-section match; semantics not verified"
+        },
+        {
+          "name": "CCSPlayer_MovementServices::PhysicsSimulate",
+          "source": "server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json",
+          "status": "pass",
+          "matches": 1,
+          "reason": "One executable-section match; semantics not verified"
+        },
+        {
+          "name": "CEntityIdentity::EHandle (layout)",
+          "source": "server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json",
+          "status": "not_checked",
+          "reason": "Field offset or virtual slot requires runtime / semantic validation"
+        },
+        {
+          "name": "CCSPlayer_MovementServices::Pawn (layout)",
+          "source": "server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json",
+          "status": "not_checked",
+          "reason": "Field offset or virtual slot requires runtime / semantic validation"
+        },
+        {
+          "name": "CMoveData::ForwardMove (layout)",
+          "source": "server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json",
+          "status": "not_checked",
+          "reason": "Field offset or virtual slot requires runtime / semantic validation"
+        },
+        {
+          "name": "CMoveData::SideMove (layout)",
+          "source": "server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json",
+          "status": "not_checked",
+          "reason": "Field offset or virtual slot requires runtime / semantic validation"
+        },
+        {
+          "name": "CMoveData::UpMove (layout)",
+          "source": "server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json",
+          "status": "not_checked",
+          "reason": "Field offset or virtual slot requires runtime / semantic validation"
+        },
+        {
+          "name": "CMoveData::Velocity (layout)",
+          "source": "server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json",
+          "status": "not_checked",
+          "reason": "Field offset or virtual slot requires runtime / semantic validation"
+        },
+        {
+          "name": "CMoveData::AbsOrigin (layout)",
+          "source": "server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json",
+          "status": "not_checked",
+          "reason": "Field offset or virtual slot requires runtime / semantic validation"
+        },
+        {
+          "name": "vtidx::PlayerRunCommand (layout)",
+          "source": "server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json",
+          "status": "not_checked",
+          "reason": "Field offset or virtual slot requires runtime / semantic validation"
+        },
+        {
+          "name": "vtidx::SetupMove (layout)",
+          "source": "server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json",
+          "status": "not_checked",
+          "reason": "Field offset or virtual slot requires runtime / semantic validation"
+        },
+        {
+          "name": "vtidx::FinishMove (layout)",
+          "source": "server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json",
+          "status": "not_checked",
+          "reason": "Field offset or virtual slot requires runtime / semantic validation"
+        },
+        {
+          "name": "GameResourceServiceServer::EntitySystem (layout)",
+          "source": "server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json",
+          "status": "not_checked",
+          "reason": "Field offset or virtual slot requires runtime / semantic validation"
+        },
+        {
+          "name": "CEntitySystem::IdentityChunks (layout)",
+          "source": "server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json",
+          "status": "not_checked",
+          "reason": "Field offset or virtual slot requires runtime / semantic validation"
+        },
+        {
+          "name": "CEntityIdentity::Size (layout)",
+          "source": "server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json",
+          "status": "not_checked",
+          "reason": "Field offset or virtual slot requires runtime / semantic validation"
+        },
+        {
+          "name": "UTIL_Remove",
+          "source": "server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json",
+          "status": "pass",
+          "matches": 1,
+          "reason": "One executable-section match; semantics not verified"
+        },
+        {
+          "name": "CCSBotManager::MaintainBotQuota",
+          "source": "server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json",
+          "status": "pass",
+          "matches": 1,
+          "reason": "One executable-section match; semantics not verified"
+        },
+        {
+          "name": "CCSPlayerController::HandleCommand_JoinTeam",
+          "source": "server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json",
+          "status": "pass",
+          "matches": 1,
+          "reason": "One executable-section match; semantics not verified"
+        },
+        {
+          "name": "CNetworkGameServer::PackEntities",
+          "source": "server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json",
+          "status": "pass",
+          "matches": 1,
+          "reason": "One executable-section match; semantics not verified"
+        },
+        {
+          "name": "CServerSideClient::SetName (layout)",
+          "source": "server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json",
+          "status": "not_checked",
+          "reason": "Field offset or virtual slot requires runtime / semantic validation"
+        },
+        {
+          "name": "CNetworkGameServerBase::UserInfoChanged (layout)",
+          "source": "server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json",
+          "status": "not_checked",
+          "reason": "Field offset or virtual slot requires runtime / semantic validation"
+        },
+        {
+          "name": "GameResourceServiceServer::m_pEntitySystem (layout)",
+          "source": "server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json",
+          "status": "not_checked",
+          "reason": "Field offset or virtual slot requires runtime / semantic validation"
+        },
+        {
+          "name": "CEntitySystem::m_EntityList (layout)",
+          "source": "server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json",
+          "status": "not_checked",
+          "reason": "Field offset or virtual slot requires runtime / semantic validation"
+        },
+        {
+          "name": "CEntityIdentity::Size (layout)",
+          "source": "server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json",
+          "status": "not_checked",
+          "reason": "Field offset or virtual slot requires runtime / semantic validation"
+        },
+        {
+          "name": "CEntityIdentity::m_pInstance (layout)",
+          "source": "server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json",
+          "status": "not_checked",
+          "reason": "Field offset or virtual slot requires runtime / semantic validation"
+        },
+        {
+          "name": "CEntityIdentity::m_designerName (layout)",
+          "source": "server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json",
+          "status": "not_checked",
+          "reason": "Field offset or virtual slot requires runtime / semantic validation"
+        },
+        {
+          "name": "CNetworkGameServerBase::m_Clients (layout)",
+          "source": "server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json",
+          "status": "not_checked",
+          "reason": "Field offset or virtual slot requires runtime / semantic validation"
+        },
+        {
+          "name": "CBasePlayerController::FakeClientFlags (layout)",
+          "source": "server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json",
+          "status": "not_checked",
+          "reason": "Field offset or virtual slot requires runtime / semantic validation"
+        },
+        {
+          "name": "CServerSideClient::m_Name (layout)",
+          "source": "server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json",
+          "status": "not_checked",
+          "reason": "Field offset or virtual slot requires runtime / semantic validation"
+        },
+        {
+          "name": "CServerSideClient::m_nEntityIndex (layout)",
+          "source": "server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json",
+          "status": "not_checked",
+          "reason": "Field offset or virtual slot requires runtime / semantic validation"
+        },
+        {
+          "name": "CServerSideClient::m_NetChannel (layout)",
+          "source": "server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json",
+          "status": "not_checked",
+          "reason": "Field offset or virtual slot requires runtime / semantic validation"
+        },
+        {
+          "name": "CServerSideClient::m_nConnectionTypeFlags (layout)",
+          "source": "server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json",
+          "status": "not_checked",
+          "reason": "Field offset or virtual slot requires runtime / semantic validation"
+        },
+        {
+          "name": "CServerSideClient::m_bFakePlayer (layout)",
+          "source": "server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json",
+          "status": "not_checked",
+          "reason": "Field offset or virtual slot requires runtime / semantic validation"
+        },
+        {
+          "name": "CServerSideClient::m_UserID (layout)",
+          "source": "server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json",
+          "status": "not_checked",
+          "reason": "Field offset or virtual slot requires runtime / semantic validation"
+        },
+        {
+          "name": "CServerSideClient::m_SteamID (layout)",
+          "source": "server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json",
+          "status": "not_checked",
+          "reason": "Field offset or virtual slot requires runtime / semantic validation"
+        },
+        {
+          "name": "CServerSideClient::m_SteamIDMirror (layout)",
+          "source": "server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json",
+          "status": "not_checked",
+          "reason": "Field offset or virtual slot requires runtime / semantic validation"
+        },
+        {
+          "name": "CServerSideClient::m_bIsHLTV (layout)",
+          "source": "server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json",
+          "status": "not_checked",
+          "reason": "Field offset or virtual slot requires runtime / semantic validation"
+        },
+        {
+          "name": "Projectile physics signature",
+          "source": "server/plugins/DemoTracer/config/demotracer-native.json",
+          "status": "pass",
+          "matches": 1,
+          "reason": "One executable-section match; semantics not verified"
+        },
+        {
+          "name": "Server image fingerprint",
+          "source": "server/plugins/DemoTracer/config/demotracer-native.json",
+          "status": "pass",
+          "reason": "pe-image-v1 comparison with the pinned product profile"
+        },
+        {
+          "name": "Projectile entry",
+          "source": "server/plugins/DemoTracer/config/demotracer-native.json",
+          "status": "pass",
+          "reason": "Signature must resolve to the configured entry"
+        },
+        {
+          "name": "Projectile function body",
+          "source": "server/plugins/DemoTracer/config/demotracer-native.json",
+          "status": "pass",
+          "reason": "On-disk function body hash; loaded memory not inspected"
+        },
+        {
+          "name": "Projectile virtual references",
+          "source": "server/plugins/DemoTracer/config/demotracer-native.json",
+          "status": "pass",
+          "reason": "All six on-disk references must point to the configured entry"
+        },
+        {
+          "name": "BotRandomizer: writer",
+          "source": "server/runtime/BotRandomizer/BotRandomizerItems.cs",
+          "status": "pass",
+          "matches": 1,
+          "reason": "One executable-section match; semantics not verified"
+        },
+        {
+          "name": "BotRandomizer: itemViewDestructor",
+          "source": "server/runtime/BotRandomizer/BotRandomizerItems.cs",
+          "status": "pass",
+          "matches": 1,
+          "reason": "One executable-section match; semantics not verified"
+        },
+        {
+          "name": "BotRandomizer: itemViewConstructor",
+          "source": "server/runtime/BotRandomizer/BotRandomizerItems.cs",
+          "status": "pass",
+          "matches": 1,
+          "reason": "One executable-section match; semantics not verified"
+        },
+        {
+          "name": "Dynamic Schema",
+          "source": "server/runtime/dtr-controller/src/common/version_targets.cpp",
+          "status": "not_checked",
+          "reason": "39 required fields; live SchemaSystem resolution not checked"
+        }
+      ],
+      "summary": {
+        "pass": 31,
+        "fail": 0,
+        "not_checked": 34
+      },
+      "runtime": {
+        "status": "not_checked",
+        "reason": "No server startup or loaded-module inspection performed"
+      },
+      "replay": {
+        "status": "not_checked",
+        "reason": "No replay scenario executed"
+      }
+    },
+    {
+      "ref": "main",
+      "commit": "be9c22e0554e347eabe3e5eae2ffad82e1b28e77",
+      "version": "1.6.5",
+      "requirements": {
+        "css": "1.0.378",
+        "metamod": 1483
+      },
+      "checks": [
+        {
+          "name": "CCSBot::EquipBestWeapon",
+          "source": "server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json",
+          "status": "pass",
+          "matches": 1,
+          "reason": "One executable-section match; semantics not verified"
+        },
+        {
+          "name": "CCSBot::EquipPistol",
+          "source": "server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json",
+          "status": "pass",
+          "matches": 1,
+          "reason": "One executable-section match; semantics not verified"
+        },
+        {
+          "name": "CCSPlayer_WeaponServices::SelectItem",
+          "source": "server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json",
+          "status": "pass",
+          "matches": 1,
+          "reason": "One executable-section match; semantics not verified"
+        },
+        {
+          "name": "CCSPlayer_WeaponServices::GetSlot",
+          "source": "server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json",
+          "status": "pass",
+          "matches": 1,
+          "reason": "One executable-section match; semantics not verified"
+        },
+        {
+          "name": "CCSBot::Update",
+          "source": "server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json",
+          "status": "pass",
+          "matches": 1,
+          "reason": "One executable-section match; semantics not verified"
+        },
+        {
+          "name": "CCSBot::Upkeep",
+          "source": "server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json",
+          "status": "pass",
+          "matches": 1,
+          "reason": "One executable-section match; semantics not verified"
+        },
+        {
+          "name": "CCSBot::IsVisiblePos",
+          "source": "server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json",
+          "status": "pass",
+          "matches": 1,
+          "reason": "One executable-section match; semantics not verified"
+        },
+        {
+          "name": "CCSBot::IsVisiblePlayer",
+          "source": "server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json",
+          "status": "pass",
+          "matches": 1,
+          "reason": "One executable-section match; semantics not verified"
+        },
+        {
+          "name": "BuyState::OnUpdate",
+          "source": "server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json",
+          "status": "pass",
+          "matches": 1,
+          "reason": "One executable-section match; semantics not verified"
+        },
+        {
+          "name": "BuyState::InitialDelay (layout)",
+          "source": "server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json",
+          "status": "not_checked",
+          "reason": "Field offset or virtual slot requires runtime / semantic validation"
+        },
+        {
+          "name": "BuyState::DoneBuying (layout)",
+          "source": "server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json",
+          "status": "not_checked",
+          "reason": "Field offset or virtual slot requires runtime / semantic validation"
+        },
+        {
+          "name": "CCSBot::UpdateLookAngles",
+          "source": "server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json",
+          "status": "pass",
+          "matches": 1,
+          "reason": "One executable-section match; semantics not verified"
+        },
+        {
+          "name": "CCSPlayerPawn::SetEyeAngles",
+          "source": "server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json",
+          "status": "pass",
+          "matches": 1,
+          "reason": "One executable-section match; semantics not verified"
+        },
+        {
+          "name": "CBasePlayerPawn::GetEyeAngles",
+          "source": "server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json",
+          "status": "pass",
+          "matches": 1,
+          "reason": "One executable-section match; semantics not verified"
+        },
+        {
+          "name": "CCSBot::LadderStateUpdate",
+          "source": "server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json",
+          "status": "pass",
+          "matches": 1,
+          "reason": "One executable-section match; semantics not verified"
+        },
+        {
+          "name": "CCSBot::InvalidatePath",
+          "source": "server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json",
+          "status": "pass",
+          "matches": 1,
+          "reason": "One executable-section match; semantics not verified"
+        },
+        {
+          "name": "CBaseEntity::SetMoveType",
+          "source": "server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json",
+          "status": "pass",
+          "matches": 1,
+          "reason": "One executable-section match; semantics not verified"
+        },
+        {
+          "name": "CBaseEntity::SetAbsOrigin",
+          "source": "server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json",
+          "status": "pass",
+          "matches": 1,
+          "reason": "One executable-section match; semantics not verified"
+        },
+        {
+          "name": "CBaseEntity::SetAbsVelocity",
+          "source": "server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json",
+          "status": "pass",
+          "matches": 1,
+          "reason": "One executable-section match; semantics not verified"
+        },
+        {
+          "name": "CCSPlayer_MovementServices::ProcessMovement",
+          "source": "server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json",
+          "status": "pass",
+          "matches": 1,
+          "reason": "One executable-section match; semantics not verified"
+        },
+        {
+          "name": "CCSPlayer_MovementServices::PhysicsSimulate",
+          "source": "server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json",
+          "status": "pass",
+          "matches": 1,
+          "reason": "One executable-section match; semantics not verified"
+        },
+        {
+          "name": "CEntityIdentity::EHandle (layout)",
+          "source": "server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json",
+          "status": "not_checked",
+          "reason": "Field offset or virtual slot requires runtime / semantic validation"
+        },
+        {
+          "name": "CCSPlayer_MovementServices::Pawn (layout)",
+          "source": "server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json",
+          "status": "not_checked",
+          "reason": "Field offset or virtual slot requires runtime / semantic validation"
+        },
+        {
+          "name": "CMoveData::ForwardMove (layout)",
+          "source": "server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json",
+          "status": "not_checked",
+          "reason": "Field offset or virtual slot requires runtime / semantic validation"
+        },
+        {
+          "name": "CMoveData::SideMove (layout)",
+          "source": "server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json",
+          "status": "not_checked",
+          "reason": "Field offset or virtual slot requires runtime / semantic validation"
+        },
+        {
+          "name": "CMoveData::UpMove (layout)",
+          "source": "server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json",
+          "status": "not_checked",
+          "reason": "Field offset or virtual slot requires runtime / semantic validation"
+        },
+        {
+          "name": "CMoveData::Velocity (layout)",
+          "source": "server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json",
+          "status": "not_checked",
+          "reason": "Field offset or virtual slot requires runtime / semantic validation"
+        },
+        {
+          "name": "CMoveData::AbsOrigin (layout)",
+          "source": "server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json",
+          "status": "not_checked",
+          "reason": "Field offset or virtual slot requires runtime / semantic validation"
+        },
+        {
+          "name": "vtidx::PlayerRunCommand (layout)",
+          "source": "server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json",
+          "status": "not_checked",
+          "reason": "Field offset or virtual slot requires runtime / semantic validation"
+        },
+        {
+          "name": "vtidx::SetupMove (layout)",
+          "source": "server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json",
+          "status": "not_checked",
+          "reason": "Field offset or virtual slot requires runtime / semantic validation"
+        },
+        {
+          "name": "vtidx::FinishMove (layout)",
+          "source": "server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json",
+          "status": "not_checked",
+          "reason": "Field offset or virtual slot requires runtime / semantic validation"
+        },
+        {
+          "name": "GameResourceServiceServer::EntitySystem (layout)",
+          "source": "server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json",
+          "status": "not_checked",
+          "reason": "Field offset or virtual slot requires runtime / semantic validation"
+        },
+        {
+          "name": "CEntitySystem::IdentityChunks (layout)",
+          "source": "server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json",
+          "status": "not_checked",
+          "reason": "Field offset or virtual slot requires runtime / semantic validation"
+        },
+        {
+          "name": "CEntityIdentity::Size (layout)",
+          "source": "server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json",
+          "status": "not_checked",
+          "reason": "Field offset or virtual slot requires runtime / semantic validation"
+        },
+        {
+          "name": "UTIL_Remove",
+          "source": "server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json",
+          "status": "pass",
+          "matches": 1,
+          "reason": "One executable-section match; semantics not verified"
+        },
+        {
+          "name": "CCSBotManager::MaintainBotQuota",
+          "source": "server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json",
+          "status": "pass",
+          "matches": 1,
+          "reason": "One executable-section match; semantics not verified"
+        },
+        {
+          "name": "CCSPlayerController::HandleCommand_JoinTeam",
+          "source": "server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json",
+          "status": "pass",
+          "matches": 1,
+          "reason": "One executable-section match; semantics not verified"
+        },
+        {
+          "name": "CNetworkGameServer::PackEntities",
+          "source": "server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json",
+          "status": "pass",
+          "matches": 1,
+          "reason": "One executable-section match; semantics not verified"
+        },
+        {
+          "name": "CServerSideClient::SetName (layout)",
+          "source": "server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json",
+          "status": "not_checked",
+          "reason": "Field offset or virtual slot requires runtime / semantic validation"
+        },
+        {
+          "name": "CNetworkGameServerBase::UserInfoChanged (layout)",
+          "source": "server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json",
+          "status": "not_checked",
+          "reason": "Field offset or virtual slot requires runtime / semantic validation"
+        },
+        {
+          "name": "GameResourceServiceServer::m_pEntitySystem (layout)",
+          "source": "server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json",
+          "status": "not_checked",
+          "reason": "Field offset or virtual slot requires runtime / semantic validation"
+        },
+        {
+          "name": "CEntitySystem::m_EntityList (layout)",
+          "source": "server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json",
+          "status": "not_checked",
+          "reason": "Field offset or virtual slot requires runtime / semantic validation"
+        },
+        {
+          "name": "CEntityIdentity::Size (layout)",
+          "source": "server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json",
+          "status": "not_checked",
+          "reason": "Field offset or virtual slot requires runtime / semantic validation"
+        },
+        {
+          "name": "CEntityIdentity::m_pInstance (layout)",
+          "source": "server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json",
+          "status": "not_checked",
+          "reason": "Field offset or virtual slot requires runtime / semantic validation"
+        },
+        {
+          "name": "CEntityIdentity::m_designerName (layout)",
+          "source": "server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json",
+          "status": "not_checked",
+          "reason": "Field offset or virtual slot requires runtime / semantic validation"
+        },
+        {
+          "name": "CNetworkGameServerBase::m_Clients (layout)",
+          "source": "server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json",
+          "status": "not_checked",
+          "reason": "Field offset or virtual slot requires runtime / semantic validation"
+        },
+        {
+          "name": "CBasePlayerController::FakeClientFlags (layout)",
+          "source": "server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json",
+          "status": "not_checked",
+          "reason": "Field offset or virtual slot requires runtime / semantic validation"
+        },
+        {
+          "name": "CServerSideClient::m_Name (layout)",
+          "source": "server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json",
+          "status": "not_checked",
+          "reason": "Field offset or virtual slot requires runtime / semantic validation"
+        },
+        {
+          "name": "CServerSideClient::m_nEntityIndex (layout)",
+          "source": "server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json",
+          "status": "not_checked",
+          "reason": "Field offset or virtual slot requires runtime / semantic validation"
+        },
+        {
+          "name": "CServerSideClient::m_NetChannel (layout)",
+          "source": "server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json",
+          "status": "not_checked",
+          "reason": "Field offset or virtual slot requires runtime / semantic validation"
+        },
+        {
+          "name": "CServerSideClient::m_nConnectionTypeFlags (layout)",
+          "source": "server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json",
+          "status": "not_checked",
+          "reason": "Field offset or virtual slot requires runtime / semantic validation"
+        },
+        {
+          "name": "CServerSideClient::m_bFakePlayer (layout)",
+          "source": "server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json",
+          "status": "not_checked",
+          "reason": "Field offset or virtual slot requires runtime / semantic validation"
+        },
+        {
+          "name": "CServerSideClient::m_UserID (layout)",
+          "source": "server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json",
+          "status": "not_checked",
+          "reason": "Field offset or virtual slot requires runtime / semantic validation"
+        },
+        {
+          "name": "CServerSideClient::m_SteamID (layout)",
+          "source": "server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json",
+          "status": "not_checked",
+          "reason": "Field offset or virtual slot requires runtime / semantic validation"
+        },
+        {
+          "name": "CServerSideClient::m_SteamIDMirror (layout)",
+          "source": "server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json",
+          "status": "not_checked",
+          "reason": "Field offset or virtual slot requires runtime / semantic validation"
+        },
+        {
+          "name": "CServerSideClient::m_bIsHLTV (layout)",
+          "source": "server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json",
+          "status": "not_checked",
+          "reason": "Field offset or virtual slot requires runtime / semantic validation"
+        },
+        {
+          "name": "Projectile physics signature",
+          "source": "server/plugins/DemoTracer/config/demotracer-native.json",
+          "status": "pass",
+          "matches": 1,
+          "reason": "One executable-section match; semantics not verified"
+        },
+        {
+          "name": "Server image fingerprint",
+          "source": "server/plugins/DemoTracer/config/demotracer-native.json",
+          "status": "pass",
+          "reason": "pe-image-v1 comparison with the pinned product profile"
+        },
+        {
+          "name": "Projectile entry",
+          "source": "server/plugins/DemoTracer/config/demotracer-native.json",
+          "status": "pass",
+          "reason": "Signature must resolve to the configured entry"
+        },
+        {
+          "name": "Projectile function body",
+          "source": "server/plugins/DemoTracer/config/demotracer-native.json",
+          "status": "pass",
+          "reason": "On-disk function body hash; loaded memory not inspected"
+        },
+        {
+          "name": "Projectile virtual references",
+          "source": "server/plugins/DemoTracer/config/demotracer-native.json",
+          "status": "pass",
+          "reason": "All six on-disk references must point to the configured entry"
+        },
+        {
+          "name": "BotRandomizer: writer",
+          "source": "server/runtime/BotRandomizer/BotRandomizerItems.cs",
+          "status": "pass",
+          "matches": 1,
+          "reason": "One executable-section match; semantics not verified"
+        },
+        {
+          "name": "BotRandomizer: itemViewDestructor",
+          "source": "server/runtime/BotRandomizer/BotRandomizerItems.cs",
+          "status": "pass",
+          "matches": 1,
+          "reason": "One executable-section match; semantics not verified"
+        },
+        {
+          "name": "BotRandomizer: itemViewConstructor",
+          "source": "server/runtime/BotRandomizer/BotRandomizerItems.cs",
+          "status": "pass",
+          "matches": 1,
+          "reason": "One executable-section match; semantics not verified"
+        },
+        {
+          "name": "Dynamic Schema",
+          "source": "server/runtime/dtr-controller/src/common/version_targets.cpp",
+          "status": "not_checked",
+          "reason": "39 required fields; live SchemaSystem resolution not checked"
+        }
+      ],
+      "summary": {
+        "pass": 31,
+        "fail": 0,
+        "not_checked": 34
+      },
+      "runtime": {
+        "status": "not_checked",
+        "reason": "No server startup or loaded-module inspection performed"
+      },
+      "replay": {
+        "status": "not_checked",
+        "reason": "No replay scenario executed"
+      }
+    }
+  ]
+}
