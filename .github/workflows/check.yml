@@ -43,7 +43,7 @@ jobs:
           Invoke-WebRequest 'https://steamcdn-a.akamaihd.net/client/installer/steamcmd.zip' -OutFile "$steam.zip"
           Expand-Archive "$steam.zip" $steam
           & "$steam/steamcmd.exe" +login anonymous +app_info_update 1 +app_info_print 730 +quit *> "$steam/appinfo.txt"
-          if ($LASTEXITCODE -ne 0) { throw 'Steam app info query failed' }
+          if ($LASTEXITCODE -ne 0) { $code = $LASTEXITCODE; Get-Content "$steam/appinfo.txt" -Tail 60; throw "Steam app info query failed: $code" }
           "STEAMCMD=$steam" >> $env:GITHUB_ENV
           $env:APPINFO = "$steam/appinfo.txt"
           @'
@@ -121,7 +121,7 @@ jobs:
           $game = Join-Path $drive.Root "cs2-sig-$env:GITHUB_RUN_ID"
           New-Item -ItemType Directory $game | Out-Null
           & "$env:STEAMCMD/steamcmd.exe" +force_install_dir $game +login anonymous +app_update 730 validate +quit *> "$env:RUNNER_TEMP/cs2-install.log"
-          if ($LASTEXITCODE -ne 0) { throw 'Steam CS2 installation failed' }
+          if ($LASTEXITCODE -ne 0) { $code = $LASTEXITCODE; Get-Content "$env:RUNNER_TEMP/cs2-install.log" -Tail 60; throw "Steam CS2 installation failed: $code" }
           if (-not (Test-Path "$game/game/csgo/bin/win64/server.dll")) { throw 'Game server DLL missing' }
           $manifests = @("$game/steamapps/appmanifest_730.acf", "$env:STEAMCMD/steamapps/appmanifest_730.acf") | Where-Object { Test-Path $_ }
           if ($manifests.Count -ne 1) { throw 'Cannot identify installed Steam app manifest' }
