@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "checkedAt": "2026-10-29T10:38:13.604Z",
+  "checkedAt": "2026-10-29T10:54:35.338Z",
   "platform": "windows-x64",
-  "checkerVersion": "0.1.0",
+  "checkerVersion": "0.2.0",
   "game": {
     "patchVersion": "1.41.9.3",
     "serverVersion": "2000938",
@@ -29,6 +29,10 @@
     "engine2": {
       "sha256": "42e0549c7314321e1b69c8d60046efe94e0356f54d7a2fb79dd6b993e6e3658b",
       "fingerprint": "0113887bb3c16d1c3ac0806c489429ef4f9d9631b1d229f5b772fe8d98ec8ec6"
+    },
+    "schemasystem": {
+      "sha256": "6ea6c2e95360572d78352260f808e390bc24c9a4370184c067481f5b4d6e94c9",
+      "fingerprint": "55160c7ff00190f5c4cb2cf01994bd473bb9bd2a6b00faa87345a07b37ff3c95"
     }
   },
   "sources": [
@@ -453,16 +457,434 @@
           "reason": "One executable-section match; semantics not verified"
         },
         {
-          "name": "Dynamic Schema",
+          "name": "Schema: CCSPlayerController::m_bControllingBot",
+          "source": "server/plugins/DemoTracer/src/DemoTracer/Lifecycle/DemoTracerPlugin.cs",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 2272,
+          "classSize": 2744
+        },
+        {
+          "name": "Schema: CBot::m_pPlayer",
           "source": "server/runtime/dtr-controller/src/common/version_targets.cpp",
-          "status": "not_checked",
-          "reason": "39 required fields; live SchemaSystem resolution not checked"
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 24,
+          "classSize": 256
+        },
+        {
+          "name": "Schema: CCSBot::m_enemy",
+          "source": "server/runtime/dtr-controller/src/common/version_targets.cpp",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 23040,
+          "classSize": 24120
+        },
+        {
+          "name": "Schema: CCSBot::m_isEnemyVisible",
+          "source": "server/runtime/dtr-controller/src/common/version_targets.cpp",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 23044,
+          "classSize": 24120
+        },
+        {
+          "name": "Schema: CCSBot::m_visibleEnemyParts",
+          "source": "server/runtime/dtr-controller/src/common/version_targets.cpp",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 23045,
+          "classSize": 24120
+        },
+        {
+          "name": "Schema: CCSBot::m_lastSawEnemyTimestamp",
+          "source": "server/runtime/dtr-controller/src/common/version_targets.cpp",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 23060,
+          "classSize": 24120
+        },
+        {
+          "name": "Schema: CCSBot::m_firstSawEnemyTimestamp",
+          "source": "server/runtime/dtr-controller/src/common/version_targets.cpp",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 23064,
+          "classSize": 24120
+        },
+        {
+          "name": "Schema: CCSBot::m_currentEnemyAcquireTimestamp",
+          "source": "server/runtime/dtr-controller/src/common/version_targets.cpp",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 23068,
+          "classSize": 24120
+        },
+        {
+          "name": "Schema: CCSBot::m_isLastEnemyDead",
+          "source": "server/runtime/dtr-controller/src/common/version_targets.cpp",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 23080,
+          "classSize": 24120
+        },
+        {
+          "name": "Schema: CCSBot::m_nearbyEnemyCount",
+          "source": "server/runtime/dtr-controller/src/common/version_targets.cpp",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 23084,
+          "classSize": 24120
+        },
+        {
+          "name": "Schema: CEntityInstance::m_pEntity",
+          "source": "server/runtime/dtr-controller/src/common/version_targets.cpp",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 16,
+          "classSize": 48
+        },
+        {
+          "name": "Schema: CBaseEntity::m_lifeState",
+          "source": "server/runtime/dtr-controller/src/common/version_targets.cpp",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 728,
+          "classSize": 1192
+        },
+        {
+          "name": "Schema: CBaseEntity::m_MoveType",
+          "source": "server/runtime/dtr-controller/src/common/version_targets.cpp",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 755,
+          "classSize": 1192
+        },
+        {
+          "name": "Schema: CBaseEntity::m_nActualMoveType",
+          "source": "server/runtime/dtr-controller/src/common/version_targets.cpp",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 757,
+          "classSize": 1192
+        },
+        {
+          "name": "Schema: CBaseEntity::m_fFlags",
+          "source": "server/runtime/dtr-hider/src/plugin.cpp",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 904,
+          "classSize": 1192
+        },
+        {
+          "name": "Schema: CBaseEntity::m_vecAbsVelocity",
+          "source": "server/runtime/dtr-controller/src/common/version_targets.cpp",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 908,
+          "classSize": 1192
+        },
+        {
+          "name": "Schema: CBaseEntity::m_CBodyComponent",
+          "source": "server/runtime/dtr-controller/src/common/version_targets.cpp",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 48,
+          "classSize": 1192
+        },
+        {
+          "name": "Schema: CBodyComponent::m_pSceneNode",
+          "source": "server/runtime/dtr-controller/src/common/version_targets.cpp",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 8,
+          "classSize": 120
+        },
+        {
+          "name": "Schema: CGameSceneNode::m_vecAbsOrigin",
+          "source": "server/runtime/dtr-controller/src/common/version_targets.cpp",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 200,
+          "classSize": 272
+        },
+        {
+          "name": "Schema: CBasePlayerPawn::m_pWeaponServices",
+          "source": "server/runtime/dtr-controller/src/common/version_targets.cpp",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 2832,
+          "classSize": 3280
+        },
+        {
+          "name": "Schema: CBasePlayerPawn::m_pMovementServices",
+          "source": "server/runtime/dtr-controller/src/common/version_targets.cpp",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 2896,
+          "classSize": 3280
+        },
+        {
+          "name": "Schema: CBasePlayerPawn::m_pItemServices",
+          "source": "server/runtime/dtr-controller/src/common/version_targets.cpp",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 2840,
+          "classSize": 3280
+        },
+        {
+          "name": "Schema: CBasePlayerPawn::m_hController",
+          "source": "server/runtime/dtr-controller/src/common/version_targets.cpp",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 3224,
+          "classSize": 3280
+        },
+        {
+          "name": "Schema: CCSPlayerPawnBase::m_hOriginalController",
+          "source": "server/runtime/dtr-controller/src/common/version_targets.cpp",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 3604,
+          "classSize": 3616
+        },
+        {
+          "name": "Schema: CBasePlayerPawn::v_angle",
+          "source": "server/runtime/dtr-controller/src/common/version_targets.cpp",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 3016,
+          "classSize": 3280
+        },
+        {
+          "name": "Schema: CBasePlayerPawn::v_anglePrevious",
+          "source": "server/runtime/dtr-controller/src/common/version_targets.cpp",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 3028,
+          "classSize": 3280
+        },
+        {
+          "name": "Schema: CCSPlayerPawn::m_ArmorValue",
+          "source": "server/runtime/dtr-controller/src/common/version_targets.cpp",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 5396,
+          "classSize": 5584
+        },
+        {
+          "name": "Schema: CCSPlayer_ItemServices::m_bHasHelmet",
+          "source": "server/runtime/dtr-controller/src/common/version_targets.cpp",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 73,
+          "classSize": 80
+        },
+        {
+          "name": "Schema: CCSPlayer_ItemServices::m_bHasDefuser",
+          "source": "server/runtime/dtr-controller/src/common/version_targets.cpp",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 72,
+          "classSize": 80
+        },
+        {
+          "name": "Schema: CCSPlayerController::m_iPawnArmor",
+          "source": "server/runtime/dtr-controller/src/common/version_targets.cpp",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 2308,
+          "classSize": 2744
+        },
+        {
+          "name": "Schema: CCSPlayerController::m_bPawnHasHelmet",
+          "source": "server/runtime/dtr-controller/src/common/version_targets.cpp",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 2313,
+          "classSize": 2744
+        },
+        {
+          "name": "Schema: CCSPlayerController::m_bPawnHasDefuser",
+          "source": "server/runtime/dtr-controller/src/common/version_targets.cpp",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 2312,
+          "classSize": 2744
+        },
+        {
+          "name": "Schema: CPlayer_WeaponServices::m_hActiveWeapon",
+          "source": "server/runtime/dtr-controller/src/common/version_targets.cpp",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 96,
+          "classSize": 176
+        },
+        {
+          "name": "Schema: CPlayer_MovementServices::m_vecOldViewAngles",
+          "source": "server/runtime/dtr-controller/src/common/version_targets.cpp",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 576,
+          "classSize": 600
+        },
+        {
+          "name": "Schema: CCSPlayer_MovementServices::m_vecLadderNormal",
+          "source": "server/runtime/dtr-controller/src/common/version_targets.cpp",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 1016,
+          "classSize": 4064
+        },
+        {
+          "name": "Schema: CCSPlayer_MovementServices::m_bDucked",
+          "source": "server/runtime/dtr-controller/src/common/version_targets.cpp",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 1032,
+          "classSize": 4064
+        },
+        {
+          "name": "Schema: CCSPlayer_MovementServices::m_flDuckAmount",
+          "source": "server/runtime/dtr-controller/src/common/version_targets.cpp",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 1036,
+          "classSize": 4064
+        },
+        {
+          "name": "Schema: CCSPlayer_MovementServices::m_flDuckSpeed",
+          "source": "server/runtime/dtr-controller/src/common/version_targets.cpp",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 1040,
+          "classSize": 4064
+        },
+        {
+          "name": "Schema: CCSPlayer_MovementServices::m_bDesiresDuck",
+          "source": "server/runtime/dtr-controller/src/common/version_targets.cpp",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 1045,
+          "classSize": 4064
+        },
+        {
+          "name": "Schema: CCSPlayer_MovementServices::m_bDucking",
+          "source": "server/runtime/dtr-controller/src/common/version_targets.cpp",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 1046,
+          "classSize": 4064
+        },
+        {
+          "name": "Schema: CEconEntity::m_AttributeManager",
+          "source": "server/runtime/dtr-controller/src/common/version_targets.cpp",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 2648,
+          "classSize": 3760
+        },
+        {
+          "name": "Schema: CAttributeContainer::m_Item",
+          "source": "server/runtime/dtr-controller/src/common/version_targets.cpp",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 80,
+          "classSize": 1080
+        },
+        {
+          "name": "Schema: CEconItemView::m_iItemDefinitionIndex",
+          "source": "server/runtime/dtr-controller/src/common/version_targets.cpp",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 56,
+          "classSize": 1000
+        },
+        {
+          "name": "Schema: CPlayer_MovementServices::m_nButtons",
+          "source": "server/runtime/dtr-controller/src/common/version_targets.cpp",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 80,
+          "classSize": 600
+        },
+        {
+          "name": "Schema: CInButtonState::m_pButtonStates",
+          "source": "server/runtime/dtr-controller/src/common/version_targets.cpp",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 8,
+          "classSize": 32
+        },
+        {
+          "name": "Schema: CBasePlayerController::m_hPawn",
+          "source": "server/runtime/dtr-hider/src/plugin.cpp",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 1248,
+          "classSize": 2008
+        },
+        {
+          "name": "Schema: CCSPlayerPawnBase::m_flIdleTimeSinceLastAction",
+          "source": "server/runtime/dtr-hider/src/plugin.cpp",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 3580,
+          "classSize": 3616
+        },
+        {
+          "name": "Schema: CCSPlayerController::m_hPlayerPawn",
+          "source": "server/runtime/dtr-hider/src/plugin.cpp",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 2284,
+          "classSize": 2744
+        },
+        {
+          "name": "Schema: CCSPlayerController::m_szCrosshairCodes",
+          "source": "server/runtime/dtr-hider/src/plugin.cpp",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 2072,
+          "classSize": 2744
+        },
+        {
+          "name": "Schema: CCSPlayerController::m_iPing",
+          "source": "server/runtime/dtr-hider/src/plugin.cpp",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 2056,
+          "classSize": 2744
+        },
+        {
+          "name": "Schema: CBaseEntity::m_iTeamNum",
+          "source": "server/runtime/dtr-hider/src/plugin.cpp",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 836,
+          "classSize": 1192
+        },
+        {
+          "name": "Schema: CCSPlayerController_InGameMoneyServices::m_iAccount",
+          "source": "server/plugins/DemoTracer/src/DemoTracer/Playback/Inventory/DemoTracerReplayLoadout.cs",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 72,
+          "classSize": 88
+        },
+        {
+          "name": "Schema: CPlayerControllerComponent::__m_pChainEntity",
+          "source": "server/plugins/DemoTracer/src/DemoTracer/Playback/Inventory/DemoTracerReplayLoadout.cs",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 8,
+          "classSize": 64
         }
       ],
       "summary": {
-        "pass": 27,
+        "pass": 80,
         "fail": 4,
-        "not_checked": 34
+        "not_checked": 33
       }
     },
     {
@@ -886,16 +1308,434 @@
           "reason": "One executable-section match; semantics not verified"
         },
         {
-          "name": "Dynamic Schema",
+          "name": "Schema: CCSPlayerController::m_bControllingBot",
+          "source": "server/plugins/DemoTracer/src/DemoTracer/Lifecycle/DemoTracerPlugin.cs",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 2272,
+          "classSize": 2744
+        },
+        {
+          "name": "Schema: CBot::m_pPlayer",
           "source": "server/runtime/dtr-controller/src/common/version_targets.cpp",
-          "status": "not_checked",
-          "reason": "39 required fields; live SchemaSystem resolution not checked"
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 24,
+          "classSize": 256
+        },
+        {
+          "name": "Schema: CCSBot::m_enemy",
+          "source": "server/runtime/dtr-controller/src/common/version_targets.cpp",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 23040,
+          "classSize": 24120
+        },
+        {
+          "name": "Schema: CCSBot::m_isEnemyVisible",
+          "source": "server/runtime/dtr-controller/src/common/version_targets.cpp",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 23044,
+          "classSize": 24120
+        },
+        {
+          "name": "Schema: CCSBot::m_visibleEnemyParts",
+          "source": "server/runtime/dtr-controller/src/common/version_targets.cpp",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 23045,
+          "classSize": 24120
+        },
+        {
+          "name": "Schema: CCSBot::m_lastSawEnemyTimestamp",
+          "source": "server/runtime/dtr-controller/src/common/version_targets.cpp",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 23060,
+          "classSize": 24120
+        },
+        {
+          "name": "Schema: CCSBot::m_firstSawEnemyTimestamp",
+          "source": "server/runtime/dtr-controller/src/common/version_targets.cpp",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 23064,
+          "classSize": 24120
+        },
+        {
+          "name": "Schema: CCSBot::m_currentEnemyAcquireTimestamp",
+          "source": "server/runtime/dtr-controller/src/common/version_targets.cpp",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 23068,
+          "classSize": 24120
+        },
+        {
+          "name": "Schema: CCSBot::m_isLastEnemyDead",
+          "source": "server/runtime/dtr-controller/src/common/version_targets.cpp",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 23080,
+          "classSize": 24120
+        },
+        {
+          "name": "Schema: CCSBot::m_nearbyEnemyCount",
+          "source": "server/runtime/dtr-controller/src/common/version_targets.cpp",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 23084,
+          "classSize": 24120
+        },
+        {
+          "name": "Schema: CEntityInstance::m_pEntity",
+          "source": "server/runtime/dtr-controller/src/common/version_targets.cpp",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 16,
+          "classSize": 48
+        },
+        {
+          "name": "Schema: CBaseEntity::m_lifeState",
+          "source": "server/runtime/dtr-controller/src/common/version_targets.cpp",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 728,
+          "classSize": 1192
+        },
+        {
+          "name": "Schema: CBaseEntity::m_MoveType",
+          "source": "server/runtime/dtr-controller/src/common/version_targets.cpp",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 755,
+          "classSize": 1192
+        },
+        {
+          "name": "Schema: CBaseEntity::m_nActualMoveType",
+          "source": "server/runtime/dtr-controller/src/common/version_targets.cpp",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 757,
+          "classSize": 1192
+        },
+        {
+          "name": "Schema: CBaseEntity::m_fFlags",
+          "source": "server/runtime/dtr-hider/src/plugin.cpp",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 904,
+          "classSize": 1192
+        },
+        {
+          "name": "Schema: CBaseEntity::m_vecAbsVelocity",
+          "source": "server/runtime/dtr-controller/src/common/version_targets.cpp",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 908,
+          "classSize": 1192
+        },
+        {
+          "name": "Schema: CBaseEntity::m_CBodyComponent",
+          "source": "server/runtime/dtr-controller/src/common/version_targets.cpp",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 48,
+          "classSize": 1192
+        },
+        {
+          "name": "Schema: CBodyComponent::m_pSceneNode",
+          "source": "server/runtime/dtr-controller/src/common/version_targets.cpp",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 8,
+          "classSize": 120
+        },
+        {
+          "name": "Schema: CGameSceneNode::m_vecAbsOrigin",
+          "source": "server/runtime/dtr-controller/src/common/version_targets.cpp",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 200,
+          "classSize": 272
+        },
+        {
+          "name": "Schema: CBasePlayerPawn::m_pWeaponServices",
+          "source": "server/runtime/dtr-controller/src/common/version_targets.cpp",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 2832,
+          "classSize": 3280
+        },
+        {
+          "name": "Schema: CBasePlayerPawn::m_pMovementServices",
+          "source": "server/runtime/dtr-controller/src/common/version_targets.cpp",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 2896,
+          "classSize": 3280
+        },
+        {
+          "name": "Schema: CBasePlayerPawn::m_pItemServices",
+          "source": "server/runtime/dtr-controller/src/common/version_targets.cpp",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 2840,
+          "classSize": 3280
+        },
+        {
+          "name": "Schema: CBasePlayerPawn::m_hController",
+          "source": "server/runtime/dtr-controller/src/common/version_targets.cpp",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 3224,
+          "classSize": 3280
+        },
+        {
+          "name": "Schema: CCSPlayerPawnBase::m_hOriginalController",
+          "source": "server/runtime/dtr-controller/src/common/version_targets.cpp",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 3604,
+          "classSize": 3616
+        },
+        {
+          "name": "Schema: CBasePlayerPawn::v_angle",
+          "source": "server/runtime/dtr-controller/src/common/version_targets.cpp",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 3016,
+          "classSize": 3280
+        },
+        {
+          "name": "Schema: CBasePlayerPawn::v_anglePrevious",
+          "source": "server/runtime/dtr-controller/src/common/version_targets.cpp",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 3028,
+          "classSize": 3280
+        },
+        {
+          "name": "Schema: CCSPlayerPawn::m_ArmorValue",
+          "source": "server/runtime/dtr-controller/src/common/version_targets.cpp",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 5396,
+          "classSize": 5584
+        },
+        {
+          "name": "Schema: CCSPlayer_ItemServices::m_bHasHelmet",
+          "source": "server/runtime/dtr-controller/src/common/version_targets.cpp",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 73,
+          "classSize": 80
+        },
+        {
+          "name": "Schema: CCSPlayer_ItemServices::m_bHasDefuser",
+          "source": "server/runtime/dtr-controller/src/common/version_targets.cpp",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 72,
+          "classSize": 80
+        },
+        {
+          "name": "Schema: CCSPlayerController::m_iPawnArmor",
+          "source": "server/runtime/dtr-controller/src/common/version_targets.cpp",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 2308,
+          "classSize": 2744
+        },
+        {
+          "name": "Schema: CCSPlayerController::m_bPawnHasHelmet",
+          "source": "server/runtime/dtr-controller/src/common/version_targets.cpp",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 2313,
+          "classSize": 2744
+        },
+        {
+          "name": "Schema: CCSPlayerController::m_bPawnHasDefuser",
+          "source": "server/runtime/dtr-controller/src/common/version_targets.cpp",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 2312,
+          "classSize": 2744
+        },
+        {
+          "name": "Schema: CPlayer_WeaponServices::m_hActiveWeapon",
+          "source": "server/runtime/dtr-controller/src/common/version_targets.cpp",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 96,
+          "classSize": 176
+        },
+        {
+          "name": "Schema: CPlayer_MovementServices::m_vecOldViewAngles",
+          "source": "server/runtime/dtr-controller/src/common/version_targets.cpp",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 576,
+          "classSize": 600
+        },
+        {
+          "name": "Schema: CCSPlayer_MovementServices::m_vecLadderNormal",
+          "source": "server/runtime/dtr-controller/src/common/version_targets.cpp",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 1016,
+          "classSize": 4064
+        },
+        {
+          "name": "Schema: CCSPlayer_MovementServices::m_bDucked",
+          "source": "server/runtime/dtr-controller/src/common/version_targets.cpp",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 1032,
+          "classSize": 4064
+        },
+        {
+          "name": "Schema: CCSPlayer_MovementServices::m_flDuckAmount",
+          "source": "server/runtime/dtr-controller/src/common/version_targets.cpp",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 1036,
+          "classSize": 4064
+        },
+        {
+          "name": "Schema: CCSPlayer_MovementServices::m_flDuckSpeed",
+          "source": "server/runtime/dtr-controller/src/common/version_targets.cpp",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 1040,
+          "classSize": 4064
+        },
+        {
+          "name": "Schema: CCSPlayer_MovementServices::m_bDesiresDuck",
+          "source": "server/runtime/dtr-controller/src/common/version_targets.cpp",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 1045,
+          "classSize": 4064
+        },
+        {
+          "name": "Schema: CCSPlayer_MovementServices::m_bDucking",
+          "source": "server/runtime/dtr-controller/src/common/version_targets.cpp",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 1046,
+          "classSize": 4064
+        },
+        {
+          "name": "Schema: CEconEntity::m_AttributeManager",
+          "source": "server/runtime/dtr-controller/src/common/version_targets.cpp",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 2648,
+          "classSize": 3760
+        },
+        {
+          "name": "Schema: CAttributeContainer::m_Item",
+          "source": "server/runtime/dtr-controller/src/common/version_targets.cpp",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 80,
+          "classSize": 1080
+        },
+        {
+          "name": "Schema: CEconItemView::m_iItemDefinitionIndex",
+          "source": "server/runtime/dtr-controller/src/common/version_targets.cpp",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 56,
+          "classSize": 1000
+        },
+        {
+          "name": "Schema: CPlayer_MovementServices::m_nButtons",
+          "source": "server/runtime/dtr-controller/src/common/version_targets.cpp",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 80,
+          "classSize": 600
+        },
+        {
+          "name": "Schema: CInButtonState::m_pButtonStates",
+          "source": "server/runtime/dtr-controller/src/common/version_targets.cpp",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 8,
+          "classSize": 32
+        },
+        {
+          "name": "Schema: CBasePlayerController::m_hPawn",
+          "source": "server/runtime/dtr-hider/src/plugin.cpp",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 1248,
+          "classSize": 2008
+        },
+        {
+          "name": "Schema: CCSPlayerPawnBase::m_flIdleTimeSinceLastAction",
+          "source": "server/runtime/dtr-hider/src/plugin.cpp",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 3580,
+          "classSize": 3616
+        },
+        {
+          "name": "Schema: CCSPlayerController::m_hPlayerPawn",
+          "source": "server/runtime/dtr-hider/src/plugin.cpp",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 2284,
+          "classSize": 2744
+        },
+        {
+          "name": "Schema: CCSPlayerController::m_szCrosshairCodes",
+          "source": "server/runtime/dtr-hider/src/plugin.cpp",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 2072,
+          "classSize": 2744
+        },
+        {
+          "name": "Schema: CCSPlayerController::m_iPing",
+          "source": "server/runtime/dtr-hider/src/plugin.cpp",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 2056,
+          "classSize": 2744
+        },
+        {
+          "name": "Schema: CBaseEntity::m_iTeamNum",
+          "source": "server/runtime/dtr-hider/src/plugin.cpp",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 836,
+          "classSize": 1192
+        },
+        {
+          "name": "Schema: CCSPlayerController_InGameMoneyServices::m_iAccount",
+          "source": "server/plugins/DemoTracer/src/DemoTracer/Playback/Inventory/DemoTracerReplayLoadout.cs",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 72,
+          "classSize": 88
+        },
+        {
+          "name": "Schema: CPlayerControllerComponent::__m_pChainEntity",
+          "source": "server/plugins/DemoTracer/src/DemoTracer/Playback/Inventory/DemoTracerReplayLoadout.cs",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 8,
+          "classSize": 64
         }
       ],
       "summary": {
-        "pass": 31,
+        "pass": 84,
         "fail": 0,
-        "not_checked": 34
+        "not_checked": 33
       }
     },
     {
@@ -1319,17 +2159,444 @@
           "reason": "One executable-section match; semantics not verified"
         },
         {
-          "name": "Dynamic Schema",
+          "name": "Schema: CCSPlayerController::m_bControllingBot",
+          "source": "server/plugins/DemoTracer/src/DemoTracer/Lifecycle/DemoTracerPlugin.cs",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 2272,
+          "classSize": 2744
+        },
+        {
+          "name": "Schema: CBot::m_pPlayer",
           "source": "server/runtime/dtr-controller/src/common/version_targets.cpp",
-          "status": "not_checked",
-          "reason": "39 required fields; live SchemaSystem resolution not checked"
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 24,
+          "classSize": 256
+        },
+        {
+          "name": "Schema: CCSBot::m_enemy",
+          "source": "server/runtime/dtr-controller/src/common/version_targets.cpp",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 23040,
+          "classSize": 24120
+        },
+        {
+          "name": "Schema: CCSBot::m_isEnemyVisible",
+          "source": "server/runtime/dtr-controller/src/common/version_targets.cpp",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 23044,
+          "classSize": 24120
+        },
+        {
+          "name": "Schema: CCSBot::m_visibleEnemyParts",
+          "source": "server/runtime/dtr-controller/src/common/version_targets.cpp",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 23045,
+          "classSize": 24120
+        },
+        {
+          "name": "Schema: CCSBot::m_lastSawEnemyTimestamp",
+          "source": "server/runtime/dtr-controller/src/common/version_targets.cpp",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 23060,
+          "classSize": 24120
+        },
+        {
+          "name": "Schema: CCSBot::m_firstSawEnemyTimestamp",
+          "source": "server/runtime/dtr-controller/src/common/version_targets.cpp",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 23064,
+          "classSize": 24120
+        },
+        {
+          "name": "Schema: CCSBot::m_currentEnemyAcquireTimestamp",
+          "source": "server/runtime/dtr-controller/src/common/version_targets.cpp",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 23068,
+          "classSize": 24120
+        },
+        {
+          "name": "Schema: CCSBot::m_isLastEnemyDead",
+          "source": "server/runtime/dtr-controller/src/common/version_targets.cpp",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 23080,
+          "classSize": 24120
+        },
+        {
+          "name": "Schema: CCSBot::m_nearbyEnemyCount",
+          "source": "server/runtime/dtr-controller/src/common/version_targets.cpp",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 23084,
+          "classSize": 24120
+        },
+        {
+          "name": "Schema: CEntityInstance::m_pEntity",
+          "source": "server/runtime/dtr-controller/src/common/version_targets.cpp",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 16,
+          "classSize": 48
+        },
+        {
+          "name": "Schema: CBaseEntity::m_lifeState",
+          "source": "server/runtime/dtr-controller/src/common/version_targets.cpp",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 728,
+          "classSize": 1192
+        },
+        {
+          "name": "Schema: CBaseEntity::m_MoveType",
+          "source": "server/runtime/dtr-controller/src/common/version_targets.cpp",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 755,
+          "classSize": 1192
+        },
+        {
+          "name": "Schema: CBaseEntity::m_nActualMoveType",
+          "source": "server/runtime/dtr-controller/src/common/version_targets.cpp",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 757,
+          "classSize": 1192
+        },
+        {
+          "name": "Schema: CBaseEntity::m_fFlags",
+          "source": "server/runtime/dtr-hider/src/plugin.cpp",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 904,
+          "classSize": 1192
+        },
+        {
+          "name": "Schema: CBaseEntity::m_vecAbsVelocity",
+          "source": "server/runtime/dtr-controller/src/common/version_targets.cpp",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 908,
+          "classSize": 1192
+        },
+        {
+          "name": "Schema: CBaseEntity::m_CBodyComponent",
+          "source": "server/runtime/dtr-controller/src/common/version_targets.cpp",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 48,
+          "classSize": 1192
+        },
+        {
+          "name": "Schema: CBodyComponent::m_pSceneNode",
+          "source": "server/runtime/dtr-controller/src/common/version_targets.cpp",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 8,
+          "classSize": 120
+        },
+        {
+          "name": "Schema: CGameSceneNode::m_vecAbsOrigin",
+          "source": "server/runtime/dtr-controller/src/common/version_targets.cpp",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 200,
+          "classSize": 272
+        },
+        {
+          "name": "Schema: CBasePlayerPawn::m_pWeaponServices",
+          "source": "server/runtime/dtr-controller/src/common/version_targets.cpp",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 2832,
+          "classSize": 3280
+        },
+        {
+          "name": "Schema: CBasePlayerPawn::m_pMovementServices",
+          "source": "server/runtime/dtr-controller/src/common/version_targets.cpp",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 2896,
+          "classSize": 3280
+        },
+        {
+          "name": "Schema: CBasePlayerPawn::m_pItemServices",
+          "source": "server/runtime/dtr-controller/src/common/version_targets.cpp",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 2840,
+          "classSize": 3280
+        },
+        {
+          "name": "Schema: CBasePlayerPawn::m_hController",
+          "source": "server/runtime/dtr-controller/src/common/version_targets.cpp",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 3224,
+          "classSize": 3280
+        },
+        {
+          "name": "Schema: CCSPlayerPawnBase::m_hOriginalController",
+          "source": "server/runtime/dtr-controller/src/common/version_targets.cpp",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 3604,
+          "classSize": 3616
+        },
+        {
+          "name": "Schema: CBasePlayerPawn::v_angle",
+          "source": "server/runtime/dtr-controller/src/common/version_targets.cpp",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 3016,
+          "classSize": 3280
+        },
+        {
+          "name": "Schema: CBasePlayerPawn::v_anglePrevious",
+          "source": "server/runtime/dtr-controller/src/common/version_targets.cpp",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 3028,
+          "classSize": 3280
+        },
+        {
+          "name": "Schema: CCSPlayerPawn::m_ArmorValue",
+          "source": "server/runtime/dtr-controller/src/common/version_targets.cpp",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 5396,
+          "classSize": 5584
+        },
+        {
+          "name": "Schema: CCSPlayer_ItemServices::m_bHasHelmet",
+          "source": "server/runtime/dtr-controller/src/common/version_targets.cpp",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 73,
+          "classSize": 80
+        },
+        {
+          "name": "Schema: CCSPlayer_ItemServices::m_bHasDefuser",
+          "source": "server/runtime/dtr-controller/src/common/version_targets.cpp",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 72,
+          "classSize": 80
+        },
+        {
+          "name": "Schema: CCSPlayerController::m_iPawnArmor",
+          "source": "server/runtime/dtr-controller/src/common/version_targets.cpp",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 2308,
+          "classSize": 2744
+        },
+        {
+          "name": "Schema: CCSPlayerController::m_bPawnHasHelmet",
+          "source": "server/runtime/dtr-controller/src/common/version_targets.cpp",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 2313,
+          "classSize": 2744
+        },
+        {
+          "name": "Schema: CCSPlayerController::m_bPawnHasDefuser",
+          "source": "server/runtime/dtr-controller/src/common/version_targets.cpp",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 2312,
+          "classSize": 2744
+        },
+        {
+          "name": "Schema: CPlayer_WeaponServices::m_hActiveWeapon",
+          "source": "server/runtime/dtr-controller/src/common/version_targets.cpp",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 96,
+          "classSize": 176
+        },
+        {
+          "name": "Schema: CPlayer_MovementServices::m_vecOldViewAngles",
+          "source": "server/runtime/dtr-controller/src/common/version_targets.cpp",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 576,
+          "classSize": 600
+        },
+        {
+          "name": "Schema: CCSPlayer_MovementServices::m_vecLadderNormal",
+          "source": "server/runtime/dtr-controller/src/common/version_targets.cpp",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 1016,
+          "classSize": 4064
+        },
+        {
+          "name": "Schema: CCSPlayer_MovementServices::m_bDucked",
+          "source": "server/runtime/dtr-controller/src/common/version_targets.cpp",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 1032,
+          "classSize": 4064
+        },
+        {
+          "name": "Schema: CCSPlayer_MovementServices::m_flDuckAmount",
+          "source": "server/runtime/dtr-controller/src/common/version_targets.cpp",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 1036,
+          "classSize": 4064
+        },
+        {
+          "name": "Schema: CCSPlayer_MovementServices::m_flDuckSpeed",
+          "source": "server/runtime/dtr-controller/src/common/version_targets.cpp",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 1040,
+          "classSize": 4064
+        },
+        {
+          "name": "Schema: CCSPlayer_MovementServices::m_bDesiresDuck",
+          "source": "server/runtime/dtr-controller/src/common/version_targets.cpp",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 1045,
+          "classSize": 4064
+        },
+        {
+          "name": "Schema: CCSPlayer_MovementServices::m_bDucking",
+          "source": "server/runtime/dtr-controller/src/common/version_targets.cpp",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 1046,
+          "classSize": 4064
+        },
+        {
+          "name": "Schema: CEconEntity::m_AttributeManager",
+          "source": "server/runtime/dtr-controller/src/common/version_targets.cpp",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 2648,
+          "classSize": 3760
+        },
+        {
+          "name": "Schema: CAttributeContainer::m_Item",
+          "source": "server/runtime/dtr-controller/src/common/version_targets.cpp",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 80,
+          "classSize": 1080
+        },
+        {
+          "name": "Schema: CEconItemView::m_iItemDefinitionIndex",
+          "source": "server/runtime/dtr-controller/src/common/version_targets.cpp",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 56,
+          "classSize": 1000
+        },
+        {
+          "name": "Schema: CPlayer_MovementServices::m_nButtons",
+          "source": "server/runtime/dtr-controller/src/common/version_targets.cpp",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 80,
+          "classSize": 600
+        },
+        {
+          "name": "Schema: CInButtonState::m_pButtonStates",
+          "source": "server/runtime/dtr-controller/src/common/version_targets.cpp",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 8,
+          "classSize": 32
+        },
+        {
+          "name": "Schema: CBasePlayerController::m_hPawn",
+          "source": "server/runtime/dtr-hider/src/plugin.cpp",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 1248,
+          "classSize": 2008
+        },
+        {
+          "name": "Schema: CCSPlayerPawnBase::m_flIdleTimeSinceLastAction",
+          "source": "server/runtime/dtr-hider/src/plugin.cpp",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 3580,
+          "classSize": 3616
+        },
+        {
+          "name": "Schema: CCSPlayerController::m_hPlayerPawn",
+          "source": "server/runtime/dtr-hider/src/plugin.cpp",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 2284,
+          "classSize": 2744
+        },
+        {
+          "name": "Schema: CCSPlayerController::m_szCrosshairCodes",
+          "source": "server/runtime/dtr-hider/src/plugin.cpp",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 2072,
+          "classSize": 2744
+        },
+        {
+          "name": "Schema: CCSPlayerController::m_iPing",
+          "source": "server/runtime/dtr-hider/src/plugin.cpp",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 2056,
+          "classSize": 2744
+        },
+        {
+          "name": "Schema: CBaseEntity::m_iTeamNum",
+          "source": "server/runtime/dtr-hider/src/plugin.cpp",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 836,
+          "classSize": 1192
+        },
+        {
+          "name": "Schema: CCSPlayerController_InGameMoneyServices::m_iAccount",
+          "source": "server/plugins/DemoTracer/src/DemoTracer/Playback/Inventory/DemoTracerReplayLoadout.cs",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 72,
+          "classSize": 88
+        },
+        {
+          "name": "Schema: CPlayerControllerComponent::__m_pChainEntity",
+          "source": "server/plugins/DemoTracer/src/DemoTracer/Playback/Inventory/DemoTracerReplayLoadout.cs",
+          "status": "pass",
+          "reason": "Field exists; offset within class size",
+          "offset": 8,
+          "classSize": 64
         }
       ],
       "summary": {
-        "pass": 31,
+        "pass": 84,
         "fail": 0,
-        "not_checked": 34
+        "not_checked": 33
       }
     }
-  ]
+  ],
+  "schema": {
+    "capturedAt": "2026-10-29T10:53:48.7244105Z",
+    "provider": "SchemaSystem_001 targeted query",
+    "modules": {
+      "engine2": "42e0549c7314321e1b69c8d60046efe94e0356f54d7a2fb79dd6b993e6e3658b",
+      "server": "3788afaa2dbce98a7b2fa1e15b6b1a304759dd5b0f05802268952341b40777c4",
+      "schemasystem": "6ea6c2e95360572d78352260f808e390bc24c9a4370184c067481f5b4d6e94c9"
+    }
+  }
 }

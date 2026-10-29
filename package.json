@@ -1,9 +1,14 @@
 {
   "name": "cs2-demotracer-sig",
   "private": true,
-  "version": "0.1.0",
+  "version": "0.2.0",
   "type": "module",
   "license": "AGPL-3.0-only",
-  "engines": { "node": ">=22" },
-  "scripts": { "test": "node --test", "check": "node src/check.mjs" }
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "test": "node --test",
+    "check": "node src/check.mjs"
+  }
 }
