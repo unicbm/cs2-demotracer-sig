@@ -125,7 +125,7 @@ jobs:
           & "$env:STEAMCMD/steamcmd.exe" +force_install_dir $game +login anonymous +app_update 730 validate +quit *> "$env:RUNNER_TEMP/cs2-install.log"
           if ($LASTEXITCODE -ne 0) { $code = $LASTEXITCODE; Get-Content "$env:RUNNER_TEMP/cs2-install.log" -Tail 60; throw "Steam CS2 installation failed: $code" }
           if (-not (Test-Path "$game/game/csgo/bin/win64/server.dll")) { throw 'Game server DLL missing' }
-          $manifests = @("$game/steamapps/appmanifest_730.acf", "$env:STEAMCMD/steamapps/appmanifest_730.acf") | Where-Object { Test-Path $_ }
+          $manifests = @(@("$game/steamapps/appmanifest_730.acf", "$env:STEAMCMD/steamapps/appmanifest_730.acf") | Where-Object { Test-Path $_ })
           if ($manifests.Count -ne 1) { throw 'Cannot identify installed Steam app manifest' }
           Invoke-WebRequest $env:CSS_URL -OutFile "$env:RUNNER_TEMP/css.zip"
           Invoke-WebRequest "https://mms.alliedmods.net/mmsdrop/2.0/$env:MM_PACKAGE" -OutFile "$env:RUNNER_TEMP/mm.zip"
