@@ -42,6 +42,8 @@ jobs:
           New-Item -ItemType Directory -Force $steam | Out-Null
           Invoke-WebRequest 'https://steamcdn-a.akamaihd.net/client/installer/steamcmd.zip' -OutFile "$steam.zip"
           Expand-Archive "$steam.zip" $steam
+          & "$steam/steamcmd.exe" +quit *> "$steam/bootstrap.txt"
+          if ($LASTEXITCODE -notin @(0, 7)) { $code = $LASTEXITCODE; Get-Content "$steam/bootstrap.txt" -Tail 60; throw "Steam bootstrap failed: $code" }
           & "$steam/steamcmd.exe" +login anonymous +app_info_update 1 +app_info_print 730 +quit *> "$steam/appinfo.txt"
           if ($LASTEXITCODE -ne 0) { $code = $LASTEXITCODE; Get-Content "$steam/appinfo.txt" -Tail 60; throw "Steam app info query failed: $code" }
           "STEAMCMD=$steam" >> $env:GITHUB_ENV
