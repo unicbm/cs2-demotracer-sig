@@ -1,0 +1,115 @@
+name: Check Sig and Schema
+on:
+  workflow_dispatch:
+    inputs:
+      game_dir:
+        description: CS2 installation root on the Windows runner
+        required: true
+        type: string
+      refs:
+        description: Product refs, comma-separated; empty means latest release and main
+        type: string
+permissions:
+  contents: write
+concurrency:
+  group: sig-schema
+  cancel-in-progress: false
+jobs:
+  check:
+    runs-on: [self-hosted, Windows, X64]
+    timeout-minutes: 15
+    defaults:
+      run:
+        shell: pwsh
+    steps:
+      - uses: actions/checkout@v7
+      - name: Checkout validated checker
+        uses: actions/checkout@v7
+        with:
+          ref: 728309f1059dc636dd4c03c2e94c31118be00d7e
+          path: .checker
+      - name: Checkout Schema SDK
+        uses: actions/checkout@v7
+        with:
+          repository: alliedmodders/hl2sdk
+          ref: 5f891c9026230cce0fc0a3fc4b5fef1c467a1385
+          path: .sdk
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+      - uses: actions/setup-dotnet@v6
+        with:
+          dotnet-version: 10.0.x
+      - name: Build and test checker
+        working-directory: .checker
+        run: |
+          node --test
+          if ($LASTEXITCODE -ne 0) { throw 'Checker tests failed' }
+          dotnet build probe/SchemaProbe.csproj -c Release
+          if ($LASTEXITCODE -ne 0) { throw 'Probe build failed' }
+          cmake -S probe/native -B probe/native/build -A x64 "-DHL2SDK=$env:GITHUB_WORKSPACE/.sdk"
+          if ($LASTEXITCODE -ne 0) { throw 'Probe configuration failed' }
+          cmake --build probe/native/build --config Release
+          if ($LASTEXITCODE -ne 0) { throw 'Native probe build failed' }
+      - name: Check game signatures and live Schema
+        working-directory: .checker
+        env:
+          GAME_DIR: ${{ inputs.game_dir }}
+          SOURCE_REFS: ${{ inputs.refs }}
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          $checkArgs = @('src/check.mjs', '--game-dir', $env:GAME_DIR)
+          if ($env:SOURCE_REFS) { $checkArgs += @('--refs', $env:SOURCE_REFS) }
+          node @checkArgs --prepare-schema
+          if ($LASTEXITCODE -ne 0) { throw 'Schema inventory failed' }
+          ./src/collect-schema.ps1 -GameDir $env:GAME_DIR
+          node @checkArgs
+          if ($LASTEXITCODE -notin @(0, 1)) { throw 'Check did not complete' }
+          exit 0
+      - name: Render README
+        shell: bash
+        env:
+          RESULT: .checker/reports/latest.json
+          README: README.md
+        run: |
+          node --input-type=module <<'JS'
+          import {readFileSync,writeFileSync} from 'node:fs';
+          const report=JSON.parse(readFileSync(process.env.RESULT,'utf8'));
+          const sources=report.sources;
+          const escape=s=>String(s).replaceAll('|','\\|');
+          const state=c=>!c?'—':({pass:'✅',fail:'❌',not_checked:'—'})[c.status];
+          const schema=c=>c.name.startsWith('Schema: ');
+          const signature=c=>!schema(c)&&c.status!=='not_checked';
+          const counts=(s,p,status)=>s.checks.filter(c=>p(c)&&c.status===status).length;
+          const lines=['# CS2 DemoTracer · Sig & Schema','',`CS2 **${report.game.patchVersion}** · Windows x64 · Build **${report.game.buildId}** · ${report.checkedAt}`,'',
+          '| 源码 | Sig 正常 | Sig 失配 | Schema 正常 | Schema 失配 |','| --- | ---: | ---: | ---: | ---: |'];
+          for(const s of sources) lines.push(`| [${escape(s.ref)}](https://github.com/unicbm/demotracer/tree/${s.commit}) | ${counts(s,signature,'pass')} | ${counts(s,signature,'fail')} | ${counts(s,schema,'pass')} | ${counts(s,schema,'fail')} |`);
+          function table(title,predicate,isSchema=false){
+            lines.push('',`### ${title}`,'',`| ${isSchema?'类 | 字段':'检查项'} | ${sources.map(s=>escape(s.ref)).join(' | ')} |`, `| --- ${isSchema?'| --- ':''}| ${sources.map(()=>'---').join(' | ')} |`);
+            const keys=[...new Set(sources.flatMap(s=>s.checks.filter(predicate).map(c=>c.name)))].sort();
+            for(const key of keys){
+              const selected=sources.map(s=>s.checks.find(c=>c.name===key&&predicate(c)));
+              const first=selected.findIndex(Boolean), c=selected[first];
+              const url=`https://github.com/unicbm/demotracer/blob/${sources[first].commit}/${c.source}`;
+              const name=isSchema?key.slice(8).replace('::',' | '):`[${escape(key)}](${url})`;
+              lines.push(`| ${name} | ${selected.map(state).join(' | ')} |`);
+            }
+          }
+          lines.push('','## Sig');
+          for(const [title,path] of [['dtr-controller','/dtr-controller/'],['dtr-hider','/dtr-hider/'],['投掷物','demotracer-native.json'],['BotRandomizer','/BotRandomizer/']])
+            table(title,c=>signature(c)&&c.source.includes(path));
+          lines.push('','## Schema');
+          table('字段',schema,true);
+          writeFileSync(process.env.README,lines.join('\n')+'\n');
+          JS
+      - name: Update results
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add README.md
+          git diff --cached --quiet
+          if ($LASTEXITCODE -eq 0) { exit 0 }
+          git commit -m 'Update Sig and Schema results'
+          if ($LASTEXITCODE -ne 0) { throw 'Result commit failed' }
+          git push
+          if ($LASTEXITCODE -ne 0) { throw 'Result push failed' }
