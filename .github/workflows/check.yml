@@ -27,7 +27,7 @@ jobs:
       - name: Checkout validated checker
         uses: actions/checkout@v7
         with:
-          ref: 728309f1059dc636dd4c03c2e94c31118be00d7e
+          ref: 51fb5319e559ce977c3c779b65b6366bf3196044
           path: .checker
       - uses: actions/setup-node@v7
         with:
