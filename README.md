@@ -1,10 +1,10 @@
 # CS2 DemoTracer · Sig & Schema
 
-CS2 **1.41.9.3** · Windows x64 · Build **26281801** · 2026-10-30T12:55:22.602Z
+CS2 **1.41.9.4** · Windows x64 · Build **26334290** · 2026-10-31T02:23:23.062Z
 
 | 源码 | Sig 正常 | Sig 失配 | Schema 正常 | Schema 失配 |
 | --- | ---: | ---: | ---: | ---: |
-| [v1.6.5](https://github.com/unicbm/demotracer/tree/be9c22e0554e347eabe3e5eae2ffad82e1b28e77) | 31 | 0 | 53 | 0 |
+| [v1.6.5](https://github.com/unicbm/demotracer/tree/be9c22e0554e347eabe3e5eae2ffad82e1b28e77) | 27 | 4 | 53 | 0 |
 
 ## Sig
 
@@ -45,11 +45,11 @@ CS2 **1.41.9.3** · Windows x64 · Build **26281801** · 2026-10-30T12:55:22.602
 
 | 检查项 | 结果 |
 | --- | --- |
-| [Projectile entry](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/plugins/DemoTracer/config/demotracer-native.json) | ✅ |
-| [Projectile function body](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/plugins/DemoTracer/config/demotracer-native.json) | ✅ |
+| [Projectile entry](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/plugins/DemoTracer/config/demotracer-native.json) | ❌ |
+| [Projectile function body](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/plugins/DemoTracer/config/demotracer-native.json) | ❌ |
 | [Projectile physics signature](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/plugins/DemoTracer/config/demotracer-native.json) | ✅ |
-| [Projectile virtual references](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/plugins/DemoTracer/config/demotracer-native.json) | ✅ |
-| [Server image fingerprint](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/plugins/DemoTracer/config/demotracer-native.json) | ✅ |
+| [Projectile virtual references](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/plugins/DemoTracer/config/demotracer-native.json) | ❌ |
+| [Server image fingerprint](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/plugins/DemoTracer/config/demotracer-native.json) | ❌ |
 
 ### BotRandomizer
 
@@ -61,7 +61,7 @@ CS2 **1.41.9.3** · Windows x64 · Build **26281801** · 2026-10-30T12:55:22.602
 
 ## Schema
 
-数据源：[CS2OpenDev SchemaTracker](https://github.com/CS2OpenDev/CS2OpenDev-SchemaTracker/tree/0c29147688a296ad43b1a8e32bce64b2ff068d7d) · 已核对 Build、manifest 和 DLL SHA-256。
+数据源：[CS2OpenDev SchemaTracker](https://github.com/CS2OpenDev/CS2OpenDev-SchemaTracker/tree/120d310129854797e7c83e636b8b5fb2e751143e) · 已核对 Build、manifest 和 DLL SHA-256。
 
 ### 字段
 
@@ -121,4 +121,4 @@ CS2 **1.41.9.3** · Windows x64 · Build **26281801** · 2026-10-30T12:55:22.602
 | CPlayer_MovementServices | m_vecOldViewAngles | ✅ |
 | CPlayer_WeaponServices | m_hActiveWeapon | ✅ |
 
-<!-- checked:26281801:8833146750479675564:5218696177408015009:be9c22e0554e347eabe3e5eae2ffad82e1b28e77:0c29147688a296ad43b1a8e32bce64b2ff068d7d:light-v1 -->
+<!-- checked:26334290:6694633556888099985:4494425425081083634:be9c22e0554e347eabe3e5eae2ffad82e1b28e77:120d310129854797e7c83e636b8b5fb2e751143e:light-v1 -->
