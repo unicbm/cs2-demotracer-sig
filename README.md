@@ -1,10 +1,10 @@
 # CS2 DemoTracer · Sig & Schema
 
-CS2 **1.41.9.4** · Windows x64 · Build **26334290** · 2026-10-31T02:23:23.062Z
+CS2 **1.41.9.4** · Windows x64 · Build **26334290** · 2026-10-31T09:39:21.400Z
 
 | 源码 | Sig 正常 | Sig 失配 | Schema 正常 | Schema 失配 |
 | --- | ---: | ---: | ---: | ---: |
-| [v1.6.5](https://github.com/unicbm/demotracer/tree/be9c22e0554e347eabe3e5eae2ffad82e1b28e77) | 27 | 4 | 53 | 0 |
+| [v1.6.6](https://github.com/unicbm/demotracer/tree/fbe03ec8972e7d14262114c56de36c6123ffaabc) | 27 | 4 | 53 | 0 |
 
 ## Sig
 
@@ -12,52 +12,52 @@ CS2 **1.41.9.4** · Windows x64 · Build **26334290** · 2026-10-31T02:23:23.062
 
 | 检查项 | 结果 |
 | --- | --- |
-| [BuyState::OnUpdate](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ |
-| [CBaseEntity::SetAbsOrigin](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ |
-| [CBaseEntity::SetAbsVelocity](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ |
-| [CBaseEntity::SetMoveType](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ |
-| [CBasePlayerPawn::GetEyeAngles](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ |
-| [CCSBot::EquipBestWeapon](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ |
-| [CCSBot::EquipPistol](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ |
-| [CCSBot::InvalidatePath](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ |
-| [CCSBot::IsVisiblePlayer](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ |
-| [CCSBot::IsVisiblePos](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ |
-| [CCSBot::LadderStateUpdate](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ |
-| [CCSBot::Update](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ |
-| [CCSBot::UpdateLookAngles](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ |
-| [CCSBot::Upkeep](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ |
-| [CCSPlayerPawn::SetEyeAngles](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ |
-| [CCSPlayer_MovementServices::PhysicsSimulate](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ |
-| [CCSPlayer_MovementServices::ProcessMovement](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ |
-| [CCSPlayer_WeaponServices::GetSlot](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ |
-| [CCSPlayer_WeaponServices::SelectItem](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ |
+| [BuyState::OnUpdate](https://github.com/unicbm/demotracer/blob/fbe03ec8972e7d14262114c56de36c6123ffaabc/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ |
+| [CBaseEntity::SetAbsOrigin](https://github.com/unicbm/demotracer/blob/fbe03ec8972e7d14262114c56de36c6123ffaabc/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ |
+| [CBaseEntity::SetAbsVelocity](https://github.com/unicbm/demotracer/blob/fbe03ec8972e7d14262114c56de36c6123ffaabc/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ |
+| [CBaseEntity::SetMoveType](https://github.com/unicbm/demotracer/blob/fbe03ec8972e7d14262114c56de36c6123ffaabc/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ |
+| [CBasePlayerPawn::GetEyeAngles](https://github.com/unicbm/demotracer/blob/fbe03ec8972e7d14262114c56de36c6123ffaabc/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ |
+| [CCSBot::EquipBestWeapon](https://github.com/unicbm/demotracer/blob/fbe03ec8972e7d14262114c56de36c6123ffaabc/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ |
+| [CCSBot::EquipPistol](https://github.com/unicbm/demotracer/blob/fbe03ec8972e7d14262114c56de36c6123ffaabc/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ |
+| [CCSBot::InvalidatePath](https://github.com/unicbm/demotracer/blob/fbe03ec8972e7d14262114c56de36c6123ffaabc/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ |
+| [CCSBot::IsVisiblePlayer](https://github.com/unicbm/demotracer/blob/fbe03ec8972e7d14262114c56de36c6123ffaabc/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ |
+| [CCSBot::IsVisiblePos](https://github.com/unicbm/demotracer/blob/fbe03ec8972e7d14262114c56de36c6123ffaabc/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ |
+| [CCSBot::LadderStateUpdate](https://github.com/unicbm/demotracer/blob/fbe03ec8972e7d14262114c56de36c6123ffaabc/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ |
+| [CCSBot::Update](https://github.com/unicbm/demotracer/blob/fbe03ec8972e7d14262114c56de36c6123ffaabc/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ |
+| [CCSBot::UpdateLookAngles](https://github.com/unicbm/demotracer/blob/fbe03ec8972e7d14262114c56de36c6123ffaabc/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ |
+| [CCSBot::Upkeep](https://github.com/unicbm/demotracer/blob/fbe03ec8972e7d14262114c56de36c6123ffaabc/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ |
+| [CCSPlayerPawn::SetEyeAngles](https://github.com/unicbm/demotracer/blob/fbe03ec8972e7d14262114c56de36c6123ffaabc/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ |
+| [CCSPlayer_MovementServices::PhysicsSimulate](https://github.com/unicbm/demotracer/blob/fbe03ec8972e7d14262114c56de36c6123ffaabc/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ |
+| [CCSPlayer_MovementServices::ProcessMovement](https://github.com/unicbm/demotracer/blob/fbe03ec8972e7d14262114c56de36c6123ffaabc/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ |
+| [CCSPlayer_WeaponServices::GetSlot](https://github.com/unicbm/demotracer/blob/fbe03ec8972e7d14262114c56de36c6123ffaabc/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ |
+| [CCSPlayer_WeaponServices::SelectItem](https://github.com/unicbm/demotracer/blob/fbe03ec8972e7d14262114c56de36c6123ffaabc/server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json) | ✅ |
 
 ### dtr-hider
 
 | 检查项 | 结果 |
 | --- | --- |
-| [CCSBotManager::MaintainBotQuota](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json) | ✅ |
-| [CCSPlayerController::HandleCommand_JoinTeam](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json) | ✅ |
-| [CNetworkGameServer::PackEntities](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json) | ✅ |
-| [UTIL_Remove](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json) | ✅ |
+| [CCSBotManager::MaintainBotQuota](https://github.com/unicbm/demotracer/blob/fbe03ec8972e7d14262114c56de36c6123ffaabc/server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json) | ✅ |
+| [CCSPlayerController::HandleCommand_JoinTeam](https://github.com/unicbm/demotracer/blob/fbe03ec8972e7d14262114c56de36c6123ffaabc/server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json) | ✅ |
+| [CNetworkGameServer::PackEntities](https://github.com/unicbm/demotracer/blob/fbe03ec8972e7d14262114c56de36c6123ffaabc/server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json) | ✅ |
+| [UTIL_Remove](https://github.com/unicbm/demotracer/blob/fbe03ec8972e7d14262114c56de36c6123ffaabc/server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json) | ✅ |
 
 ### 投掷物
 
 | 检查项 | 结果 |
 | --- | --- |
-| [Projectile entry](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/plugins/DemoTracer/config/demotracer-native.json) | ❌ |
-| [Projectile function body](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/plugins/DemoTracer/config/demotracer-native.json) | ❌ |
-| [Projectile physics signature](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/plugins/DemoTracer/config/demotracer-native.json) | ✅ |
-| [Projectile virtual references](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/plugins/DemoTracer/config/demotracer-native.json) | ❌ |
-| [Server image fingerprint](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/plugins/DemoTracer/config/demotracer-native.json) | ❌ |
+| [Projectile entry](https://github.com/unicbm/demotracer/blob/fbe03ec8972e7d14262114c56de36c6123ffaabc/server/plugins/DemoTracer/config/demotracer-native.json) | ❌ |
+| [Projectile function body](https://github.com/unicbm/demotracer/blob/fbe03ec8972e7d14262114c56de36c6123ffaabc/server/plugins/DemoTracer/config/demotracer-native.json) | ❌ |
+| [Projectile physics signature](https://github.com/unicbm/demotracer/blob/fbe03ec8972e7d14262114c56de36c6123ffaabc/server/plugins/DemoTracer/config/demotracer-native.json) | ✅ |
+| [Projectile virtual references](https://github.com/unicbm/demotracer/blob/fbe03ec8972e7d14262114c56de36c6123ffaabc/server/plugins/DemoTracer/config/demotracer-native.json) | ❌ |
+| [Server image fingerprint](https://github.com/unicbm/demotracer/blob/fbe03ec8972e7d14262114c56de36c6123ffaabc/server/plugins/DemoTracer/config/demotracer-native.json) | ❌ |
 
 ### BotRandomizer
 
 | 检查项 | 结果 |
 | --- | --- |
-| [BotRandomizer: itemViewConstructor](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/BotRandomizer/BotRandomizerItems.cs) | ✅ |
-| [BotRandomizer: itemViewDestructor](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/BotRandomizer/BotRandomizerItems.cs) | ✅ |
-| [BotRandomizer: writer](https://github.com/unicbm/demotracer/blob/be9c22e0554e347eabe3e5eae2ffad82e1b28e77/server/runtime/BotRandomizer/BotRandomizerItems.cs) | ✅ |
+| [BotRandomizer: itemViewConstructor](https://github.com/unicbm/demotracer/blob/fbe03ec8972e7d14262114c56de36c6123ffaabc/server/runtime/BotRandomizer/BotRandomizerItems.cs) | ✅ |
+| [BotRandomizer: itemViewDestructor](https://github.com/unicbm/demotracer/blob/fbe03ec8972e7d14262114c56de36c6123ffaabc/server/runtime/BotRandomizer/BotRandomizerItems.cs) | ✅ |
+| [BotRandomizer: writer](https://github.com/unicbm/demotracer/blob/fbe03ec8972e7d14262114c56de36c6123ffaabc/server/runtime/BotRandomizer/BotRandomizerItems.cs) | ✅ |
 
 ## Schema
 
@@ -121,4 +121,4 @@ CS2 **1.41.9.4** · Windows x64 · Build **26334290** · 2026-10-31T02:23:23.062
 | CPlayer_MovementServices | m_vecOldViewAngles | ✅ |
 | CPlayer_WeaponServices | m_hActiveWeapon | ✅ |
 
-<!-- checked:26334290:6694633556888099985:4494425425081083634:be9c22e0554e347eabe3e5eae2ffad82e1b28e77:120d310129854797e7c83e636b8b5fb2e751143e:light-v1 -->
+<!-- checked:26334290:6694633556888099985:4494425425081083634:fbe03ec8972e7d14262114c56de36c6123ffaabc:120d310129854797e7c83e636b8b5fb2e751143e:light-v1 -->
