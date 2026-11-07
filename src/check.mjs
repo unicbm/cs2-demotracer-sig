@@ -56,7 +56,6 @@ try {
     const paths = [
       'server/runtime/dtr-controller/configs/addons/dtr-controller/gamedata.json',
       'server/runtime/dtr-hider/configs/addons/dtr-hider/gamedata.json',
-      'server/plugins/DemoTracer/config/demotracer-native.json',
       'server/runtime/BotRandomizer/BotRandomizerItems.cs',
       'shared/contracts/playback-contract.v1.json',
       'server/plugins/DemoTracer/src/DemoTracer/Lifecycle/DemoTracerPlugin.cs',
@@ -65,18 +64,21 @@ try {
       'server/plugins/DemoTracer/src/DemoTracer/Playback/Inventory/DemoTracerReplayLoadout.cs'
     ];
     const text = await Promise.all(paths.map(path => source(commit, path)));
-    const contract = JSON.parse(text[4]);
-    const version = text[5].match(/ModuleVersion\s*=>\s*"([\d.]+)"/)?.[1];
+    const contract = JSON.parse(text[3]);
+    const version = text[4].match(/ModuleVersion\s*=>\s*"([\d.]+)"/)?.[1];
     if (!version) throw new Error('Cannot read product version');
-    const fields = [...new Map([5,6,7,8].flatMap(i=>schemaRequests(text[i],paths[i])).map(f=>[f.className+'::'+f.fieldName,f])).values()];
+    const fields = [...new Map([4,5,6,7].flatMap(i=>schemaRequests(text[i],paths[i])).map(f=>[f.className+'::'+f.fieldName,f])).values()];
     if(!fields.length) throw new Error('No Schema dependencies extracted');
     for(const f of fields) requested.set(f.className+'::'+f.fieldName,[f.className,f.fieldName]);
     if(values['prepare-schema']) continue;
+    const configDir = 'server/plugins/DemoTracer/config';
+    const profile = (await api(`contents/${configDir}?ref=${commit}`))
+      .find(entry => entry.name === 'demotracer-native.json');
     const checks = [
       ...checkGamedata(JSON.parse(text[0]), images, paths[0]),
       ...checkGamedata(JSON.parse(text[1]), images, paths[1]),
-      ...checkProfile(JSON.parse(text[2]), images.server, paths[2]),
-      ...inlineSignatures(text[3]).map(s => signatureCheck(images.server, 'BotRandomizer: ' + s.name, s.signature, paths[3]))
+      ...(profile ? checkProfile(JSON.parse(await source(commit, profile.path)), images.server, profile.path) : []),
+      ...inlineSignatures(text[2]).map(s => signatureCheck(images.server, 'BotRandomizer: ' + s.name, s.signature, paths[2]))
     ];
     checks.push(...schemaChecks(fields,evidence));
     report.sources.push({ ref, commit, version, requirements: { css: contract.counterstrikesharp.minimum_version,
