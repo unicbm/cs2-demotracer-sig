@@ -25,7 +25,7 @@ jobs:
       - name: Checkout validated checker
         uses: actions/checkout@v7
         with:
-          ref: 51fb5319e559ce977c3c779b65b6366bf3196044
+          ref: 853f56c7651b2d5303e1e20b0e4937514e10ea62
           path: .checker
       - uses: actions/setup-node@v7
         with:
@@ -177,6 +177,7 @@ jobs:
           '| 源码 | Sig 正常 | Sig 失配 | Schema 正常 | Schema 失配 |','| --- | ---: | ---: | ---: | ---: |'];
           for(const s of sources) lines.push(`| [${escape(s.ref)}](https://github.com/unicbm/demotracer/tree/${s.commit}) | ${counts(s,signature,'pass')} | ${counts(s,signature,'fail')} | ${counts(s,schema,'pass')} | ${counts(s,schema,'fail')} |`);
           function table(title,predicate,isSchema=false){
+            if (!sources.some(s=>s.checks.some(predicate))) return;
             lines.push('',`### ${title}`,'',`| ${isSchema?'类 | 字段':'检查项'} | 结果 |`, `| --- ${isSchema?'| --- ':''}| --- |`);
             const keys=[...new Set(sources.flatMap(s=>s.checks.filter(predicate).map(c=>c.name)))].sort();
             for(const key of keys){
